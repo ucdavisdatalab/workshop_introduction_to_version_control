@@ -1,0 +1,19 @@
+---
+title: Introduction to Version Control
+author: [Dr. Carl Stahmer and Dr. Tyler Shoemaker]
+date: "`r Sys.Date()`"
+url: "https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/"
+github-repo: ucdavisdatalab/workshop_introduction_to_version_control
+site: bookdown::bookdown_site
+knit: "bookdown::render_book"
+---
+
+# Overview {-}
+
+![](`r url14`)
+
+Learn and practice how to talk directly to your computer via the command line. The shell
+is a very powerful tool for using scientific software and working with larget data sets. 
+It is primarily used to manage files and run programs, and it allows for automation of 
+repetitive tasks. This workshop is a prerequisite for DataLab's workshops on Introduction to
+Version Control with Git and Reproducible Research for Teams with GitHub.

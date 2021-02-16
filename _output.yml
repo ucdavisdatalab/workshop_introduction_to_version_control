@@ -1,0 +1,12 @@
+bookdown::gitbook:
+  config:
+    toc:
+      before: |
+        <li><a href="https://datalab.ucdavis.edu/">
+          <img src="img/datalab-logo-full-color-rgb.png" style="height: 100%; width: 100%; object-fit: contain" />
+        </a></li>
+        <li><a href="./">Introduction to Version Control</a></li>
+      collapse: section
+    sharing: no
+    view: https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/blob/main/%s
+    edit: https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/edit/main/%s

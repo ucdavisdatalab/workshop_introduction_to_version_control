@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Git Branching | Introduction to Version Control</title>
+  <meta name="description" content="3 Git Branching | Introduction to Version Control" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Git Branching | Introduction to Version Control" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/" />
+  
+  
+  <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Git Branching | Introduction to Version Control" />
+  
+  
+  
+
+<meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker" />
+
+
+<meta name="date" content="2021-02-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-git.html"/>
+
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://datalab.ucdavis.edu/">
+  <img src="img/datalab-logo-full-color-rgb.png" style="height: 100%; width: 100%; object-fit: contain" />
+</a></li>
+<li><a href="./">Introduction to Version Control</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html"><i class="fa fa-check"></i><b>1</b> Introduction to Version Control</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#what-is-version-control"><i class="fa fa-check"></i><b>1.1</b> What is Version Control?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#software-assisted-version-control"><i class="fa fa-check"></i><b>1.2</b> Software Assisted Version Control</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#local-vs-server-based-version-control"><i class="fa fa-check"></i><b>1.3</b> Local vs Server Based Version Control</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#central-version-control-systems"><i class="fa fa-check"></i><b>1.4</b> Central Version Control Systems</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#distributed-version-control-systems"><i class="fa fa-check"></i><b>1.5</b> Distributed Version Control Systems</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#the-best-of-both-worlds"><i class="fa fa-check"></i><b>1.6</b> The Best of Both Worlds</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#vcs-and-the-computer-file-system"><i class="fa fa-check"></i><b>1.7</b> VCS and the Computer File System</a></li>
+<li class="chapter" data-level="1.8" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#how-computers-store-and-access-information"><i class="fa fa-check"></i><b>1.8</b> How Computers Store and Access Information</a></li>
+<li class="chapter" data-level="1.9" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>1.9</b> How VCS Manage Your Files</a></li>
+<li class="chapter" data-level="1.10" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>1.10</b> Graph-Based Data Management</a></li>
+<li class="chapter" data-level="1.11" data-path="introduction-to-version-control.html"><a href="introduction-to-version-control.html#additional-resources"><i class="fa fa-check"></i><b>1.11</b> Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-git.html"><a href="introduction-to-git.html"><i class="fa fa-check"></i><b>2</b> Introduction to Git</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-git.html"><a href="introduction-to-git.html#save-stage-commit"><i class="fa fa-check"></i><b>2.1</b> Save, Stage, Commit</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-git.html"><a href="introduction-to-git.html#creating-your-first-repo"><i class="fa fa-check"></i><b>2.2</b> Creating Your First Repo</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-git.html"><a href="introduction-to-git.html#checking-the-status-of-a-repo"><i class="fa fa-check"></i><b>2.3</b> Checking the Status of a Repo</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-git.html"><a href="introduction-to-git.html#version-of-a-file"><i class="fa fa-check"></i><b>2.4</b> Version of a File</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-git.html"><a href="introduction-to-git.html#view-a-history-of-your-commits"><i class="fa fa-check"></i><b>2.5</b> View a History of Your Commits</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-git.html"><a href="introduction-to-git.html#comparing-commits"><i class="fa fa-check"></i><b>2.6</b> Comparing Commits</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-git.html"><a href="introduction-to-git.html#comparing-files"><i class="fa fa-check"></i><b>2.7</b> Comparing Files</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-git.html"><a href="introduction-to-git.html#to-view-an-earlier-commit"><i class="fa fa-check"></i><b>2.8</b> To View an Earlier Commit</a></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-git.html"><a href="introduction-to-git.html#undoing-things"><i class="fa fa-check"></i><b>2.9</b> Undoing Things</a></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-git.html"><a href="introduction-to-git.html#when-things-go-wrong"><i class="fa fa-check"></i><b>2.10</b> When Things go Wrong!</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="git-branching.html"><a href="git-branching.html"><i class="fa fa-check"></i><b>3</b> Git Branching</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="git-branching.html"><a href="git-branching.html#merging-branches"><i class="fa fa-check"></i><b>3.1</b> Merging Branches</a></li>
+<li class="chapter" data-level="3.2" data-path="git-branching.html"><a href="git-branching.html#branching-workflows"><i class="fa fa-check"></i><b>3.2</b> Branching Workflows</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Version Control</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="git-branching" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Git Branching</h1>
+<p>Branching provides a simple way to maintain multiple, side-by-side versions of the files in a repository. Conceptually, branching a repository creates a copy of the codebase in its current state that you can work on without affecting the primary version from which it was copied. This alows you to work down multiple paths without affecting the main (or other) codebase.</p>
+<p><img src="./img/GIT-Branchand-its-Operations.png" /></p>
+<p>To see a list of branches in your repository</p>
+<pre><code>$ git branch</code></pre>
+<p>To create a new branch</p>
+<pre><code>$ git checkout -b hotfix</code></pre>
+<p>New branches are created of the current working branch. To change branches use</p>
+<pre><code>$ git checkout &lt;branch name&gt;</code></pre>
+<div id="merging-branches" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Merging Branches</h2>
+<p>When you merge a branch, git folds any changes that you made to files in an identified branch into the current working branch. It also adds any new files. When you perform a merge, a new commit will be automatically created to track the merge. To merge branches, commit any changes to the branch you want to merge (in this example, the ‘hotfix’ branch) then checkout the branch into which you want to merge (for example, master), and then execute a merge command.</p>
+<pre><code>$ git commit -m &#39;commiting staged files in hotfix branch&#39;
+$ git checkout master
+$ git merge hotfix
+</code></pre>
+</div>
+<div id="branching-workflows" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Branching Workflows</h2>
+<p><img src="./img/branching_workflows.png" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-git.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/edit/main/03_git-branching.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/blob/main/03_git-branching.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
