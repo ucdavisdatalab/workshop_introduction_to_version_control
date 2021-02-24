@@ -1,4 +1,6 @@
-# Undoing Things
+# Troubleshooting Problems and Fixing Mistakes
+
+## Undoing Things
 
 One of the common undos takes place when you commit too early and possibly forget 
 to add some files, or you mess up your commit message. If you want to redo that 

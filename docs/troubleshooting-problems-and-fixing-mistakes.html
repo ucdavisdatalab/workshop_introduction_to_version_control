@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Undoing Things | Introduction to Version Control</title>
-  <meta name="description" content="6 Undoing Things | Introduction to Version Control" />
+  <title>6 Troubleshooting Problems and Fixing Mistakes | Introduction to Version Control</title>
+  <meta name="description" content="6 Troubleshooting Problems and Fixing Mistakes | Introduction to Version Control" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Undoing Things | Introduction to Version Control" />
+  <meta property="og:title" content="6 Troubleshooting Problems and Fixing Mistakes | Introduction to Version Control" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Undoing Things | Introduction to Version Control" />
+  <meta name="twitter:title" content="6 Troubleshooting Problems and Fixing Mistakes | Introduction to Version Control" />
   
   
   
@@ -117,9 +117,10 @@
 <li class="chapter" data-level="5.2" data-path="git-branching.html"><a href="git-branching.html#branching-workflows"><i class="fa fa-check"></i><b>5.2</b> Branching Workflows</a></li>
 <li class="chapter" data-level="5.3" data-path="git-branching.html"><a href="git-branching.html#to-view-an-earlier-commit"><i class="fa fa-check"></i><b>5.3</b> To View an Earlier Commit</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="undoing-things.html"><a href="undoing-things.html"><i class="fa fa-check"></i><b>6</b> Undoing Things</a>
+<li class="chapter" data-level="6" data-path="troubleshooting-problems-and-fixing-mistakes.html"><a href="troubleshooting-problems-and-fixing-mistakes.html"><i class="fa fa-check"></i><b>6</b> Troubleshooting Problems and Fixing Mistakes</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="undoing-things.html"><a href="undoing-things.html#when-things-go-wrong"><i class="fa fa-check"></i><b>6.1</b> When Things go Wrong!</a></li>
+<li class="chapter" data-level="6.1" data-path="troubleshooting-problems-and-fixing-mistakes.html"><a href="troubleshooting-problems-and-fixing-mistakes.html#undoing-things"><i class="fa fa-check"></i><b>6.1</b> Undoing Things</a></li>
+<li class="chapter" data-level="6.2" data-path="troubleshooting-problems-and-fixing-mistakes.html"><a href="troubleshooting-problems-and-fixing-mistakes.html#when-things-go-wrong"><i class="fa fa-check"></i><b>6.2</b> When Things go Wrong!</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="additional-resources.html"><a href="additional-resources.html"><i class="fa fa-check"></i><b>7</b> Additional Resources</a>
 <ul>
@@ -143,8 +144,10 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="undoing-things" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Undoing Things</h1>
+<div id="troubleshooting-problems-and-fixing-mistakes" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Troubleshooting Problems and Fixing Mistakes</h1>
+<div id="undoing-things" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Undoing Things</h2>
 <p>One of the common undos takes place when you commit too early and possibly forget
 to add some files, or you mess up your commit message. If you want to redo that
 commit, make the additional changes you forgot, stage them, and commit again
@@ -163,8 +166,9 @@ commit)</p>
 <pre><code>$ git reset --hard HEAD^2</code></pre>
 <p>Rolling everything back to an identified commit using HASH/ID from log</p>
 <pre><code>$ git reset --hard &lt;commit&gt;</code></pre>
-<div id="when-things-go-wrong" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> When Things go Wrong!</h2>
+</div>
+<div id="when-things-go-wrong" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> When Things go Wrong!</h2>
 <p>To reset everything back to an earlier commit and make sure that the HEAD pointer
 is pointing to the newly reset HEAD, do the following</p>
 <pre><code>$ git reset --hard &lt;commit&gt;
@@ -200,7 +204,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/edit/main/06_undoing-things.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/edit/main/06_troubleshooting.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -208,7 +212,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/blob/main/06_undoing-things.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/blob/main/06_troubleshooting.Rmd",
 "text": null
 },
 "download": null,

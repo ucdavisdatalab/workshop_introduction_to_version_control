@@ -32,6 +32,7 @@ git-branching
 merging-branches
 branching-workflows
 to-view-an-earlier-commit
+troubleshooting-problems-and-fixing-mistakes
 undoing-things
 when-things-go-wrong
 additional-resources
