@@ -1,7 +1,7 @@
 ---
 title: Introduction to Version Control
 author: [Dr. Carl Stahmer and Dr. Tyler Shoemaker]
-date: "2021-02-16"
+date: "2021-02-24"
 url: "https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/"
 github-repo: ucdavisdatalab/workshop_introduction_to_version_control
 site: bookdown::bookdown_site
@@ -10,10 +10,12 @@ knit: "bookdown::render_book"
 
 # Overview {-}
 
-![](./img/GIT-Branchand-its-Operations.png)
+![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/GIT-Branchand-its-Operations.png)
 
-Learn and practice how to talk directly to your computer via the command line. The shell
-is a very powerful tool for using scientific software and working with larget data sets. 
-It is primarily used to manage files and run programs, and it allows for automation of 
-repetitive tasks. This workshop is a prerequisite for DataLab's workshops on Introduction to
-Version Control with Git and Reproducible Research for Teams with GitHub.
+This workshop covers the fundamentals of using version control for reproducible 
+research. Topics covered will include installing the Git versioning control 
+software locally, initiating a local Git repository, managing file versions, 
+basic branching and merging, and time permitting intermediate topics including 
+working with remote repositories and resolving conflicts. At the end of this 
+workshop learners should be able to create new repos and begin using Git for 
+version control of their individual projects.

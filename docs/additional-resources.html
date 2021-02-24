@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Git Branching | Introduction to Version Control</title>
-  <meta name="description" content="5 Git Branching | Introduction to Version Control" />
+  <title>7 Additional Resources | Introduction to Version Control</title>
+  <meta name="description" content="7 Additional Resources | Introduction to Version Control" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Git Branching | Introduction to Version Control" />
+  <meta property="og:title" content="7 Additional Resources | Introduction to Version Control" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Git Branching | Introduction to Version Control" />
+  <meta name="twitter:title" content="7 Additional Resources | Introduction to Version Control" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="creating-your-first-repo.html"/>
-<link rel="next" href="undoing-things.html"/>
+<link rel="prev" href="undoing-things.html"/>
+
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -143,46 +143,22 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="git-branching" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Git Branching</h1>
-<p>Branching provides a simple way to maintain multiple, side-by-side versions of
-the files in a repository. Conceptually, branching a repository creates a copy of
-the codebase in its current state that you can work on without affecting the
-primary version from which it was copied. This alows you to work down multiple
-paths without affecting the main (or other) codebase.</p>
-<p><img src="https://datalab.ucdavis.edu/cstahmer/git_workshop_images/GIT-Branchand-its-Operations.png" /></p>
-<p>To see a list of branches in your repository</p>
-<pre><code>$ git branch</code></pre>
-<p>To create a new branch</p>
-<pre><code>$ git checkout -b hotfix</code></pre>
-<p>New branches are created of the current working branch. To change branches use</p>
-<pre><code>$ git checkout &lt;branch name&gt;</code></pre>
-<div id="merging-branches" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Merging Branches</h2>
-<p>When you merge a branch, git folds any changes that you made to files in an
-identified branch into the current working branch. It also adds any new files.
-When you perform a merge, a new commit will be automatically created to track the
-merge. To merge branches, commit any changes to the branch you want to merge
-(in this example, the “hotfix” branch) then checkout the branch into which you
-want to merge (for example, master), and then execute a merge command.</p>
-<pre><code>$ git commit -m &#39;commiting staged files in hotfix branch&#39;
-$ git checkout master
-$ git merge hotfix
-</code></pre>
+<div id="additional-resources" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Additional Resources</h1>
+<div id="git-for-teams" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Git for Teams</h2>
+<p>Be on the lookout for the second workshop in DataLab’s Git workshop series, which
+covers the process of using Git to work with teams performing collaborative
+development.</p>
+<p><img src="https://datalab.ucdavis.edu/cstahmer/git_workshop_images/git_for_teams.png" /></p>
 </div>
-<div id="branching-workflows" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Branching Workflows</h2>
-<p><img src="https://datalab.ucdavis.edu/cstahmer/git_workshop_images/branching_workflows.png" /></p>
-</div>
-<div id="to-view-an-earlier-commit" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> To View an Earlier Commit</h2>
-<pre><code>$ git checkout &lt;commit&gt;</code></pre>
-<p>To solve Detached Head problem either RESET HEAD as described below or just
-checkout another branch</p>
-<pre><code>git checkout &lt;branch&gt;</code></pre>
-<p>To save this older version as a parallel branch execute</p>
-<pre><code>$ git checkout -b &lt;new_branch_name</code></pre>
-<p>This will save the older commit as a new branch running parallel to master.</p>
+<div id="the-git-book" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> The Git Book</h2>
+<p>The <a href="https://git-scm.com/book/en/v2">Git Book</a> is the definitive Git resource
+and provides an excellent reference for everything that we will cover in the
+interactive session. There is no need to read the book prior to the session,
+but it’s a good reference resource to have avaialable as you begin to work
+with Git after the workshop.</p>
 
 </div>
 </div>
@@ -191,8 +167,8 @@ checkout another branch</p>
           </div>
         </div>
       </div>
-<a href="creating-your-first-repo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="undoing-things.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="undoing-things.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -214,7 +190,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/edit/main/05_branching.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/edit/main/07_additional-resources.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -222,7 +198,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/blob/main/05_branching.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/blob/main/07_additional-resources.Rmd",
 "text": null
 },
 "download": null,
