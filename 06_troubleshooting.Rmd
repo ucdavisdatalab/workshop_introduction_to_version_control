@@ -36,7 +36,7 @@ commit)
 $ git reset --hard HEAD^
 ```
 
-Rolling everything back tp two commits before the head
+Rolling everything back to two commits before the head
 
 ```
 $ git reset --hard HEAD^2

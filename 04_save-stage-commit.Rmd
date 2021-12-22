@@ -24,13 +24,13 @@ note: The $ character represents your command prompt. DO NOT type it into your t
 Create a new directory for this workshop
 
 ```
-$ mkdir introtogit
+$ mkdir intro_to_git
 ```
 
 Change to the new directory
 
 ```
-$ cd introtogit
+$ cd intro_to_git
 ```
 
 Put the new directory under version control
@@ -51,7 +51,7 @@ $ git status
 ## Version of a File
 
 In Git-speak, we "commit" if version of a file to the repository to save a copy 
-of the current working version of a file as a version.This is a multi-step process 
+of the current working version of a file as a version. This is a multi-step process 
 in which we first "stage" the file to be committed and then "commit" the file.
 
 STEP 1:  Place the file you want to version into the Staging Area

@@ -172,25 +172,25 @@ the interactive session. If you're already familiar with using command line, you
 can verify your install by opening the terminal (for Windows that will be Git Bash) 
 and type `git --version`. You should then see a response of your installed version 
 (e.g., git version 2.12.2.windows.2, or git version 2.12.2.mac.2), and not the 
-error "command not found." If you aren't familiar with command line we'll cover 
-this during the interactive session.
+error "command not found."
 
 ## Installation Troubleshooting
 
 If you are not able to successfully install Git on your own, please attend 
-DataLab's Virtual Office Hours, which are held every Monday afternoon from 1:30 
-to 3:00 pm, to get help with your installation. 
-Click [here](https://datalab.ucdavis.edu/office-hours/) for more information and 
-to receive a Zoom link.
+DataLab's Virtual Office Hours, which are held every Wednesday from 1:30 to 3:00 pm, 
+to get help with your installation. Click [here] for more information and to 
+receive a Zoom link.
+
+[here]: https://datalab.ucdavis.edu/office-hours/
 
 ## Git on the Command Line
 
 There are several Graphical User Interfaces that allow you to interact with Git 
 on your computer, but Git is, at heart, a command line interface. The command 
 line offers a text-only, non graphical means of interacting with your computer. 
-In the beginning, all user interaction with the computer happened at the command line. 
-In the current days of graphical user interfaces, using the Command Line requires 
-you to launch a special program that provides command Line access.  
+In the beginning, all user interaction with the computer happened at the command 
+line. In the current days of graphical user interfaces, using the command line 
+requires you to launch a special program that provides command Line access.  
 
 **Mac users** will use an application called "Terminal" which ships by default 
 with the Mac operating system. To launch the Terminal application, go to:
@@ -216,4 +216,7 @@ When you launch the application, you will see something like this:
 
 ## Ready, Set, Go...
 
-If you've read and understood the information in this online turorial and successfully installed Git on your local machine, you're ready for the Interactive Session!  The sections that follow present exhibits to which we will refer during the live session.
+If you've read and understood the information in this online tutorial and 
+successfully installed Git on your local machine, you're ready for the interactive 
+session! The sections that follow present exhibits to which we will refer during 
+the live session.

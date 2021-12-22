@@ -1,7 +1,7 @@
 introduction
 interactive-session-information
 about-this-tutorial
-objectives-for-this-workshop
+learning-objectives
 version-control
 what-is-version-control
 software-assisted-version-control
