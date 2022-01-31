@@ -1,15 +1,8 @@
 # Creating Your First Repo
 
-## Save, Stage, Commit
-
-Git does not automatically preserve versions of every "saved" file. When working 
-with Git, you save files as you always do, but this has no impact on the versions 
-that are preserved in the repository. To create a "version", you must first add 
-saved files to a **staging area** and then "commit" your staged files to the 
-repository. The commits that you make constituted the versions of files that are 
-preserved in the repository.
-
-![](img/save_stage_commit.png)
+Now that we've established how version control works, we can start using it. To 
+do so, we'll create a new directory under Home and initialize a new Git 
+*repository* inside it.
 
 ## Your First Repo
 
@@ -19,7 +12,8 @@ Using the command line, move to your Home directory
 $ cd ~
 ```
 
-note: The $ character represents your command prompt. DO NOT type it into your terminal
+Note: The `$` character represents your command prompt. You do not need to type 
+it into your terminal.
 
 Create a new directory for this workshop
 
@@ -33,12 +27,29 @@ Change to the new directory
 $ cd intro_to_git
 ```
 
-Put the new directory under version control
+To put this directory under version control, we simply use
 
 ```
 $ git init
+Initialized empty Git repository in /Users/tyler/intro_to_git/.git/
 ```
 
+The message your command line sends back indicates what, exactly, putting a 
+directory under version control means. Notice that Git has created a new, hidden 
+directory inside `intro_to_git`. This is the Git repository. It doesn't contain 
+any information about your files (yet), but it does set up all the necessary 
+files and directories that you need to track a project.
+
+```
+$ ls -a .git
+HEAD        config      description hooks       info        objects     refs
+```
+
+The nice thing about Git is that, for the most part, it does the work of 
+interfacing with the contents of the repository. While you can mostly ignore them 
+when working on a project (though a later section will discuss why we might need to 
+do so from time to time), they themselves do the important work of keeping track 
+of what you've committed.
 
 ## Checking the Status of a Repo
 
@@ -46,6 +57,11 @@ To check the status of a repository use the following command
 
 ```
 $ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
 ```
 
 ## Version of a File

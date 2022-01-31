@@ -33,10 +33,26 @@ It also includes information to help you successfully install Git on your local
 computer, **which must be completed prior to the interactive session**. 
 Instructions for installing Git are in section 3.
 
+## Prerequisites
+
+In addition to installing Git, we ask that you:
+
++ Be familiar with your computer's file navigation system (Finder for Mac, as 
+  an example)
++ Have basic facility with using a command line interface, such as Terminal or 
+  Git Bash
+  
+Need to brush up on the command line? The DataLab runs a workshop, "Introduction 
+to the Unix Command Line." You can find a reader for that [at this link][]; 
+there's also a [recording][] for this session.
+
+[at this link]: https://ucdavisdatalab.github.io/workshop_introduction_to_the_command_line
+[recording]: https://video.ucdavis.edu/media/Introduction%20to%20the%20Unix%20Command%20Line%20Workshop%20%E2%80%93%202021-11-04/1_csz9qdr9
+
 ## Learning Objectives
 
 1. Describe the history of version control systems (VCS), including their value
-and function
+   and function
 2. Explain how a VCS manges files on your computer
 3. Successfully install and run Git on your local computer
 4. Interact with Git via your computer's command line
