@@ -11,11 +11,11 @@ multiple versions of the same document(s).
 Most people have a folder/directory somewhere on their computer that looks 
 something like this:
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/mac_finder_1.png)
+![](img/mac_finder_1.png)
 
 Or perhaps, this:
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/mac_window_2.png)
+![](img/mac_window_2.png)
 
 This is a rudimentary form of version control that relies completely on the human 
 workflow of saving multiple versions of a file. This system works minimally well, 
@@ -92,7 +92,7 @@ and 2) Distributed Version Control Systems (Distributed VCS).
 architecture worldwide. Centralized VCS implement a "spoke and wheel" architecture 
 to provided server-based version control.
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/spoke_and_where_cloud.png)
+![](img/spoke_and_where_cloud.png)
 
 With the spoke and wheel architecture, the server maintains a centralized 
 collection of file versions. Users utilize version control clients to "check-out" 
@@ -114,7 +114,7 @@ files or tracking versions. Distributed VCS implement a network architecture (as
 opposed to the spoke and wheel of the centralized VCS as pictured above) to allow 
 each user to communicate directly with every other user.
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/distributed_network.png)
+![](img/distributed_network.png)
 
 In distributed VCS, each user maintains their own version history of the files 
 being tracked, and the VCS software communicates between users to keep the 
@@ -140,7 +140,7 @@ choose to include a central server as a node in the distributed network. This
 creates an hybrid universe in which some users will sync directly to each other 
 while other users will sync through a central server.
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/hybrid_network.png)
+![](img/hybrid_network.png)
 
 Syncing with a cloud-based server provides an extra level of backup for your 
 files and also facilitates communication between users. But treating the server 
@@ -176,7 +176,7 @@ each 1 or 0 is called a **bit**.You can think of your computer's storage device
 (regardless of what kind it is) as a presenting a large grid, where each box 
 is a bit:
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/empty_sectors.png)
+![](img/empty_sectors.png)
 
 In the above example, as with most computer storage, the bits in our storage 
 grid are addressable, meaning that we can designate a particular bit using a row 
@@ -184,7 +184,7 @@ and column number such as, for example, A7, or E12. Also, remember, that each
 bit can only contain one of two values: 0 or 1. So, in practice, our storage grid 
 would actually look something like this:
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/filled_bits.png)
+![](img/filled_bits.png)
 
 All of the complex information that we store in the computer is translated to 
 this binary language prior to storage using a system called **Unicode**. You can 
@@ -210,7 +210,7 @@ word "hello" in it, the computer would randomly store the Unicode for the five
 characters in the word "hello" on the storage device and make a directory entry 
 something like the following:
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/directory.png)
+![](img/directory.png)
 
 Understanding the directory concept and how computers store information is 
 crucial to understanding how VCS mange your files.
@@ -221,12 +221,12 @@ Most users think about version control as a process of managing files. For
 example, if I might have a directory called `My Project` that holds several files 
 related to this project as follows: 
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/mac_finder_3.png)
+![](img/mac_finder_3.png)
 
 One approach to managing changes to the above project files would be to store 
 multiple versions of each file as in the figure below for the file analysis.r:
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/version_tree.png)
+![](img/version_tree.png)
 
 In fact, many VCS do exactly this. They treat each file as the minimum unit of 
 data and simply save various versions of each file along with some additional 
@@ -248,7 +248,7 @@ rather than collections of files. Git's primary unit of management is the
 **repository,** or **repo** for short, which is aligned with your computer's 
 directory/folder structure. Consider, for example, the following file structure:
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/TT_tree_mobile.jpg)
+![](img/TT_tree_mobile.jpg)
 
 Here we see a user, Tom's, home directory, which contains three sub directories 
 (`Data`, `Thesis`, and `Tools`) and one file (`Notes.txt`). Both the `Data` and 

@@ -6,7 +6,7 @@ the codebase in its current state that you can work on without affecting the
 primary version from which it was copied. This allows you to work down multiple 
 paths without affecting the main (or other) codebase.
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/GIT-Branchand-its-Operations.png)
+![](img/GIT-Branchand-its-Operations.png)
 
 To see a list of branches in your repository
 
@@ -44,7 +44,7 @@ $ git merge hotfix
 
 ## Branching Workflows
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/branching_workflows.png)
+![](img/branching_workflows.png)
 
 ## To View an Earlier Commit
 

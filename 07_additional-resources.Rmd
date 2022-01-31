@@ -2,9 +2,11 @@
 
 ## Git for Teams
 
-Be on the lookout for the second workshop in DataLab's Git workshop series, which 
+Be on the lookout for the [second workshop] in DataLab's Git workshop series, which 
 covers the process of using Git to work with teams performing collaborative 
 development.
+
+[second workshop]: https://ucdavisdatalab.github.io/workshop_git_for_teams/
 
 ![](`r url17`)
 

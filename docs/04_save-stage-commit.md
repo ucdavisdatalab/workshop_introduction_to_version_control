@@ -9,7 +9,7 @@ saved files to a **staging area** and then "commit" your staged files to the
 repository. The commits that you make constituted the versions of files that are 
 preserved in the repository.
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/save_stage_commit.png)
+![](img/save_stage_commit.png)
 
 ## Your First Repo
 

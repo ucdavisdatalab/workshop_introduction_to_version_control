@@ -1,7 +1,7 @@
 ---
 title: Introduction to Version Control
 author: [Dr. Carl Stahmer and Dr. Tyler Shoemaker]
-date: "2021-12-21"
+date: "2022-01-31"
 url: "https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/"
 github-repo: ucdavisdatalab/workshop_introduction_to_version_control
 site: bookdown::bookdown_site
@@ -10,7 +10,7 @@ knit: "bookdown::render_book"
 
 # Overview {-}
 
-![](https://datalab.ucdavis.edu/cstahmer/git_workshop_images/GIT-Branchand-its-Operations.png)
+![](img/GIT-Branchand-its-Operations.png)
 
 This workshop covers the fundamentals of using version control for reproducible 
 research. Topics covered will include installing the Git versioning control 
