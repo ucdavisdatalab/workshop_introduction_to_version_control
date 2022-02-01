@@ -55,7 +55,7 @@ Switched to branch 'second_branch'
 $ echo "This is a second file" > new.txt
 ```
 
-Now stage and commit it
+Stage and commit it
 
 ```
 $ git add new.txt
@@ -74,7 +74,7 @@ hello.txt new.txt
 
 ## Checking Out Branches
 
-Now, we can switch back to, or **checkout**, the first branch.
+With our second branch made,we can switch back to, or **checkout**, the first one
 
 ```
 $ git checkout master
@@ -91,6 +91,13 @@ hello.txt
 This is because one branch has different information on it than the other. If 
 you want to bring `new.txt` over to the first branch, you'll need to **merge** 
 your two branches.
+
+**Note:** Be sure to commit any changes you make on a branch before checking 
+another one out. If you don't, those changes will follow you to the new branch, 
+and it can be a mess to sort out. If you're not quite ready to commit changes but 
+need to switch branches, you can use `git stash` to temporarily store them and 
+safely switch branches. Once you're back on the branch with the un-committed 
+changes, you can use `git stash apply` to retrieve them from the stash.
 
 ## Merging Branches
 
@@ -134,8 +141,9 @@ be5fd7e Adding my first file to the repository
 
 ## To View an Earlier Commit
 
-Using `git checkout` also applies to looking at older commits on a single branch. 
-If you wanted to go back to the very first commit on `master`, you could use 
+The logic of `git checkout` also applies to looking at older commits on a single 
+branch. If you wanted to go back to the very first commit on `master`, you could 
+use 
 
 ```
 $ git checkout be5fd7e
@@ -147,10 +155,10 @@ You'll likely get a long message from Git:
 > changes and commit them, and you can discard any commits you make in this
 > state without impacting any branches by switching back to a branch.
 
-The **HEAD** of your repository is the most recent commit on the branch. As the 
+The `HEAD` of your repository is the most recent commit on the branch. As the 
 message above indicates, any changes you make in this _detached_ state will not 
 directly affect other commits. If you're just looking around and don't want to 
-make any changes, you can reset to the HEAD with
+make any changes, you can reset to the `HEAD` with
 
 ```
 $ git checkout master
@@ -224,8 +232,10 @@ Automatic merge failed; fix conflicts and then commit the result.
 ```
 
 ...you'll get a **merge conflict**. This means that Git is unable to merge the 
-two branches because they have different data in the same file. We need to 
-resolve these differences manually before Git can merge.
+two branches because they have different data in the same area of the file (Git 
+is usually quite good at merging file versions when their differences are in 
+separate areas). We need to resolve these differences manually before Git can 
+merge.
 
 To do so, open `hello.txt`. When you do, you'll see this:
 
@@ -266,7 +276,7 @@ You have unmerged paths.
 
 Unmerged paths:
   (use "git add <file>..." to mark resolution)
-	both modified:   <span style="color: red;">hello.txt</span>
+	<span style="color: red;">both modified:   hello.txt</span>
 
 no changes added to commit (use "git add" and/or "git commit -a")
 </pre>
@@ -281,8 +291,8 @@ All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 ```
 
-You'll see that your conflicts are resolved. Now you can complete the merge with 
-a final commit.
+You'll see that your conflicts are resolved. With that done, you can complete the 
+merge with a final commit.
 
 ```
 $ git commit -m 'Fixing conflict between master and first_commit'
@@ -298,7 +308,7 @@ Hello world!
 This is my first Git repo.
 ```
 
-And the git log will have separate entries for the merge conflict and for the 
+And the Git log will have separate entries for the merge conflict and for the 
 file from any other branches into which you merged `master`
 
 ```

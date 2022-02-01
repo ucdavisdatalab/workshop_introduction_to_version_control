@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker" />
 
 
-<meta name="date" content="2022-01-31" />
+<meta name="date" content="2022-02-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,8 +165,8 @@ do so, we’ll create a new directory under Home and initialize a new Git
 <h2><span class="header-section-number">4.1</span> Your First Repo</h2>
 <p>Using the command line, move to your Home directory</p>
 <pre><code>$ cd ~</code></pre>
-<p>Note: The <code>$</code> character represents your command prompt. You do not need to type
-it into your terminal.</p>
+<p><strong>Note:</strong> The <code>$</code> character represents your command prompt. You do not need to
+type it into your terminal.</p>
 <p>Create a new directory for this workshop</p>
 <pre><code>$ mkdir intro_to_git</code></pre>
 <p>Change to the new directory</p>
@@ -184,8 +184,7 @@ HEAD        config      description hooks       info        objects     refs</co
 <p>The nice thing about Git is that, for the most part, it automatically interfaces
 with the contents of the repository. You can mostly ignore them when working
 on a project; they do the important work of keeping track of what you’ve
-committed. (Note that a later section will discuss why you might need to dig
-into these files from time to time.)</p>
+committed.</p>
 </div>
 <div id="checking-the-status-of-a-repo" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Checking the Status of a Repo</h2>
@@ -245,7 +244,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 <code>hello.txt</code> but haven’t let Git know that it needs to track this file.</p>
 <p>To do so, we do exactly what the status message tells us to do</p>
 <pre><code>$ git add hello.txt</code></pre>
-<p>Now, if we do another status check</p>
+<p>When we do another status check</p>
 <pre><code>$ git status
 On branch master
 
@@ -279,8 +278,8 @@ from another.</p>
 # Changes to be committed:
 #   new file:   hello.txt
 #</code></pre>
-<p>All you’d need to do is write your message on the first line and save and quit.
-This would be the end of the commit.</p>
+<p>All you’d need to do is write your message on the first, empty line and save and
+quit. This would be the end of the commit.</p>
 <p>But there’s some shorthand for this, which is the second way to do a commit.
 You’ll probably find yourself using it more.</p>
 <pre><code>$ git commit -m &#39;Adding my first file to the repository&#39;</code></pre>

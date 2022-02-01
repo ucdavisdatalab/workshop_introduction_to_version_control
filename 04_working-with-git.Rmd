@@ -12,8 +12,8 @@ Using the command line, move to your Home directory
 $ cd ~
 ```
 
-Note: The `$` character represents your command prompt. You do not need to type 
-it into your terminal.
+**Note:** The `$` character represents your command prompt. You do not need to 
+type it into your terminal.
 
 Create a new directory for this workshop
 
@@ -48,8 +48,7 @@ HEAD        config      description hooks       info        objects     refs
 The nice thing about Git is that, for the most part, it automatically interfaces 
 with the contents of the repository. You can mostly ignore them when working 
 on a project; they do the important work of keeping track of what you've 
-committed. (Note that a later section will discuss why you might need to dig 
-into these files from time to time.)
+committed.
 
 ## Checking the Status of a Repo
 
@@ -135,7 +134,7 @@ To do so, we do exactly what the status message tells us to do
 $ git add hello.txt
 ```
 
-Now, if we do another status check
+When we do another status check
 
 ```
 $ git status
@@ -182,8 +181,8 @@ Here's the message you'll get if you run the above:
 #
 ```
 
-All you'd need to do is write your message on the first line and save and quit. 
-This would be the end of the commit.
+All you'd need to do is write your message on the first, empty line and save and 
+quit. This would be the end of the commit.
 
 But there's some shorthand for this, which is the second way to do a commit. 
 You'll probably find yourself using it more.
