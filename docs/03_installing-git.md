@@ -152,11 +152,18 @@ This will complete your installation process.
 
 ## Git on Mac
 
-If you are installing Git on a Mac, there is no extra configuration.Simply go the 
-Git download page at [https://git-scm.com/downloads](https://git-scm.com/downloads) 
-and choose the latest version for Mac, and run the installer package when it is 
-finished downloading. If you get an "unknown developer" warning during the install 
-process, follow the instructions at the beginning of the video at 
+If you are installing Git on a Mac, there is no extra configuration. First, go to
+the Git download page at [https://git-scm.com/download/mac](https://git-scm.com/download/mac). 
+Once you're there, you have two options for getting the software on your machine.
+
+1. Install through Xcode (will take a while, but this also installs a whole suite 
+   of software development tools, which may be useful to you later on)
+2. Install the binary package
+
+The first option will take you to Apple's download page for Xcode. The second will 
+take you to SourceForge. Click "Download" and then run the installer package once 
+it's finished downloading. If you get an "unknown developer" warning during the 
+install process, follow the instructions at the beginning of the video at 
 [https://www.youtube.com/watch?v=__kr-Ew5kbE ](https://www.youtube.com/watch?v=__kr-Ew5kbE) 
 to help you work through this problem.
 
