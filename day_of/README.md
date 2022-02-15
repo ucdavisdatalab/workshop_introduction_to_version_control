@@ -1,8 +1,8 @@
 Git Setup
 =========
 
-If you're using Git for the first time, you'll need to set a username and password. You'll do this
-on the command line. To check whether a username and password have already been set, enter
+If you're using Git for the first time, you'll need to set a username and email. You'll do this
+on the command line. To check whether a username and email have already been set, enter
 
 ```
 $ git config --global user.name
