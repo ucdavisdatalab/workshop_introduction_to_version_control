@@ -29,3 +29,17 @@ $ git config --global user.email "YOUR EMAIL"
 ```
 
 to set your email.
+
+---
+
+Merge Network Example
+=====================
+
+Here's an example of what it looks like to have multiple people working on separate branches in a
+project directory. Each line is a separate branch and each circle is a commit. Arrows denote merges.
+
+![Covid Exposure Map, UC Davis DataLab](img/covid_exposure_map_commit_network.png)
+
+GitHub repository for this project: [the UC Davis DataLab's Covid Worksite Exposure Map].
+
+[the UC Davis DataLab's Covid Worksite Exposure Map]: https://github.com/datalab-dev/covid_worksite_exposure
