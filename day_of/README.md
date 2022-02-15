@@ -1,3 +1,14 @@
+Schedule
+========
+
+| Section | Time |
+| ------- | ---- |
+| Introduction to version control | 3:00 - 3:15 pm |
+| Using Git | 3:15 - 4:00 pm |
+| Break | 4:00 - 4:10 pm |
+| Branching and merging | 4:10 - 4:45 pm |
+| Q&A/misc. | 4:45 - 5:00 pm |
+
 Git Setup
 =========
 
