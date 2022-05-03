@@ -6,6 +6,10 @@ bookdown::gitbook:
           <img src="img/datalab-logo-full-color-rgb.png" style="height: 100%; width: 100%; object-fit: contain" />
         </a></li>
         <li><a href="./">Introduction to Version Control</a></li>
+      after: |
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+          <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg" style="float: right; padding-right: 10px;" />
+        </a>
       collapse: section
     sharing: no
     view: https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/blob/main/%s
