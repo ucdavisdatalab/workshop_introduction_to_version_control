@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker" />
 
 
-<meta name="date" content="2022-05-03" />
+<meta name="date" content="2022-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,7 +181,7 @@ type it into your terminal.</p>
 Initialized empty Git repository in /Users/username/intro_to_git/.git/</code></pre>
 <p>The message your command line sends back indicates what, exactly, putting a
 directory under version control means. Notice that Git has created a new, hidden
-directory inside <code>intro_to_git</code>, called <code>.git</code>. This is the Git repository. It
+directory inside <code>intro_to_git</code> called <code>.git</code>. This is the Git repository. It
 doesn’t contain any information about your files (yet), but it does set up all
 the necessary files and directories that you need to track a project.</p>
 <pre><code>$ ls -a .git
@@ -228,10 +228,9 @@ then we commit.</p>
 </div>
 <div id="step-2-stage-the-file" class="section level3" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Step 2: Stage the file</h3>
-<p>We use</p>
-<pre><code>$ git add hello.txt</code></pre>
-<p>…to add our file to the <strong>staging area</strong>. Now, if we run a status check, we’ll
-see:</p>
+<p>With the file saved, Git can start tracking it. In fact, Git is already aware that
+there’s a new file in our directory. We can see this if we run another status
+check</p>
 <pre style="font-size: small;">
 $ git status
 On branch master
@@ -246,8 +245,9 @@ nothing added to commit but untracked files present (use "git add" to track)
 </pre>
 <p>Notice that Git is pretty verbose. Here, it’s telling us that there is an
 <strong>untracked</strong> file in the directory. And that makes sense: we’ve made and saved
-<code>hello.txt</code> but haven’t let Git know that it needs to track this file.</p>
-<p>To do so, we do exactly what the status message tells us to do</p>
+<code>hello.txt</code> but haven’t let Git know that it needs to track this file. This will
+involve adding the file to Git’s <strong>staging area</strong>.</p>
+<p>To do so, we do exactly what the status message above tells us to do</p>
 <pre><code>$ git add hello.txt</code></pre>
 <p>When we do another status check</p>
 <pre><code>$ git status
@@ -259,8 +259,8 @@ Changes to be committed:
   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
     new file:   hello.txt</code></pre>
 <p>…Git tells us that <code>hello.txt</code> is staged. Even now, however, we haven’t made a
-version of this file. To do so, we need run a commit command. This will create
-versions of all files in the staging area.</p>
+version of this file. To do so, we need run a commit command. This will create a
+new version of every file in the staging area (in this case, just <code>hello.txt</code>).</p>
 </div>
 <div id="step-3-commit-the-file" class="section level3" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Step 3: Commit the file</h3>
@@ -283,7 +283,7 @@ from another.</p>
 # Changes to be committed:
 #   new file:   hello.txt
 #</code></pre>
-<p>All you’d need to do is write your message on the first, empty line and save and
+<p>All you’d need to do is write your message on the first empty line and save and
 quit. This would be the end of the commit.</p>
 <p>But there’s some shorthand for this, which is the second way to do a commit.
 You’ll probably find yourself using it more.</p>

@@ -36,7 +36,7 @@ Initialized empty Git repository in /Users/username/intro_to_git/.git/
 
 The message your command line sends back indicates what, exactly, putting a 
 directory under version control means. Notice that Git has created a new, hidden 
-directory inside `intro_to_git`, called `.git`. This is the Git repository. It 
+directory inside `intro_to_git` called `.git`. This is the Git repository. It 
 doesn't contain any information about your files (yet), but it does set up all 
 the necessary files and directories that you need to track a project.
 
@@ -102,14 +102,9 @@ We've already done this, so we can move on.
 
 ### Step 2: Stage the file
 
-We use
-
-```
-$ git add hello.txt
-```
-
-...to add our file to the **staging area**. Now, if we run a status check, we'll 
-see:
+With the file saved, Git can start tracking it. In fact, Git is already aware that 
+there's a new file in our directory. We can see this if we run another status 
+check
 
 <pre style="font-size: small;">
 $ git status
@@ -126,9 +121,10 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 Notice that Git is pretty verbose. Here, it's telling us that there is an 
 **untracked** file in the directory. And that makes sense: we've made and saved 
-`hello.txt` but haven't let Git know that it needs to track this file.
+`hello.txt` but haven't let Git know that it needs to track this file. This will 
+involve adding the file to Git's **staging area**.
 
-To do so, we do exactly what the status message tells us to do
+To do so, we do exactly what the status message above tells us to do
 
 ```
 $ git add hello.txt
@@ -148,8 +144,8 @@ Changes to be committed:
 ```
 
 ...Git tells us that `hello.txt` is staged. Even now, however, we haven't made a 
-version of this file. To do so, we need run a commit command. This will create 
-versions of all files in the staging area.
+version of this file. To do so, we need run a commit command. This will create a 
+new version of every file in the staging area (in this case, just `hello.txt`).
 
 ### Step 3: Commit the file
 
@@ -181,7 +177,7 @@ Here's the message you'll get if you run the above:
 #
 ```
 
-All you'd need to do is write your message on the first, empty line and save and 
+All you'd need to do is write your message on the first empty line and save and 
 quit. This would be the end of the commit.
 
 But there's some shorthand for this, which is the second way to do a commit. 
