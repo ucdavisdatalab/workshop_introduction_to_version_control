@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Creating Your First Repo | Introduction to Version Control</title>
   <meta name="description" content="4 Creating Your First Repo | Introduction to Version Control" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Creating Your First Repo | Introduction to Version Control" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
@@ -21,10 +20,12 @@
   
   
 
-<meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker" />
+<meta name="author" content="Dr. Carl Stahmer" />
+<meta name="author" content="Dr. Tyler Shoemaker" />
+<meta name="author" content="and Dr. Wesley Brooks" />
 
 
-<meta name="date" content="2022-05-03" />
+<meta name="date" content="2022-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +34,8 @@
   
 <link rel="prev" href="installing-git.html"/>
 <link rel="next" href="git-branching.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +51,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
@@ -88,13 +89,8 @@
 <li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#what-is-version-control"><i class="fa fa-check"></i><b>2.1</b> What is Version Control?</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#software-assisted-version-control"><i class="fa fa-check"></i><b>2.2</b> Software Assisted Version Control</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#local-vs-server-based-version-control"><i class="fa fa-check"></i><b>2.3</b> Local vs Server-based Version Control</a></li>
-<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#central-version-control-systems"><i class="fa fa-check"></i><b>2.4</b> Central Version Control Systems</a></li>
-<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#distributed-version-control-systems"><i class="fa fa-check"></i><b>2.5</b> Distributed Version Control Systems</a></li>
-<li class="chapter" data-level="2.6" data-path="version-control.html"><a href="version-control.html#the-best-of-both-worlds"><i class="fa fa-check"></i><b>2.6</b> The Best of Both Worlds</a></li>
-<li class="chapter" data-level="2.7" data-path="version-control.html"><a href="version-control.html#vcs-and-the-computer-file-system"><i class="fa fa-check"></i><b>2.7</b> VCS and the Computer File System</a></li>
-<li class="chapter" data-level="2.8" data-path="version-control.html"><a href="version-control.html#how-computers-store-and-access-information"><i class="fa fa-check"></i><b>2.8</b> How Computers Store and Access Information</a></li>
-<li class="chapter" data-level="2.9" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.9</b> How VCS Manage Your Files</a></li>
-<li class="chapter" data-level="2.10" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.10</b> Graph-Based Data Management</a></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.4</b> How VCS Manage Your Files</a></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.5</b> Graph-Based Data Management</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installing-git.html"><a href="installing-git.html"><i class="fa fa-check"></i><b>3</b> Installing Git</a>
 <ul>
@@ -161,13 +157,13 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-your-first-repo" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Creating Your First Repo</h1>
+<div id="creating-your-first-repo" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Creating Your First Repo<a href="creating-your-first-repo.html#creating-your-first-repo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Now that we’ve established how version control works, we can start using it. To
 do so, we’ll create a new directory under Home and initialize a new Git
 <em>repository</em> inside it.</p>
-<div id="your-first-repo" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Your First Repo</h2>
+<div id="your-first-repo" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Your First Repo<a href="creating-your-first-repo.html#your-first-repo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Using the command line, move to your Home directory</p>
 <pre><code>$ cd ~</code></pre>
 <p><strong>Note:</strong> The <code>$</code> character represents your command prompt. You do not need to
@@ -191,8 +187,8 @@ with the contents of the repository. You can mostly ignore them when working
 on a project; they do the important work of keeping track of what you’ve
 committed.</p>
 </div>
-<div id="checking-the-status-of-a-repo" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Checking the Status of a Repo</h2>
+<div id="checking-the-status-of-a-repo" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Checking the Status of a Repo<a href="creating-your-first-repo.html#checking-the-status-of-a-repo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>With our repository made, we can check its status</p>
 <pre><code>$ git status
 On branch master
@@ -209,8 +205,8 @@ the end of “world,” and save it. Once we do this, the file will read:</p>
 <pre><code>$ cat hello.txt
 Hello world!</code></pre>
 </div>
-<div id="save-stage-commit" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Save, Stage, Commit</h2>
+<div id="save-stage-commit" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Save, Stage, Commit<a href="creating-your-first-repo.html#save-stage-commit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So far, this should feel very familiar: it’s how you probably interact with your
 files on a daily basis. But saving a file is not the same thing as tracking it
 with a VCS. Git does not automatically preserve <strong>versions</strong> of every save action.
@@ -222,12 +218,12 @@ to the repository. The commits you make then constitute the versions of those fi
 then we commit.</p>
 <p><img src="img/save_stage_commit.png" /></p>
 <p>Let’s do this with the file we’ve just made.</p>
-<div id="step-1-save-the-file" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Step 1: Save the file</h3>
+<div id="step-1-save-the-file" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Step 1: Save the file<a href="creating-your-first-repo.html#step-1-save-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We’ve already done this, so we can move on.</p>
 </div>
-<div id="step-2-stage-the-file" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Step 2: Stage the file</h3>
+<div id="step-2-stage-the-file" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Step 2: Stage the file<a href="creating-your-first-repo.html#step-2-stage-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We use</p>
 <pre><code>$ git add hello.txt</code></pre>
 <p>…to add our file to the <strong>staging area</strong>. Now, if we run a status check, we’ll
@@ -262,8 +258,8 @@ Changes to be committed:
 version of this file. To do so, we need run a commit command. This will create
 versions of all files in the staging area.</p>
 </div>
-<div id="step-3-commit-the-file" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Step 3: Commit the file</h3>
+<div id="step-3-commit-the-file" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Step 3: Commit the file<a href="creating-your-first-repo.html#step-3-commit-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Typically, we commit our files in one of two ways. The first is just to run</p>
 <pre><code>$ git commit</code></pre>
 <p>If you run this, you might be surprised at what happens next. Git dumps you into
@@ -307,8 +303,8 @@ nothing to commit, working tree clean</code></pre>
 <p>You’re ready to keep working on other parts of the file or project.</p>
 </div>
 </div>
-<div id="view-a-history-of-your-commits" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> View a History of Your Commits</h2>
+<div id="view-a-history-of-your-commits" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> View a History of Your Commits<a href="creating-your-first-repo.html#view-a-history-of-your-commits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you’d like to see a history of all the commits in a repository, use</p>
 <pre><code>$ git log
 commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; master)
@@ -343,8 +339,8 @@ Date:  DATE OF THE COMMIT
  hello.txt | 1 +
  1 file changed, 1 insertion(+)</code></pre>
 </div>
-<div id="comparing-commits" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Comparing Commits</h2>
+<div id="comparing-commits" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Comparing Commits<a href="creating-your-first-repo.html#comparing-commits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s make a change to our file and re-commit it. We’ll open the file and, on a
 new line, add the following: “This is my first Git repo.”</p>
 <p>The contents of the file now look like:</p>
@@ -375,8 +371,8 @@ index cd08755..6c32fd5 100644
 +This is my first Git repo.</code></pre>
 <p>See the insertions?</p>
 </div>
-<div id="comparing-files" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Comparing Files</h2>
+<div id="comparing-files" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Comparing Files<a href="creating-your-first-repo.html#comparing-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Running <code>git diff</code> on the entire repository will return changes for all files in
 that commit. If you wanted to look at a commit for a single file, use</p>
 <pre><code>$ git diff be5fd7e hello.txt</code></pre>
@@ -397,7 +393,6 @@ commands will be the same as above.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -427,6 +422,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

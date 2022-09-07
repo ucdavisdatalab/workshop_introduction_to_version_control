@@ -7,11 +7,6 @@ version-control
 what-is-version-control
 software-assisted-version-control
 local-vs-server-based-version-control
-central-version-control-systems
-distributed-version-control-systems
-the-best-of-both-worlds
-vcs-and-the-computer-file-system
-how-computers-store-and-access-information
 how-vcs-manage-your-files
 graph-based-data-management
 installing-git

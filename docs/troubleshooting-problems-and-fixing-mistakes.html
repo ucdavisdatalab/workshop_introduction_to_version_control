@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Troubleshooting Problems and Fixing Mistakes | Introduction to Version Control</title>
   <meta name="description" content="6 Troubleshooting Problems and Fixing Mistakes | Introduction to Version Control" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Troubleshooting Problems and Fixing Mistakes | Introduction to Version Control" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
@@ -21,10 +20,12 @@
   
   
 
-<meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker" />
+<meta name="author" content="Dr. Carl Stahmer" />
+<meta name="author" content="Dr. Tyler Shoemaker" />
+<meta name="author" content="and Dr. Wesley Brooks" />
 
 
-<meta name="date" content="2022-05-03" />
+<meta name="date" content="2022-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +34,8 @@
   
 <link rel="prev" href="git-branching.html"/>
 <link rel="next" href="additional-resources.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +51,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
@@ -88,13 +89,8 @@
 <li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#what-is-version-control"><i class="fa fa-check"></i><b>2.1</b> What is Version Control?</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#software-assisted-version-control"><i class="fa fa-check"></i><b>2.2</b> Software Assisted Version Control</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#local-vs-server-based-version-control"><i class="fa fa-check"></i><b>2.3</b> Local vs Server-based Version Control</a></li>
-<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#central-version-control-systems"><i class="fa fa-check"></i><b>2.4</b> Central Version Control Systems</a></li>
-<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#distributed-version-control-systems"><i class="fa fa-check"></i><b>2.5</b> Distributed Version Control Systems</a></li>
-<li class="chapter" data-level="2.6" data-path="version-control.html"><a href="version-control.html#the-best-of-both-worlds"><i class="fa fa-check"></i><b>2.6</b> The Best of Both Worlds</a></li>
-<li class="chapter" data-level="2.7" data-path="version-control.html"><a href="version-control.html#vcs-and-the-computer-file-system"><i class="fa fa-check"></i><b>2.7</b> VCS and the Computer File System</a></li>
-<li class="chapter" data-level="2.8" data-path="version-control.html"><a href="version-control.html#how-computers-store-and-access-information"><i class="fa fa-check"></i><b>2.8</b> How Computers Store and Access Information</a></li>
-<li class="chapter" data-level="2.9" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.9</b> How VCS Manage Your Files</a></li>
-<li class="chapter" data-level="2.10" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.10</b> Graph-Based Data Management</a></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.4</b> How VCS Manage Your Files</a></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.5</b> Graph-Based Data Management</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installing-git.html"><a href="installing-git.html"><i class="fa fa-check"></i><b>3</b> Installing Git</a>
 <ul>
@@ -161,10 +157,10 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="troubleshooting-problems-and-fixing-mistakes" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Troubleshooting Problems and Fixing Mistakes</h1>
-<div id="undoing-things" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Undoing Things</h2>
+<div id="troubleshooting-problems-and-fixing-mistakes" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Troubleshooting Problems and Fixing Mistakes<a href="troubleshooting-problems-and-fixing-mistakes.html#troubleshooting-problems-and-fixing-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="undoing-things" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Undoing Things<a href="troubleshooting-problems-and-fixing-mistakes.html#undoing-things" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Merge conflicts are some of the most common hiccups you’ll encounter with Git, but
 there are a few others. We’ll discuss them briefly here.</p>
 <p>If you forget to add a file to a commit, or you mess up your commit message, you
@@ -178,8 +174,8 @@ can redo the commit. Stage the files you forgot and commit again using the
 <p>You can reset all uncommitted changes made to a file with</p>
 <pre><code>$ git checkout -- &lt;file&gt;</code></pre>
 </div>
-<div id="hard-resets" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Hard Resets</h2>
+<div id="hard-resets" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Hard Resets<a href="troubleshooting-problems-and-fixing-mistakes.html#hard-resets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here’s how you roll everything in a directory back to the last commit</p>
 <pre><code>$ git reset --hard HEAD</code></pre>
 <p>Rolling everything back to the next to last commit (the commit before the <code>HEAD</code>
@@ -195,8 +191,8 @@ is pointing to the newly reset <code>HEAD</code>, do the following</p>
 <pre><code>$ git reset --hard &lt;hash&gt;
 $ git reset --soft HEAD@{1}</code></pre>
 </div>
-<div id="deleting-files" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Deleting Files</h2>
+<div id="deleting-files" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Deleting Files<a href="troubleshooting-problems-and-fixing-mistakes.html#deleting-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you’d like to delete a file from Git, use</p>
 <pre><code>$ git rm &lt;file&gt;</code></pre>
 <p>Note that this will also delete the file from your file system. If you want to
@@ -217,7 +213,6 @@ keep the file on your computer, use</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -247,6 +242,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

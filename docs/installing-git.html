@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Installing Git | Introduction to Version Control</title>
   <meta name="description" content="3 Installing Git | Introduction to Version Control" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Installing Git | Introduction to Version Control" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
@@ -21,10 +20,12 @@
   
   
 
-<meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker" />
+<meta name="author" content="Dr. Carl Stahmer" />
+<meta name="author" content="Dr. Tyler Shoemaker" />
+<meta name="author" content="and Dr. Wesley Brooks" />
 
 
-<meta name="date" content="2022-05-03" />
+<meta name="date" content="2022-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +34,8 @@
   
 <link rel="prev" href="version-control.html"/>
 <link rel="next" href="creating-your-first-repo.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +51,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
@@ -88,13 +89,8 @@
 <li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#what-is-version-control"><i class="fa fa-check"></i><b>2.1</b> What is Version Control?</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#software-assisted-version-control"><i class="fa fa-check"></i><b>2.2</b> Software Assisted Version Control</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#local-vs-server-based-version-control"><i class="fa fa-check"></i><b>2.3</b> Local vs Server-based Version Control</a></li>
-<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#central-version-control-systems"><i class="fa fa-check"></i><b>2.4</b> Central Version Control Systems</a></li>
-<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#distributed-version-control-systems"><i class="fa fa-check"></i><b>2.5</b> Distributed Version Control Systems</a></li>
-<li class="chapter" data-level="2.6" data-path="version-control.html"><a href="version-control.html#the-best-of-both-worlds"><i class="fa fa-check"></i><b>2.6</b> The Best of Both Worlds</a></li>
-<li class="chapter" data-level="2.7" data-path="version-control.html"><a href="version-control.html#vcs-and-the-computer-file-system"><i class="fa fa-check"></i><b>2.7</b> VCS and the Computer File System</a></li>
-<li class="chapter" data-level="2.8" data-path="version-control.html"><a href="version-control.html#how-computers-store-and-access-information"><i class="fa fa-check"></i><b>2.8</b> How Computers Store and Access Information</a></li>
-<li class="chapter" data-level="2.9" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.9</b> How VCS Manage Your Files</a></li>
-<li class="chapter" data-level="2.10" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.10</b> Graph-Based Data Management</a></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.4</b> How VCS Manage Your Files</a></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.5</b> Graph-Based Data Management</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installing-git.html"><a href="installing-git.html"><i class="fa fa-check"></i><b>3</b> Installing Git</a>
 <ul>
@@ -161,8 +157,8 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installing-git" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Installing Git</h1>
+<div id="installing-git" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Installing Git<a href="installing-git.html#installing-git" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In order to run Git version control and be ready for the interactive session of
 this workshop, <strong>you need to install it on your local machine.</strong> This is required
 preparation and we will not have time during the interactive session to help you
@@ -171,8 +167,8 @@ able to follow along with the activities. Git installation is typically an easy,
 point and click process, but there are some configuration steps along the way to
 which you’ll need to pay attention and thus we recommend that you try this well
 in advance of the workshop so you have time to troubleshoot your install if necessary.</p>
-<div id="git-on-windows" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Git on Windows</h2>
+<div id="git-on-windows" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Git on Windows<a href="installing-git.html#git-on-windows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Follow these step-by-step instructions if you’re installing Git on a Windows machine:</p>
 <p>First, launch a web browser, the image below shows the Microsoft Edge browser:</p>
 <p><img src="img/win_git_install_1_browser.png" /></p>
@@ -257,8 +253,8 @@ below and then hit the <strong>Finish</strong> button:</p>
 <p><em>Windows users should verify that when downloading Git for Windows they have </em>
 <em>also installed Git Bash, which is necessary for working with Git in command line.</em></p>
 </div>
-<div id="git-on-mac" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Git on Mac</h2>
+<div id="git-on-mac" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Git on Mac<a href="installing-git.html#git-on-mac" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you are installing Git on a Mac, there is no extra configuration. First, go to
 the Git download page at <a href="https://git-scm.com/download/mac">https://git-scm.com/download/mac</a>.
 Once you’re there, you have two options for getting the software on your machine.</p>
@@ -274,8 +270,8 @@ install process, follow the instructions at the beginning of the video at
 <a href="https://www.youtube.com/watch?v=__kr-Ew5kbE">https://www.youtube.com/watch?v=__kr-Ew5kbE</a>
 to help you work through this problem.</p>
 </div>
-<div id="verifying-your-install" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Verifying Your Install</h2>
+<div id="verifying-your-install" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Verifying Your Install<a href="installing-git.html#verifying-your-install" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Whether you’re installing on Windows or Mac, note that unlike most applications</strong>
 <strong>that you’ve installed before, you will not find a “Git” application in your programs</strong>
 <strong>or applications directory once the installation is complete.</strong> As long as you
@@ -288,15 +284,15 @@ and type <code>git --version</code>. You should then see a response of your inst
 (e.g., git version 2.12.2.windows.2, or git version 2.12.2.mac.2), and not the
 error “command not found.”</p>
 </div>
-<div id="installation-troubleshooting" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Installation Troubleshooting</h2>
+<div id="installation-troubleshooting" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Installation Troubleshooting<a href="installing-git.html#installation-troubleshooting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you are not able to successfully install Git on your own, please attend
 DataLab’s Virtual Office Hours, which are held every Wednesday from 1:30 to 3:00 pm,
 to get help with your installation. Click <a href="https://datalab.ucdavis.edu/office-hours/">here</a> for more information and to
 receive a Zoom link.</p>
 </div>
-<div id="git-on-the-command-line" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Git on the Command Line</h2>
+<div id="git-on-the-command-line" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Git on the Command Line<a href="installing-git.html#git-on-the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are several Graphical User Interfaces that allow you to interact with Git
 on your computer, but Git is, at heart, a command line interface. The command
 line offers a text-only, non graphical means of interacting with your computer.
@@ -322,8 +318,8 @@ your system when you installed Git. To launch Git Bash, go to:</p>
 <p>When you launch the application, you will see something like this:</p>
 <p><img src="img/bash.png" /></p>
 </div>
-<div id="ready-set-go" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Ready, Set, Go…</h2>
+<div id="ready-set-go" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Ready, Set, Go…<a href="installing-git.html#ready-set-go" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you’ve read and understood the information in this online tutorial and
 successfully installed Git on your local machine, you’re ready for the interactive
 session! The sections that follow present exhibits to which we will refer during
@@ -341,7 +337,6 @@ the live session.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -371,6 +366,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
