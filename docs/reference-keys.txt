@@ -3,6 +3,7 @@ interactive-session-information
 about-this-tutorial
 prerequisites
 learning-objectives
+assessment
 version-control
 what-is-version-control
 software-assisted-version-control
