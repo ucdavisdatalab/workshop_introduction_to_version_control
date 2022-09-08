@@ -59,7 +59,7 @@ Stage and commit it
 
 ```
 $ git add new.txt
-$ git commit -m 'Adding a second file
+$ git commit -m 'Adding a second file'
 [second_branch a41096f] Adding a second file
  1 file changed, 1 insertion(+)
  create mode 100644 new.txt
@@ -112,7 +112,7 @@ The whole sequence looks like this:
 
 ```
 $ git checkout master
-$ git merge new_branch
+$ git merge second_branch
 Updating 2591435..a41096f
 Fast-forward
  new.txt | 1 +
@@ -319,5 +319,20 @@ a41096f (second_branch) Adding a second file
 2591435 Explaining why I made this file
 be5fd7e Adding my first file to the repository
 ```
+
+You may or may not find it easier to view the relationship of the commits with the help of `git log --graph`:
+
+```
+$ git log --all --oneline --graph
+*   40a6e83 (HEAD -> master) Fixing conflict between master and first_commit
+|\  
+| * 9953726 (first_commit) Explaining which version this is.
+* | c6113ab (second_branch) Adding a second file
+* | 879bfbd Explaining why I made this file
+|/  
+* a23db84 Adding my first file to the repository
+```
+
+
 
 You can now keep working!

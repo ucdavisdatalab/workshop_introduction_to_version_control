@@ -41,5 +41,7 @@ url38 <- "img/win_git_install_20_experimental_options.png"
 url39 <- "img/win_git_install_21_install_progress.png"
 url40 <- "img/win_git_install_22_install_complete.png"
 url41 <- "img/win_git_install_23_deslect_and_finish.png"
+url42 <- "img/git_file_lifecycle.png"
+url43 <- "img/git_three_areas.png"
 
 library(knitr)
