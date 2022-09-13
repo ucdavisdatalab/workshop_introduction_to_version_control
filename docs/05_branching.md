@@ -139,6 +139,11 @@ a41096f (HEAD -> master, second_branch) Adding a second file
 be5fd7e Adding my first file to the repository
 ```
 
+::: {.exercise #ex3 name="Comparing branches"}
+Inspect the differences between the file `hello.txt` on your two branches. (hint: `git diff`)
+:::
+
+
 ## To View an Earlier Commit
 
 The logic of `git checkout` also applies to looking at older commits on a single 

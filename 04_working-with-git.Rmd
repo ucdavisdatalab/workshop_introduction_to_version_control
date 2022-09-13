@@ -224,6 +224,10 @@ You're ready to keep working on other parts of the file or project. Before we mo
 Files begin as untracked. The command `git add` adds the file to the staged area, and `git commit` adds the new file to the historical record of your directory. Changes to a file that is in the historical record cause Git to mark the file as changed, at which point the new changes may be staged and committed so that they appear in the historical record. `git remove` removes a file from future tracking but not from the historical record.
 
 
+::: {.exercise #ex1 name="Change a file and commit"}
+Now that you've committed a new file to the repository, let's try an exercise. See if you can change the file `hello.txt` and commit the changes. 
+:::
+
 
 ## View a History of Your Commits
 
@@ -342,3 +346,8 @@ $ git diff be5fd7e:hello.txt 2591435:hello.txt
 
 Because we only have one file in our directory, the output of either of these 
 commands will be the same as above.
+
+::: {.exercise #ex2 name="Navigate between commits"}
+Check out a previous commit, look at the `git` log and status, then check out the most latest commit and look at log and status
+:::
+

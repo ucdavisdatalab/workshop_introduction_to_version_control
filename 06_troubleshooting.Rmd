@@ -85,3 +85,7 @@ $ git rm --cached <file>
 Make a commit to the repository and Git will delete the file.
 
 And with all that, you're ready to start using Git in your own projects!
+
+::: {.exercise #ex4 name="Reset master branch and merge"}
+Move the `master` branch back by one commit and then merge the second branch into that commit.
+:::

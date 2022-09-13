@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker and Dr. Wesley Brooks" />
 
 
-<meta name="date" content="2022-09-08" />
+<meta name="date" content="2022-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -304,6 +304,9 @@ nothing to commit, working tree clean</code></pre>
 <p>You’re ready to keep working on other parts of the file or project. Before we move on, let’s review some terms for how files flow between states in a Git repository.</p>
 <p><img src="img/git_file_lifecycle.png" /></p>
 <p>Files begin as untracked. The command <code>git add</code> adds the file to the staged area, and <code>git commit</code> adds the new file to the historical record of your directory. Changes to a file that is in the historical record cause Git to mark the file as changed, at which point the new changes may be staged and committed so that they appear in the historical record. <code>git remove</code> removes a file from future tracking but not from the historical record.</p>
+<div class="exercise">
+<p><span id="exr:ex1" class="exercise"><strong>Exercise 4.1  (Change a file and commit) </strong></span>Now that you’ve committed a new file to the repository, let’s try an exercise. See if you can change the file <code>hello.txt</code> and commit the changes.</p>
+</div>
 </div>
 </div>
 <div id="view-a-history-of-your-commits" class="section level2 hasAnchor" number="4.4">
@@ -383,6 +386,9 @@ that commit. If you wanted to look at a commit for a single file, use</p>
 <pre><code>$ git diff be5fd7e:hello.txt 2591435:hello.txt</code></pre>
 <p>Because we only have one file in our directory, the output of either of these
 commands will be the same as above.</p>
+<div class="exercise">
+<p><span id="exr:ex2" class="exercise"><strong>Exercise 4.2  (Navigate between commits) </strong></span>Check out a previous commit, look at the <code>git</code> log and status, then check out the most latest commit and look at log and status</p>
+</div>
 
 </div>
 </div>

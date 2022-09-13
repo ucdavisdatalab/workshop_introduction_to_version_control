@@ -1,3 +1,7 @@
+exr:ex1
+exr:ex2
+exr:ex3
+exr:ex4
 introduction
 interactive-session-information
 about-this-tutorial
