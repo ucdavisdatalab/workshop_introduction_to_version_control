@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Git Branching | Introduction to Version Control</title>
   <meta name="description" content="5 Git Branching | Introduction to Version Control" />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Git Branching | Introduction to Version Control" />
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
+  
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="5 Git Branching | Introduction to Version Control" />
@@ -20,10 +20,12 @@
   
   
 
-<meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker and Dr. Wesley Brooks" />
+<meta name="author" content="Carl Stahmer" />
+<meta name="author" content="Tyler Shoemaker" />
+<meta name="author" content="Wesley Brooks" />
 
 
-<meta name="date" content="2022-09-13" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -88,8 +90,11 @@
 <li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#what-is-version-control"><i class="fa fa-check"></i><b>2.1</b> What is Version Control?</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#software-assisted-version-control"><i class="fa fa-check"></i><b>2.2</b> Software Assisted Version Control</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#local-vs-server-based-version-control"><i class="fa fa-check"></i><b>2.3</b> Local vs Server-based Version Control</a></li>
-<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.4</b> How VCS Manage Your Files</a></li>
-<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.5</b> Graph-Based Data Management</a></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#central-version-control-systems"><i class="fa fa-check"></i><b>2.4</b> Central Version Control Systems</a></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#distributed-version-control-systems"><i class="fa fa-check"></i><b>2.5</b> Distributed Version Control Systems</a></li>
+<li class="chapter" data-level="2.6" data-path="version-control.html"><a href="version-control.html#the-best-of-both-worlds"><i class="fa fa-check"></i><b>2.6</b> The Best of Both Worlds</a></li>
+<li class="chapter" data-level="2.7" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.7</b> How VCS Manage Your Files</a></li>
+<li class="chapter" data-level="2.8" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.8</b> Graph-Based Data Management</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installing-git.html"><a href="installing-git.html"><i class="fa fa-check"></i><b>3</b> Installing Git</a>
 <ul>
@@ -164,7 +169,7 @@ Conceptually, branching a repository creates a copy of the codebase in its
 current state, which you can work on without affecting the primary version from
 which it was copied. This allows you (or a team) to work down multiple paths
 without affecting the main (or another person’s) codebase.</p>
-<p><img src="img/branching_workflows.png" /></p>
+<p><img src="img/branching_workflows.png" alt="A stream of branched files in a git repository" /></p>
 <p>Why branch?</p>
 <p>Well, imagine you have a website, which you track with Git. You’ve published this
 website, but you’re now receiving feature requests from users. While you’d like
@@ -248,7 +253,7 @@ a41096f (HEAD -&gt; master, second_branch) Adding a second file
 2591435 Explaining why I made this file
 be5fd7e Adding my first file to the repository</code></pre>
 <div class="exercise">
-<p><span id="exr:ex3" class="exercise"><strong>Exercise 5.1  (Comparing branches) </strong></span>Inspect the differences between the file <code>hello.txt</code> on your two branches. (hint: <code>git diff</code>)</p>
+<p><span id="exr:ex3" class="exercise"><strong>Exercise 5.1  (Comparing branches) </strong></span>Inspect the differences between the file <code>hello.txt</code> on your two branches. (hint: <code>git diff</code>).</p>
 </div>
 </div>
 <div id="to-view-an-earlier-commit" class="section level2 hasAnchor" number="5.5">
@@ -366,7 +371,7 @@ f91603a (first_commit) Explaining which version this is.
 a41096f (second_branch) Adding a second file
 2591435 Explaining why I made this file
 be5fd7e Adding my first file to the repository</code></pre>
-<p>You may or may not find it easier to view the relationship of the commits with the help of <code>git log --graph</code>:</p>
+<p>We can also inspect these changes visually, using <code>git log --graph</code></p>
 <pre><code>$ git log --all --oneline --graph
 *   40a6e83 (HEAD -&gt; master) Fixing conflict between master and first_commit
 |\  

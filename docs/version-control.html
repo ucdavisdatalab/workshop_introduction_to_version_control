@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Version Control | Introduction to Version Control</title>
   <meta name="description" content="2 Version Control | Introduction to Version Control" />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Version Control | Introduction to Version Control" />
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
+  
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2 Version Control | Introduction to Version Control" />
@@ -20,10 +20,12 @@
   
   
 
-<meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker and Dr. Wesley Brooks" />
+<meta name="author" content="Carl Stahmer" />
+<meta name="author" content="Tyler Shoemaker" />
+<meta name="author" content="Wesley Brooks" />
 
 
-<meta name="date" content="2022-09-13" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -88,8 +90,11 @@
 <li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#what-is-version-control"><i class="fa fa-check"></i><b>2.1</b> What is Version Control?</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#software-assisted-version-control"><i class="fa fa-check"></i><b>2.2</b> Software Assisted Version Control</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#local-vs-server-based-version-control"><i class="fa fa-check"></i><b>2.3</b> Local vs Server-based Version Control</a></li>
-<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.4</b> How VCS Manage Your Files</a></li>
-<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.5</b> Graph-Based Data Management</a></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#central-version-control-systems"><i class="fa fa-check"></i><b>2.4</b> Central Version Control Systems</a></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#distributed-version-control-systems"><i class="fa fa-check"></i><b>2.5</b> Distributed Version Control Systems</a></li>
+<li class="chapter" data-level="2.6" data-path="version-control.html"><a href="version-control.html#the-best-of-both-worlds"><i class="fa fa-check"></i><b>2.6</b> The Best of Both Worlds</a></li>
+<li class="chapter" data-level="2.7" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.7</b> How VCS Manage Your Files</a></li>
+<li class="chapter" data-level="2.8" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.8</b> Graph-Based Data Management</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installing-git.html"><a href="installing-git.html"><i class="fa fa-check"></i><b>3</b> Installing Git</a>
 <ul>
@@ -160,23 +165,24 @@
 <h1><span class="header-section-number">2</span> Version Control<a href="version-control.html#version-control" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="what-is-version-control" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> What is Version Control?<a href="version-control.html#what-is-version-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Version control</strong> describes a process of storing and organizing multiple versions
-(or copies) of documents that you create. Approaches to version control range
-from simple to complex and can involve the use of various human workflows and/or
-software applications to accomplish the overall goal of storing and managing
-multiple versions of the same document(s).</p>
-<p>Most people have a folder/directory somewhere on their computer that looks
+<p><strong>Version control</strong> describes the process of storing and organizing multiple
+versions (or copies) of documents on your computer. Approaches to version control
+range from simple to complex and they can involve the use of both manual and
+automatic workflows. Ultimately, the overall goal of version control is to store
+and manage multiple versions of the same document(s).</p>
+<p>Chances are good that you are already doing some kind of version control yourself.
+Most people have a folder/directory somewhere on their computer that looks
 something like this:</p>
-<p><img src="img/mac_finder_1.png" /></p>
+<p><img src="img/mac_finder_1.png" alt="A finder window of .docx files labeled with different versions" /></p>
 <p>Or perhaps, this:</p>
-<p><img src="img/mac_window_2.png" /></p>
-<p>This is a rudimentary form of version control that relies completely on the human
+<p><img src="img/mac_window_2.png" alt="A finder window of .docx files labeled with dates" /></p>
+<p>This is a rudimentary form of version control that relies completely on a manual
 workflow of saving multiple versions of a file. This system works minimally well,
 in that it provides you with a history of file versions theoretically organized
 by their time sequence. But this <strong>file system method</strong> offers no information
 about how the file has changed from version to version, why you might have saved
 a particular version, or specifically how the various versions are related. This
-human-managed file system approach is more subject to error than software-assisted
+self-managed file system approach is more subject to error than software-assisted
 version control systems; it is not uncommon for users to make mistakes when
 naming file versions, or to go back and edit files out of sequence. Software-assisted
 version control systems (VCS) such as Git were designed to solve this problem.</p>
@@ -233,15 +239,77 @@ capitalize on Git’s distributed version control capabilities.</p>
 distinct categories: 1) Centralized Version Control Systems (Centralized VCS)
 and 2) Distributed Version Control Systems (Distributed VCS).</p>
 </div>
-<div id="how-vcs-manage-your-files" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> How VCS Manage Your Files<a href="version-control.html#how-vcs-manage-your-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="central-version-control-systems" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Central Version Control Systems<a href="version-control.html#central-version-control-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Centralized VCS</strong> is the oldest and the predominant form of version control
+architecture worldwide. Centralized VCS implement a “spoke and wheel” architecture
+to provided server-based version control.</p>
+<p><img src="img/spoke_and_where_cloud.png" alt="Spoke and wheel diagram showing computers connected to a central cloud" /></p>
+<p>With the spoke and wheel architecture, the server maintains a centralized
+collection of file versions. Users utilize version control clients to “check-out”
+a file of interest to their local file storage, where they are free to make changes
+to the file. Centralized VCS typically restrict other users from checking out
+editable versions of a file if another user currently has the file checked out.
+Once the user who has checked out the file has finished making changes, they
+“check-in” their new version, which is then stored on the server from where it
+can be retrieved and “checked-out” by another user. Taken together, centralized
+VCS provide a very controlled and ordered universe that ensures file integrity
+and tracking of changes. However, this regulation comes at a cost: namely, it
+it reduces the ease with which multiple users can work simultaneously on the
+same file.</p>
+</div>
+<div id="distributed-version-control-systems" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Distributed Version Control Systems<a href="version-control.html#distributed-version-control-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Distributed VCS</strong> are not dependent on a central repository as a means of sharing
+files or tracking versions. Distributed VCS implement a network architecture (as
+opposed to the spoke and wheel of the centralized VCS as pictured above) to allow
+each user to communicate directly with every other user.</p>
+<p><img src="img/distributed_network.png" alt="Distributed VCS showing computers connected to each other" /></p>
+<p>In distributed VCS, each user maintains their own version history of the files
+being tracked, and the VCS software communicates between users to keep the
+various local file systems in sync with each other. With this type of system,
+the local versions of two different users will diverge from each other if both
+users make changes to the file. This divergence will remain in place until the
+local repositories are synced, at which time the VCS stitches (or <strong>merges</strong>) the
+two different versions of the file into a single version that reflects the
+changes made by each individual, and then saves the stitched version of the file
+onto both systems as the current version. Various mechanisms can then be used to
+resolve the conflicts that may arise during this merge process. Distributed VCS
+offer greater flexibility and facilitate collaborative work, but a lack of
+understanding of the sync/merge workflow can cause problems. It is not uncommon
+for a user to forget to sync their local repository with the repositories of
+other team members and, as a result, work for extended periods of time on
+outdated files that don’t reflect their teammates and result in work
+inefficiencies and merge challenges.</p>
+</div>
+<div id="the-best-of-both-worlds" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> The Best of Both Worlds<a href="version-control.html#the-best-of-both-worlds" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An important feature of distributed VCS is that many users and organizations
+choose to include a central server as a node in the distributed network. This
+creates an hybrid universe in which some users will sync directly to each other
+while other users will sync through a central server.</p>
+<p><img src="img/hybrid_network.png" alt="A hybrid diagram of spoke and wheel VCS and distributed VCS" /></p>
+<p>Syncing with a cloud-based server provides an extra level of backup for your
+files and also facilitates communication between users. But treating the server
+as just another node on the network (as opposed to a centralized point of control)
+puts the control and flexibility back in the hands of the individual developer.
+For example, in a true centralized VCS, if the server goes down then nobody can
+check files in and out of the server, which means that nobody can work. But in a
+distributed VCS this is not an issue. Users can continue to work on local versions
+and the system will sync any changes when the server becomes available.
+<strong>Git, the focus of this tutorial, is a Distributed VCS.</strong> You can use Git to
+share and sync repositories directly with other users or through a central Git
+server such as GitHub or GitLab.</p>
+</div>
+<div id="how-vcs-manage-your-files" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> How VCS Manage Your Files<a href="version-control.html#how-vcs-manage-your-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Most users think about version control as a process of managing files. For
-example, if I might have a directory called <code>My Project</code> that holds several files
+example, you might have a directory called <code>My Project</code> that holds several files
 related to this project as follows:</p>
-<p><img src="img/mac_finder_3.png" /></p>
+<p><img src="img/mac_finder_3.png" alt="A finder window with different files related to a project" /></p>
 <p>One approach to managing changes to the above project files would be to store
-multiple versions of each file as in the figure below for the file analysis.r:</p>
-<p><img src="img/version_tree.png" /></p>
+multiple versions of each file as in the figure below for the file <code>analysis.r</code>:</p>
+<p><img src="img/version_tree.png" alt="Diagram of analysis.r in a working directory referenced to its versions" /></p>
 <p>In fact, many VCS do exactly this. They treat each file as the minimum unit of
 data and simply save various versions of each file along with some additional
 information about the version. This approach can work reasonably well. However,
@@ -254,13 +322,13 @@ the chain of version history.</p>
 <strong>manage directories.</strong> Distributed VCS like Git take this alternate approach
 to data storage that is directory, rather than file, based.</p>
 </div>
-<div id="graph-based-data-management" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Graph-Based Data Management<a href="version-control.html#graph-based-data-management" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="graph-based-data-management" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Graph-Based Data Management<a href="version-control.html#graph-based-data-management" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Git (and many other distributed VCS) manage your files as collections of data
 rather than collections of files. Git’s primary unit of management is the
 <strong>repository,</strong> or <strong>repo</strong> for short, which is aligned with your computer’s
 directory/folder structure. Consider, for example, the following file structure:</p>
-<p><img src="img/TT_tree_mobile.jpg" /></p>
+<p><img src="img/TT_tree_mobile.jpg" alt="A hierarchical file tree with files and subdirectories" /></p>
 <p>Here we see a user, Tom’s, home directory, which contains three sub directories
 (<code>Data</code>, <code>Thesis</code>, and <code>Tools</code>) and one file (<code>Notes.txt</code>). Both the <code>Data</code> and
 <code>Tools</code> directories contain sub files and/or directories. If Tom wanted to track

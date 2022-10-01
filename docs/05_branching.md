@@ -7,7 +7,7 @@ current state, which you can work on without affecting the primary version from
 which it was copied. This allows you (or a team) to work down multiple paths 
 without affecting the main (or another person's) codebase.
 
-![](img/branching_workflows.png)
+![A stream of branched files in a git repository](img/branching_workflows.png)
 
 Why branch?
 
@@ -140,9 +140,8 @@ be5fd7e Adding my first file to the repository
 ```
 
 ::: {.exercise #ex3 name="Comparing branches"}
-Inspect the differences between the file `hello.txt` on your two branches. (hint: `git diff`)
+Inspect the differences between the file `hello.txt` on your two branches. (hint: `git diff`).
 :::
-
 
 ## To View an Earlier Commit
 
@@ -325,7 +324,7 @@ a41096f (second_branch) Adding a second file
 be5fd7e Adding my first file to the repository
 ```
 
-You may or may not find it easier to view the relationship of the commits with the help of `git log --graph`:
+We can also inspect these changes visually, using `git log --graph`
 
 ```
 $ git log --all --oneline --graph
@@ -337,7 +336,5 @@ $ git log --all --oneline --graph
 |/  
 * a23db84 Adding my first file to the repository
 ```
-
-
 
 You can now keep working!

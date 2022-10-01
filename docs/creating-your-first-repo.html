@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Creating Your First Repo | Introduction to Version Control</title>
   <meta name="description" content="4 Creating Your First Repo | Introduction to Version Control" />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Creating Your First Repo | Introduction to Version Control" />
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="ucdavisdatalab/workshop_introduction_to_version_control" />
+  
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4 Creating Your First Repo | Introduction to Version Control" />
@@ -20,10 +20,12 @@
   
   
 
-<meta name="author" content="Dr. Carl Stahmer and Dr. Tyler Shoemaker and Dr. Wesley Brooks" />
+<meta name="author" content="Carl Stahmer" />
+<meta name="author" content="Tyler Shoemaker" />
+<meta name="author" content="Wesley Brooks" />
 
 
-<meta name="date" content="2022-09-13" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -88,8 +90,11 @@
 <li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#what-is-version-control"><i class="fa fa-check"></i><b>2.1</b> What is Version Control?</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#software-assisted-version-control"><i class="fa fa-check"></i><b>2.2</b> Software Assisted Version Control</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#local-vs-server-based-version-control"><i class="fa fa-check"></i><b>2.3</b> Local vs Server-based Version Control</a></li>
-<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.4</b> How VCS Manage Your Files</a></li>
-<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.5</b> Graph-Based Data Management</a></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#central-version-control-systems"><i class="fa fa-check"></i><b>2.4</b> Central Version Control Systems</a></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#distributed-version-control-systems"><i class="fa fa-check"></i><b>2.5</b> Distributed Version Control Systems</a></li>
+<li class="chapter" data-level="2.6" data-path="version-control.html"><a href="version-control.html#the-best-of-both-worlds"><i class="fa fa-check"></i><b>2.6</b> The Best of Both Worlds</a></li>
+<li class="chapter" data-level="2.7" data-path="version-control.html"><a href="version-control.html#how-vcs-manage-your-files"><i class="fa fa-check"></i><b>2.7</b> How VCS Manage Your Files</a></li>
+<li class="chapter" data-level="2.8" data-path="version-control.html"><a href="version-control.html#graph-based-data-management"><i class="fa fa-check"></i><b>2.8</b> Graph-Based Data Management</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installing-git.html"><a href="installing-git.html"><i class="fa fa-check"></i><b>3</b> Installing Git</a>
 <ul>
@@ -215,13 +220,13 @@ you must add saved files to a staging area and then <strong>commit</strong> thos
 to the repository. The commits you make then constitute the versions of those files.</p>
 <p>As is probably clear, this is a multi-step process: first we save, then we stage,
 then we commit.</p>
-<p><img src="img/save_stage_commit.png" /></p>
-<p>Here is another way of thinking of save, stage, commit. Git works by keeping track of three different versions of your directory: the working area, the staging area, and the commits.</p>
-<p><img src="img/git_three_areas.png" /></p>
-<p>The working area is what you see, the staging area is where you group changes that belong together, and the commit area is long-term storage for grouped changes. Let’s do this with the file we’ve just made.</p>
+<p><img src="img/save_stage_commit.png" alt="Diagram of files in your directory, in the staging area, and finally the git commits" /></p>
+<p>A more formalized representation of the above diagram is below: you make changes in
+your working area, then you stage them, and finally you commit them.</p>
+<p><img src="img/git_three_areas.png" alt="Diagram of files moving across the working directory, staging area, and git commits" /></p>
 <div id="step-1-save-the-file" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Step 1: Save the file<a href="creating-your-first-repo.html#step-1-save-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We’ve already done this, so we can move on.</p>
+<p>So far, we’ve done the first part of this process: we saved our file.</p>
 </div>
 <div id="step-2-stage-the-file" class="section level3 hasAnchor" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Step 2: Stage the file<a href="creating-your-first-repo.html#step-2-stage-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -301,11 +306,19 @@ in the commit, and tracks what/how many changes were made (here, “insertion”
 <pre><code>$ git status
 On branch master
 nothing to commit, working tree clean</code></pre>
-<p>You’re ready to keep working on other parts of the file or project. Before we move on, let’s review some terms for how files flow between states in a Git repository.</p>
-<p><img src="img/git_file_lifecycle.png" /></p>
-<p>Files begin as untracked. The command <code>git add</code> adds the file to the staged area, and <code>git commit</code> adds the new file to the historical record of your directory. Changes to a file that is in the historical record cause Git to mark the file as changed, at which point the new changes may be staged and committed so that they appear in the historical record. <code>git remove</code> removes a file from future tracking but not from the historical record.</p>
+<p>You’re ready to keep working on other parts of the file or project. Before we
+move on, let’s review some terms for how files flow between states in a Git
+repository.</p>
+<p><img src="img/git_file_lifecycle.png" alt="The whole process of working across untracked, tracked, unmodified, and modified files" /></p>
+<p>Files begin as untracked. The command <code>git add</code> adds the file to the staged
+area, and <code>git commit</code> adds the new file to the historical record of your
+directory. Git takes note of tracked files as you change them. When you do, you
+can stage those changes and commit them, thus adding them to the historical record
+of the repository. Finally, you can remove a file with <code>git remove</code>, which will
+tell git to stop tracking future changes to a file.</p>
 <div class="exercise">
-<p><span id="exr:ex1" class="exercise"><strong>Exercise 4.1  (Change a file and commit) </strong></span>Now that you’ve committed a new file to the repository, let’s try an exercise. See if you can change the file <code>hello.txt</code> and commit the changes.</p>
+<p><span id="exr:ex1" class="exercise"><strong>Exercise 4.1  (Change a file and commit) </strong></span>Now that you’ve committed a new file to the repository, let’s try an exercise.
+See if you can change the file <code>hello.txt</code> and commit the changes.</p>
 </div>
 </div>
 </div>
@@ -387,7 +400,8 @@ that commit. If you wanted to look at a commit for a single file, use</p>
 <p>Because we only have one file in our directory, the output of either of these
 commands will be the same as above.</p>
 <div class="exercise">
-<p><span id="exr:ex2" class="exercise"><strong>Exercise 4.2  (Navigate between commits) </strong></span>Check out a previous commit, look at the <code>git</code> log and status, then check out the most latest commit and look at log and status</p>
+<p><span id="exr:ex2" class="exercise"><strong>Exercise 4.2  (Navigate between commits) </strong></span>Check out a previous commit, look at the <code>git</code> log and status, then check out
+the latest commit and look at log and status.</p>
 </div>
 
 </div>

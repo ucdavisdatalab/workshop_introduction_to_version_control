@@ -8,7 +8,7 @@ development.
 
 [second workshop]: https://ucdavisdatalab.github.io/workshop_git_for_teams/
 
-![](`r url17`)
+![Different local repositories synched across a remote source](`r url17`)
 
 ## The Git Book
 

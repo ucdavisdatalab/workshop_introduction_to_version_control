@@ -92,17 +92,16 @@ to the repository. The commits you make then constitute the versions of those fi
 As is probably clear, this is a multi-step process: first we save, then we stage, 
 then we commit.
 
-![](img/save_stage_commit.png)
+![Diagram of files in your directory, in the staging area, and finally the git commits](img/save_stage_commit.png)
 
-Here is another way of thinking of save, stage, commit. Git works by keeping track of three different versions of your directory: the working area, the staging area, and the commits. 
+A more formalized representation of the above diagram is below: you make changes in 
+your working area, then you stage them, and finally you commit them.
 
-![](img/git_three_areas.png)
-
-The working area is what you see, the staging area is where you group changes that belong together, and the commit area is long-term storage for grouped changes. Let's do this with the file we've just made.
+![Diagram of files moving across the working directory, staging area, and git commits](img/git_three_areas.png)
 
 ### Step 1: Save the file
 
-We've already done this, so we can move on.
+So far, we've done the first part of this process: we saved our file.
 
 ### Step 2: Stage the file
 
@@ -217,15 +216,22 @@ On branch master
 nothing to commit, working tree clean
 ```
 
-You're ready to keep working on other parts of the file or project. Before we move on, let's review some terms for how files flow between states in a Git repository.
+You're ready to keep working on other parts of the file or project. Before we 
+move on, let's review some terms for how files flow between states in a Git 
+repository.
 
-![](img/git_file_lifecycle.png)
+![The whole process of working across untracked, tracked, unmodified, and modified files](img/git_file_lifecycle.png)
 
-Files begin as untracked. The command `git add` adds the file to the staged area, and `git commit` adds the new file to the historical record of your directory. Changes to a file that is in the historical record cause Git to mark the file as changed, at which point the new changes may be staged and committed so that they appear in the historical record. `git remove` removes a file from future tracking but not from the historical record.
-
+Files begin as untracked. The command `git add` adds the file to the staged 
+area, and `git commit` adds the new file to the historical record of your 
+directory. Git takes note of tracked files as you change them. When you do, you 
+can stage those changes and commit them, thus adding them to the historical record 
+of the repository. Finally, you can remove a file with `git remove`, which will 
+tell git to stop tracking future changes to a file.
 
 ::: {.exercise #ex1 name="Change a file and commit"}
-Now that you've committed a new file to the repository, let's try an exercise. See if you can change the file `hello.txt` and commit the changes. 
+Now that you've committed a new file to the repository, let's try an exercise. 
+See if you can change the file `hello.txt` and commit the changes. 
 :::
 
 
@@ -348,6 +354,7 @@ Because we only have one file in our directory, the output of either of these
 commands will be the same as above.
 
 ::: {.exercise #ex2 name="Navigate between commits"}
-Check out a previous commit, look at the `git` log and status, then check out the most latest commit and look at log and status
+Check out a previous commit, look at the `git` log and status, then check out 
+the latest commit and look at log and status.
 :::
 
