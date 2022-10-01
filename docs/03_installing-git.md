@@ -181,9 +181,8 @@ error "command not found."
 ## Installation Troubleshooting
 
 If you are not able to successfully install Git on your own, please attend 
-DataLab's Virtual Office Hours, which are held every Wednesday from 1:30 to 3:00 pm, 
-to get help with your installation. Click [here] for more information and to 
-receive a Zoom link.
+DataLab's Virtual Office Hours to get help with your installation. Click [here] 
+for more information and to receive a Zoom link.
 
 [here]: https://datalab.ucdavis.edu/office-hours/
 
