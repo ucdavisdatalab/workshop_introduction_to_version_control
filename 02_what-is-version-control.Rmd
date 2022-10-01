@@ -2,28 +2,29 @@
 
 ## What is Version Control?
 
-**Version control** describes a process of storing and organizing multiple versions 
-(or copies) of documents that you create. Approaches to version control range 
-from simple to complex and can involve the use of various human workflows and/or 
-software applications to accomplish the overall goal of storing and managing 
-multiple versions of the same document(s). 
+**Version control** describes the process of storing and organizing multiple 
+versions (or copies) of documents on your computer. Approaches to version control 
+range from simple to complex and they can involve the use of both manual and 
+automatic workflows. Ultimately, the overall goal of version control is to store 
+and manage multiple versions of the same document(s).
 
+Chances are good that you are already doing some kind of version control yourself.
 Most people have a folder/directory somewhere on their computer that looks 
 something like this:
 
-![](`r url`)
+![A finder window of .docx files labeled with different versions](`r url`)
 
 Or perhaps, this:
 
-![](`r url2`)
+![A finder window of .docx files labeled with dates](`r url2`)
 
-This is a rudimentary form of version control that relies completely on the human 
+This is a rudimentary form of version control that relies completely on a manual 
 workflow of saving multiple versions of a file. This system works minimally well, 
 in that it provides you with a history of file versions theoretically organized 
 by their time sequence. But this **file system method** offers no information 
 about how the file has changed from version to version, why you might have saved 
 a particular version, or specifically how the various versions are related. This 
-human-managed file system approach is more subject to error than software-assisted 
+self-managed file system approach is more subject to error than software-assisted 
 version control systems; it is not uncommon for users to make mistakes when 
 naming file versions, or to go back and edit files out of sequence. Software-assisted 
 version control systems (VCS) such as Git were designed to solve this problem.
@@ -86,18 +87,86 @@ Server-based version control systems can generally be segmented into two
 distinct categories: 1) Centralized Version Control Systems (Centralized VCS) 
 and 2) Distributed Version Control Systems (Distributed VCS). 
 
+## Central Version Control Systems
+
+**Centralized VCS** is the oldest and the predominant form of version control 
+architecture worldwide. Centralized VCS implement a "spoke and wheel" architecture 
+to provided server-based version control.
+
+![Spoke and wheel diagram showing computers connected to a central cloud](`r url3`)
+
+With the spoke and wheel architecture, the server maintains a centralized 
+collection of file versions. Users utilize version control clients to "check-out" 
+a file of interest to their local file storage, where they are free to make changes 
+to the file. Centralized VCS typically restrict other users from checking out 
+editable versions of a file if another user currently has the file checked out. 
+Once the user who has checked out the file has finished making changes, they 
+"check-in" their new version, which is then stored on the server from where it 
+can be retrieved and "checked-out" by another user. Taken together, centralized 
+VCS provide a very controlled and ordered universe that ensures file integrity 
+and tracking of changes. However, this regulation comes at a cost: namely, it 
+it reduces the ease with which multiple users can work simultaneously on the 
+same file. 
+
+## Distributed Version Control Systems
+
+**Distributed VCS** are not dependent on a central repository as a means of sharing 
+files or tracking versions. Distributed VCS implement a network architecture (as 
+opposed to the spoke and wheel of the centralized VCS as pictured above) to allow 
+each user to communicate directly with every other user.
+
+![Distributed VCS showing computers connected to each other](`r url4`)
+
+In distributed VCS, each user maintains their own version history of the files 
+being tracked, and the VCS software communicates between users to keep the 
+various local file systems in sync with each other. With this type of system, 
+the local versions of two different users will diverge from each other if both 
+users make changes to the file. This divergence will remain in place until the 
+local repositories are synced, at which time the VCS stitches (or **merges**) the 
+two different versions of the file into a single version that reflects the 
+changes made by each individual, and then saves the stitched version of the file 
+onto both systems as the current version. Various mechanisms can then be used to 
+resolve the conflicts that may arise during this merge process. Distributed VCS 
+offer greater flexibility and facilitate collaborative work, but a lack of 
+understanding of the sync/merge workflow can cause problems. It is not uncommon 
+for a user to forget to sync their local repository with the repositories of 
+other team members and, as a result, work for extended periods of time on 
+outdated files that don't reflect their teammates and result in work 
+inefficiencies and merge challenges. 
+
+## The Best of Both Worlds
+
+An important feature of distributed VCS is that many users and organizations 
+choose to include a central server as a node in the distributed network. This 
+creates an hybrid universe in which some users will sync directly to each other 
+while other users will sync through a central server.
+
+![A hybrid diagram of spoke and wheel VCS and distributed VCS](`r url5`)
+
+Syncing with a cloud-based server provides an extra level of backup for your 
+files and also facilitates communication between users. But treating the server 
+as just another node on the network (as opposed to a centralized point of control) 
+puts the control and flexibility back in the hands of the individual developer. 
+For example, in a true centralized VCS, if the server goes down then nobody can 
+check files in and out of the server, which means that nobody can work. But in a 
+distributed VCS this is not an issue. Users can continue to work on local versions 
+and the system will sync any changes when the server becomes available. 
+**Git, the focus of this tutorial, is a Distributed VCS.** You can use Git to 
+share and sync repositories directly with other users or through a central Git 
+server such as GitHub or GitLab.
+
 ## How VCS Manage Your Files
 
 Most users think about version control as a process of managing files. For 
-example, if I might have a directory called `My Project` that holds several files 
+example, you might have a directory called `My Project` that holds several files 
 related to this project as follows: 
 
-![](`r url9`)
+![A finder window with different files related to a project](`r url9`)
 
 One approach to managing changes to the above project files would be to store 
-multiple versions of each file as in the figure below for the file analysis.r:
+multiple versions of each file as in the figure below for the file `analysis.r`:
 
-![](`r url10`)
+![Diagram of analysis.r in a working directory referenced to its versions](`r url10`)
 
 In fact, many VCS do exactly this. They treat each file as the minimum unit of 
 data and simply save various versions of each file along with some additional 
@@ -119,7 +188,7 @@ rather than collections of files. Git's primary unit of management is the
 **repository,** or **repo** for short, which is aligned with your computer's 
 directory/folder structure. Consider, for example, the following file structure:
 
-![](`r url11`)
+![A hierarchical file tree with files and subdirectories](`r url11`)
 
 Here we see a user, Tom's, home directory, which contains three sub directories 
 (`Data`, `Thesis`, and `Tools`) and one file (`Notes.txt`). Both the `Data` and 
