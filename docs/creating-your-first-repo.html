@@ -184,16 +184,17 @@ type it into your terminal.</p>
 <pre><code>$ git init
 Initialized empty Git repository in /Users/username/intro_to_git/.git/</code></pre>
 <p>The message your command line sends back indicates what, exactly, putting a
-directory under version control means. Notice that Git has created a new, hidden
-directory inside <code>intro_to_git</code> called <code>.git</code>. This is the Git repository. It
-doesn’t contain any information about your files (yet), but it does set up all
-the necessary files and directories that you need to track a project.</p>
+directory under version control means. Notice that Git has created a new,
+hidden directory inside <code>intro_to_git</code> called <code>.git</code>. This is the Git
+repository. It doesn’t contain any information about your files (yet), but it
+does set up all the necessary files and directories that you need to track a
+project.</p>
 <pre><code>$ ls -a .git
 HEAD        config      description hooks       info        objects     refs</code></pre>
-<p>The nice thing about Git is that, for the most part, it automatically interfaces
-with the contents of the repository. You can mostly ignore them when working
-on a project; they do the important work of keeping track of what you’ve
-committed.</p>
+<p>The nice thing about Git is that, for the most part, it automatically
+interfaces with the contents of the repository. You can mostly ignore them when
+working on a project; they do the important work of keeping track of what
+you’ve committed.</p>
 </div>
 <div id="checking-the-status-of-a-repo" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Checking the Status of a Repo<a href="creating-your-first-repo.html#checking-the-status-of-a-repo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -204,29 +205,30 @@ On branch master
 No commits yet
 
 nothing to commit (create/copy files and use &quot;git add&quot; to track)</code></pre>
-<p>That makes sense! We haven’t done anything yet. We’ll discuss some of the pieces
-of this message in a bit, but first, let’s make a new file.</p>
+<p>That makes sense! We haven’t done anything yet. We’ll discuss some of the
+pieces of this message in a bit, but first, let’s make a new file.</p>
 <pre><code>$ echo &quot;Hello world&quot; &gt; hello.txt </code></pre>
 <p>Now, we could edit this file, if we like. For example, we could open it with a
-text editor (either with Vim or something else), add an exclamation mark at
-the end of “world,” and save it. Once we do this, the file will read:</p>
+text editor (either with Vim or something else), add an exclamation mark at the
+end of “world,” and save it. Once we do this, the file will read:</p>
 <pre><code>$ cat hello.txt
 Hello world!</code></pre>
 </div>
 <div id="save-stage-commit" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Save, Stage, Commit<a href="creating-your-first-repo.html#save-stage-commit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>So far, this should feel very familiar: it’s how you probably interact with your
-files on a daily basis. But saving a file is not the same thing as tracking it
-with a VCS. Git does not automatically preserve <strong>versions</strong> of every save action.
-When working with Git, you can save as you always do, but this has no impact on
-the states of this file that are preserved in the repository. To create a version,
-you must add saved files to a staging area and then <strong>commit</strong> those staged files
-to the repository. The commits you make then constitute the versions of those files.</p>
-<p>As is probably clear, this is a multi-step process: first we save, then we stage,
-then we commit.</p>
+<p>So far, this should feel very familiar: it’s how you probably interact with
+your files on a daily basis. But saving a file is not the same thing as
+tracking it with a VCS. Git does not automatically preserve <strong>versions</strong> of
+every save action. When working with Git, you can save as you always do, but
+this has no impact on the states of this file that are preserved in the
+repository. To create a version, you must add saved files to a staging area and
+then <strong>commit</strong> those staged files to the repository. The commits you make then
+constitute the versions of those files.</p>
+<p>As is probably clear, this is a multi-step process: first we save, then we
+stage, then we commit.</p>
 <p><img src="img/save_stage_commit.png" alt="Diagram of files in your directory, in the staging area, and finally the git commits" /></p>
-<p>A more formalized representation of the above diagram is below: you make changes in
-your working area, then you stage them, and finally you commit them.</p>
+<p>A more formalized representation of the above diagram is below: you make
+changes in your working area, then you stage them, and finally you commit them.</p>
 <p><img src="img/git_three_areas.png" alt="Diagram of files moving across the working directory, staging area, and git commits" /></p>
 <div id="step-1-save-the-file" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Step 1: Save the file<a href="creating-your-first-repo.html#step-1-save-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -234,9 +236,9 @@ your working area, then you stage them, and finally you commit them.</p>
 </div>
 <div id="step-2-stage-the-file" class="section level3 hasAnchor" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Step 2: Stage the file<a href="creating-your-first-repo.html#step-2-stage-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>With the file saved, Git can start tracking it. In fact, Git is already aware that
-there’s a new file in our directory. We can see this if we run another status
-check</p>
+<p>With the file saved, Git can start tracking it. In fact, Git is already aware
+that there’s a new file in our directory. We can see this if we run another
+status check</p>
 <pre style="font-size: small;">
 $ git status
 On branch master
@@ -251,8 +253,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 </pre>
 <p>Notice that Git is pretty verbose. Here, it’s telling us that there is an
 <strong>untracked</strong> file in the directory. And that makes sense: we’ve made and saved
-<code>hello.txt</code> but haven’t let Git know that it needs to track this file. This will
-involve adding the file to Git’s <strong>staging area</strong>.</p>
+<code>hello.txt</code> but haven’t let Git know that it needs to track this file. This
+will involve adding the file to Git’s <strong>staging area</strong>.</p>
 <p>To do so, we do exactly what the status message above tells us to do</p>
 <pre><code>$ git add hello.txt</code></pre>
 <p>When we do another status check</p>
@@ -264,19 +266,20 @@ No commits yet
 Changes to be committed:
   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
     new file:   hello.txt</code></pre>
-<p>…Git tells us that <code>hello.txt</code> is staged. Even now, however, we haven’t made a
-version of this file. To do so, we need run a commit command. This will create a
-new version of every file in the staging area (in this case, just <code>hello.txt</code>).</p>
+<p>…Git tells us that <code>hello.txt</code> is staged. Even now, however, we haven’t made
+a version of this file. To do so, we need run a commit command. This will
+create a new version of every file in the staging area (in this case, just
+<code>hello.txt</code>).</p>
 </div>
 <div id="step-3-commit-the-file" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Step 3: Commit the file<a href="creating-your-first-repo.html#step-3-commit-the-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Typically, we commit our files in one of two ways. The first is just to run</p>
 <pre><code>$ git commit</code></pre>
-<p>If you run this, you might be surprised at what happens next. Git dumps you into
-a command line text editor and asks you to write a message explaining what
-changes you’ve made to your files. Every commit has a message (or should have one)
-associated with it, as this helps you track what makes one version different
-from another.</p>
+<p>If you run this, you might be surprised at what happens next. Git dumps you
+into a command line text editor and asks you to write a message explaining what
+changes you’ve made to your files. Every commit has a message (or should have
+one) associated with it, as this helps you track what makes one version
+different from another.</p>
 <p>Here’s the message you’ll get if you run the above:</p>
 <pre><code>
 # Please enter the commit message for your changes. Lines starting
@@ -304,8 +307,9 @@ like the following:</p>
 [master (root-commit) be5fd7e] Adding my first file to the repository
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt</code></pre>
-<p>Again, Git is verbose: it shows the message, returns the number of files changed
-in the commit, and tracks what/how many changes were made (here, “insertion”).</p>
+<p>Again, Git is verbose: it shows the message, returns the number of files
+changed in the commit, and tracks what/how many changes were made (here,
+“insertion”).</p>
 <p>Running a status check one last time now shows</p>
 <pre><code>$ git status
 On branch master
@@ -317,9 +321,9 @@ repository.</p>
 <p>Files begin as untracked. The command <code>git add</code> adds the file to the staged
 area, and <code>git commit</code> adds the new file to the historical record of your
 directory. Git takes note of tracked files as you change them. When you do, you
-can stage those changes and commit them, thus adding them to the historical record
-of the repository. Finally, you can remove a file with <code>git remove</code>, which will
-tell git to stop tracking future changes to a file.</p>
+can stage those changes and commit them, thus adding them to the historical
+record of the repository. Finally, you can remove a file with <code>git remove</code>,
+which will tell git to stop tracking future changes to a file.</p>
 <div class="exercise">
 <p><span id="exr:ex1" class="exercise"><strong>Exercise 4.1  (Change a file and commit) </strong></span>Now that you’ve committed a new file to the repository, let’s try an exercise.
 See if you can change the file <code>hello.txt</code> and commit the changes.</p>
@@ -396,8 +400,8 @@ index cd08755..6c32fd5 100644
 </div>
 <div id="comparing-files" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Comparing Files<a href="creating-your-first-repo.html#comparing-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Running <code>git diff</code> on the entire repository will return changes for all files in
-that commit. If you wanted to look at a commit for a single file, use</p>
+<p>Running <code>git diff</code> on the entire repository will return changes for all files
+in that commit. If you wanted to look at a commit for a single file, use</p>
 <pre><code>$ git diff be5fd7e hello.txt</code></pre>
 <p>or</p>
 <pre><code>$ git diff be5fd7e:hello.txt 2591435:hello.txt</code></pre>

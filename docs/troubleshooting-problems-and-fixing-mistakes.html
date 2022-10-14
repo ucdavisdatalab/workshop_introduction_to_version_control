@@ -169,13 +169,14 @@
 <h1><span class="header-section-number">6</span> Troubleshooting Problems and Fixing Mistakes<a href="troubleshooting-problems-and-fixing-mistakes.html#troubleshooting-problems-and-fixing-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="undoing-things" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Undoing Things<a href="troubleshooting-problems-and-fixing-mistakes.html#undoing-things" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Merge conflicts are some of the most common hiccups you’ll encounter with Git, but
-there are a few others. We’ll discuss them briefly here.</p>
-<p>If you forget to add a file to a commit, or you mess up your commit message, you
-can redo the commit. Stage the files you forgot and commit again using the
+<p>Merge conflicts are some of the most common hiccups you’ll encounter with Git,
+but there are a few others. We’ll discuss them briefly here.</p>
+<p>If you forget to add a file to a commit, or you mess up your commit message,
+you can redo the commit. Stage the files you forgot and commit again using the
 <code>--amend</code> flag</p>
 <pre><code>$ git commit --amend</code></pre>
-<p>If you decide you aren’t ready to commit a staged file, you can un-stage it with</p>
+<p>If you decide you aren’t ready to commit a staged file, you can un-stage it
+with</p>
 <pre><code>$ git reset HEAD &lt;file&gt;</code></pre>
 <p>or with</p>
 <pre><code>$ git restore --staged &lt;file&gt;</code></pre>
@@ -186,16 +187,16 @@ can redo the commit. Stage the files you forgot and commit again using the
 <h2><span class="header-section-number">6.2</span> Hard Resets<a href="troubleshooting-problems-and-fixing-mistakes.html#hard-resets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here’s how you roll everything in a directory back to the last commit</p>
 <pre><code>$ git reset --hard HEAD</code></pre>
-<p>Rolling everything back to the next to last commit (the commit before the <code>HEAD</code>
-commit)</p>
+<p>Rolling everything back to the next to last commit (the commit before the
+<code>HEAD</code> commit)</p>
 <pre><code>$ git reset --hard HEAD^</code></pre>
 <p>Rolling everything back to two commits before <code>HEAD</code></p>
 <pre><code>$ git reset --hard HEAD^2</code></pre>
-<p>And finally, rolling everything back to an identified commit using a <code>hash</code> from
-the log</p>
+<p>And finally, rolling everything back to an identified commit using a <code>hash</code>
+from the log</p>
 <pre><code>$ git reset --hard &lt;hash&gt;</code></pre>
-<p>To reset everything back to an earlier commit and make sure that the <code>HEAD</code> pointer
-is pointing to the newly reset <code>HEAD</code>, do the following</p>
+<p>To reset everything back to an earlier commit and make sure that the <code>HEAD</code>
+pointer is pointing to the newly reset <code>HEAD</code>, do the following</p>
 <pre><code>$ git reset --hard &lt;hash&gt;
 $ git reset --soft HEAD@{1}</code></pre>
 </div>
@@ -209,7 +210,8 @@ keep the file on your computer, use</p>
 <p>Make a commit to the repository and Git will delete the file.</p>
 <p>And with all that, you’re ready to start using Git in your own projects!</p>
 <div class="exercise">
-<p><span id="exr:ex4" class="exercise"><strong>Exercise 6.1  (Reset master branch and merge) </strong></span>Move the <code>master</code> branch back by one commit and then merge the second branch into that commit.</p>
+<p><span id="exr:ex4" class="exercise"><strong>Exercise 6.1  (Reset master branch and merge) </strong></span>Move the <code>master</code> branch back by one commit and then merge the second branch
+into that commit.</p>
 </div>
 
 </div>
