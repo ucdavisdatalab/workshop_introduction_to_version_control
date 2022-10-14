@@ -21,8 +21,10 @@ installing-git
 git-on-windows
 git-on-mac
 verifying-your-install
-installation-troubleshooting
 git-on-the-command-line
+checking-the-git-version
+installation-troubleshooting
+configuring-git
 ready-set-go
 creating-your-first-repo
 your-first-repo
