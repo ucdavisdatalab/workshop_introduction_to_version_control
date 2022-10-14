@@ -258,7 +258,7 @@ making this change now. For too long the computing industry has relied on
 offensive terms like "master" and "slave" to describe technology, and changing
 such terms is part of a [wider
 push](https://sfconservancy.org/news/2020/jun/23/gitbranchname/) to move away
-from the framework it implies. This is a small change, but we at the DataLab
+from the framework they imply. This is a small change, but we at the DataLab
 believe that, in all instances, language matters.
 
 To make this change, run:
