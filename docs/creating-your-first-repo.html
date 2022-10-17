@@ -25,7 +25,7 @@
 <meta name="author" content="Wesley Brooks" />
 
 
-<meta name="date" content="2022-10-14" />
+<meta name="date" content="2022-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -200,7 +200,7 @@ you’ve committed.</p>
 <h2><span class="header-section-number">4.2</span> Checking the Status of a Repo<a href="creating-your-first-repo.html#checking-the-status-of-a-repo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>With our repository made, we can check its status</p>
 <pre><code>$ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -241,7 +241,7 @@ that there’s a new file in our directory. We can see this if we run another
 status check</p>
 <pre style="font-size: small;">
 $ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -259,7 +259,7 @@ will involve adding the file to Git’s <strong>staging area</strong>.</p>
 <pre><code>$ git add hello.txt</code></pre>
 <p>When we do another status check</p>
 <pre><code>$ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -285,7 +285,7 @@ different from another.</p>
 # Please enter the commit message for your changes. Lines starting
 # with &#39;#&#39; will be ignored, and an empty message aborts the commit.
 #
-# On branch master
+# On branch main
 #
 # Initial commit
 #
@@ -304,7 +304,7 @@ need to write a longer message about what you’ve changed, use the other method
 <p>Whichever method you use, once you commit your file, you should see something
 like the following:</p>
 <pre><code>$ git commit -m &#39;Adding my first file to the repository&#39;
-[master (root-commit) be5fd7e] Adding my first file to the repository
+[main (root-commit) be5fd7e] Adding my first file to the repository
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt</code></pre>
 <p>Again, Git is verbose: it shows the message, returns the number of files
@@ -312,7 +312,7 @@ changed in the commit, and tracks what/how many changes were made (here,
 “insertion”).</p>
 <p>Running a status check one last time now shows</p>
 <pre><code>$ git status
-On branch master
+On branch main
 nothing to commit, working tree clean</code></pre>
 <p>You’re ready to keep working on other parts of the file or project. Before we
 move on, let’s review some terms for how files flow between states in a Git
@@ -334,14 +334,14 @@ See if you can change the file <code>hello.txt</code> and commit the changes.</p
 <h2><span class="header-section-number">4.4</span> View a History of Your Commits<a href="creating-your-first-repo.html#view-a-history-of-your-commits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you’d like to see a history of all the commits in a repository, use</p>
 <pre><code>$ git log
-commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; master)
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; main)
 Author: YOUR NAME &lt;YOU@EMAIL.COM&gt;
 Date:  DATE OF THE COMMIT
 
     Adding my first file to the repository</code></pre>
 <p>If you want to see the specific changes made in the last commit, use</p>
 <pre><code>$ git log -p -1
-commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; master)
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; main)
 Author: YOUR NAME &lt;YOU@EMAIL.COM&gt;
 Date:  DATE OF THE COMMIT
 
@@ -357,7 +357,7 @@ index 0000000..cd08755
 <p>This reflects the information we saw when we first committed the file. There’s
 also a way to see this in a more abbreviated fashion:</p>
 <pre><code>$ git log --stat
-commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; master)
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; main)
 Author: YOUR NAME &lt;YOU@EMAIL.COM&gt;
 Date:  DATE OF THE COMMIT
 
@@ -384,7 +384,7 @@ characters in a commit message:</p>
 to compare one commit against another. But this hash rather long, so it’s a bit
 more manageable to get its shortened version with:</p>
 <pre><code>$ git log --oneline
-2591435 (HEAD -&gt; master) Explaining why I made this file
+2591435 (HEAD -&gt; main) Explaining why I made this file
 be5fd7e Adding my first file to the repository</code></pre>
 <p>Now, simply copy/paste these two hashes with</p>
 <pre><code>$ git diff be5fd7e 2591435

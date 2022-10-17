@@ -24,7 +24,7 @@ To see a list of branches in your repository, run
 
 ```
 $ git branch
-* master
+* main
 ```
 
 The asterisk tells you which branch you're on. To create a new branch and
@@ -39,7 +39,7 @@ Now,
 
 ```
 $ git branch
-  master
+  main
 * second_branch
 ```
 
@@ -78,8 +78,8 @@ With our second branch made,we can switch back to, or **checkout**, the first
 one
 
 ```
-$ git checkout master
-Switched to branch 'master'
+$ git checkout main
+Switched to branch 'main'
 ```
 
 But look, `new.txt` isn't there:
@@ -108,12 +108,12 @@ identified branch into the current working branch. It also adds any new files.
 When you perform a merge, a new commit will be automatically created to track
 the merge. To merge branches, commit any changes to the branch you want to
 merge (which we've already done), then _checkout the branch into which you want
-to merge_ (here, `master`). Then, execute a merge command.
+to merge_ (here, `main`). Then, execute a merge command.
 
 The whole sequence looks like this:
 
 ```
-$ git checkout master
+$ git checkout main
 $ git merge second_branch
 Updating 2591435..a41096f
 Fast-forward
@@ -132,11 +132,11 @@ hello.txt new.txt
 
 ...shows both files.
 
-Note too that the log on `master` has been updated:
+Note too that the log on `main` has been updated:
 
 ```
 $ git log --oneline
-a41096f (HEAD -> master, second_branch) Adding a second file
+a41096f (HEAD -> main, second_branch) Adding a second file
 2591435 Explaining why I made this file
 be5fd7e Adding my first file to the repository
 ```
@@ -149,7 +149,7 @@ Inspect the differences between the file `hello.txt` on your two branches.
 ## To View an Earlier Commit
 
 The logic of `git checkout` also applies to looking at older commits on a
-single branch. If you wanted to go back to the very first commit on `master`,
+single branch. If you wanted to go back to the very first commit on `main`,
 you could use 
 
 ```
@@ -168,7 +168,7 @@ directly affect other commits. If you're just looking around and don't want to
 make any changes, you can reset to the `HEAD` with
 
 ```
-$ git checkout master
+$ git checkout main
 ```
 
 ...which will bring you back to the most recent commit. 
@@ -180,7 +180,7 @@ commit. You can do so by putting it on a new branch:
 $ git checkout -b first_commit
 $ git branch
 * first_commit
-  master
+  main
   second_branch
 ```
 
@@ -218,8 +218,8 @@ $ git add hello.txt
 $ git commit -m 'Explaining which version this is.'
 ```
 
-All's well so far. But say you want to merge this file into `master`. Remember
-that, on `master`, this file reads:
+All's well so far. But say you want to merge this file into `main`. Remember
+that, on `main`, this file reads:
 
 ```
 Hello world!
@@ -228,10 +228,10 @@ This is my first Git repo.
 ```
 
 There are two different versions of this file, so if you run a merge from 
-`first_commit` to `master`...
+`first_commit` to `main`...
 
 ```
-$ git checkout master
+$ git checkout main
 $ git merge first_commit
 Auto-merging hello.txt
 CONFLICT (content): Merge conflict in hello.txt
@@ -258,7 +258,7 @@ This is an old version of this file.
 
 Git has injected new text into this file, showing you where exactly the
 conflict lies. It also marks which branch has what information (`HEAD` for
-`master` and `first_commit` for `first_commit`).
+`main` and `first_commit` for `first_commit`).
 
 Fixing the merge conflict involves deleting the entire section marked off by
 `<<<<<<<` and `>>>>>>>` and replacing it with the information you'd like the
@@ -276,7 +276,7 @@ Save the changes and run a status check. It should show
 
 <pre style="font-size: small;">
 $ git status
-On branch master
+On branch main
 You have unmerged paths.
   (fix conflicts and run "git commit")
   (use "git merge --abort" to abort the merge)
@@ -293,7 +293,7 @@ If you add `hello.txt` and check the repository status again
 ```
 $ git add hello.txt
 $ git status
-On branch master
+On branch main
 All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 ```
@@ -302,8 +302,8 @@ You'll see that your conflicts are resolved. With that done, you can complete
 the merge with a final commit.
 
 ```
-$ git commit -m 'Fixing conflict between master and first_commit'
-[master b3af7fd] Fixing conflict between master and first_commit
+$ git commit -m 'Fixing conflict between main and first_commit'
+[main b3af7fd] Fixing conflict between main and first_commit
 ```
 
 Looking once more at the contents of `hello.txt` will show which changes you 
@@ -316,11 +316,11 @@ This is my first Git repo.
 ```
 
 And the Git log will have separate entries for the merge conflict and for the 
-file from any other branches into which you merged `master`
+file from any other branches into which you merged `main`
 
 ```
 $ git log --oneline
-b3af7fd (HEAD -> master) Fixing conflict between master and first_commit
+b3af7fd (HEAD -> main) Fixing conflict between main and first_commit
 f91603a (first_commit) Explaining which version this is.
 a41096f (second_branch) Adding a second file
 2591435 Explaining why I made this file
@@ -331,7 +331,7 @@ We can also inspect these changes visually, using `git log --graph`
 
 ```
 $ git log --all --oneline --graph
-*   40a6e83 (HEAD -> master) Fixing conflict between master and first_commit
+*   40a6e83 (HEAD -> main) Fixing conflict between main and first_commit
 |\  
 | * 9953726 (first_commit) Explaining which version this is.
 * | c6113ab (second_branch) Adding a second file

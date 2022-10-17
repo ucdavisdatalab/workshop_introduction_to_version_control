@@ -57,7 +57,7 @@ With our repository made, we can check its status
 
 ```
 $ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -113,7 +113,7 @@ status check
 
 <pre style="font-size: small;">
 $ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -139,7 +139,7 @@ When we do another status check
 
 ```
 $ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -174,7 +174,7 @@ Here's the message you'll get if you run the above:
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
 #
-# On branch master
+# On branch main
 #
 # Initial commit
 #
@@ -203,7 +203,7 @@ like the following:
 
 ```
 $ git commit -m 'Adding my first file to the repository'
-[master (root-commit) be5fd7e] Adding my first file to the repository
+[main (root-commit) be5fd7e] Adding my first file to the repository
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
 ```
@@ -216,7 +216,7 @@ Running a status check one last time now shows
 
 ```
 $ git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 ```
 
@@ -245,7 +245,7 @@ If you'd like to see a history of all the commits in a repository, use
 
 ```
 $ git log
-commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -> master)
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -> main)
 Author: YOUR NAME <YOU@EMAIL.COM>
 Date:  DATE OF THE COMMIT
 
@@ -256,7 +256,7 @@ If you want to see the specific changes made in the last commit, use
 
 ```
 $ git log -p -1
-commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -> master)
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -> main)
 Author: YOUR NAME <YOU@EMAIL.COM>
 Date:  DATE OF THE COMMIT
 
@@ -276,7 +276,7 @@ also a way to see this in a more abbreviated fashion:
 
 ```
 $ git log --stat
-commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -> master)
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -> main)
 Author: YOUR NAME <YOU@EMAIL.COM>
 Date:  DATE OF THE COMMIT
 
@@ -319,7 +319,7 @@ more manageable to get its shortened version with:
 
 ```
 $ git log --oneline
-2591435 (HEAD -> master) Explaining why I made this file
+2591435 (HEAD -> main) Explaining why I made this file
 be5fd7e Adding my first file to the repository
 ```
 
