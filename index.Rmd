@@ -6,6 +6,7 @@ url: "https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/
 output:
   bookdown::gitbook:
     fig_caption: false
+lang: en-us
 ---
 
 # Overview {-}
