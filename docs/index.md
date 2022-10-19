@@ -1,7 +1,7 @@
 ---
 title: Introduction to Version Control
 author: [Carl Stahmer, Tyler Shoemaker, Wesley Brooks]
-date: "2022-10-18"
+date: "2022-10-19"
 url: "https://ucdavisdatalab.github.io/workshop_introduction_to_version_control/"
 output:
   bookdown::gitbook:
