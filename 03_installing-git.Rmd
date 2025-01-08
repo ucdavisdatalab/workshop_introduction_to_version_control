@@ -19,7 +19,7 @@ First, launch a web browser, the image below shows the Microsoft Edge browser:
 
 ![Microsoft Edge browser](`r url19`) 
 
-Next, navigate to the following Git download URL in your browser [https://git-scm/com/downloads](https://git-scm.com/downloads):
+Next, navigate to the following Git download URL in your browser [https://git-scm.com/downloads](https://git-scm.com/downloads):
 
 ![The git website](`r url20`) 
 
