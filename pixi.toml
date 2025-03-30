@@ -1,0 +1,22 @@
+[workspace]
+authors = [
+  "Carl Stahmer",
+  "Tyler Shoemaker",
+  "Wesley Brooks",
+  "Nick Ulle <naulle@ucdavis.edu>"
+]
+channels = ["conda-forge"]
+description = "Reader for the Introduction to Version Control workshop."
+name = "intro_to_version_control"
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+version = "2024.fall.0"  # <year>.<quarter>.<revision #>
+
+[tasks]
+build = { cmd = "jupyter-book build .", description = "Build the reader." }
+publish = { cmd = "ghp-import --no-jekyll --no-history --push _build/html", description = "Publish the reader to the `gh-pages` branch on GitHub." }
+clean = { cmd = "rm -rf _build/", description = "Remove the build directory." }
+rebuild = { depends-on = ["clean", "build"], description = "Remove the build directory and build the reader." }
+
+[dependencies]
+jupyter-book = ">=1.0.4.post1,<2"
+ghp-import = ">=2.1.0,<3"
