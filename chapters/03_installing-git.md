@@ -17,41 +17,41 @@ machine:
 
 First, launch a web browser, the image below shows the Microsoft Edge browser:
 
-![Microsoft Edge browser](`r url19`) 
+![Microsoft Edge browser](/img/win_git_install_1_browser.png) 
 
 Next, navigate to the following Git download URL in your browser [https://git-scm.com/downloads](https://git-scm.com/downloads):
 
-![The git website](`r url20`) 
+![The git website](/img/win_git_install_2_git\ page.png) 
 
 Select "Windows" from the Downloads portion of the Git web page. Git will
 display the following page and automatically being downloading the correct
 version of the Git software. If the download doesn't start automatically, click
 on the "Click here to download manually link":
 
-![Download page for git](`r url21`) 
+![Download page for git](/img/win_git_install_3_downloading.png) 
 
 When the download is complete, open/Run the downloaded file (will look
 different in different browsers, but everyone shoudl know how to do this):
 
-![Showing the .exe download in a browser](`r url22`) 
+![Showing the .exe download in a browser](/img/win_git_install_4_run_open.png) 
 
 A screen will appear asking for permissions for the Git application to make
 changes to your device. Click on the **Yes** button:
 
-![Clicking yes on the permissions query](`r url23`) 
+![Clicking yes on the permissions query](/img/win_git_install_5_allow_changes.png) 
 
 Click **Next** to accept the user license:
 
-![Accepting the GNU public license](`r url24`) 
+![Accepting the GNU public license](/img/win_git_install_6_license.png) 
 
 Leave the default "Destination Location" unchanged (usually C:\Program
 Files\Git) and hit **Next**
 
-![Specifying where to install git](`r url25`)
+![Specifying where to install git](/img/win_git_install_7_install_location.png)
 
 You will see a screen like the one below asking you to "Select Components":
 
-![Optional components for git](`r url26`)
+![Optional components for git](/img/win_git_install_8_default_components.png)
 
 Leave all of the default components selected and also check the boxes next to
 "Additional Icons" and its sub-item, "On the Desktop". Your completed
@@ -68,7 +68,7 @@ configurations window should have the following components selected:
 	
 And should look like this:
 
-![The selected components outlined above](`r url27`)
+![The selected components outlined above](/img/win_git_install_9_checked_components.png)
 
 After verifying that you have the necessary components selected as per above,
 hit **Next**.
@@ -76,75 +76,75 @@ hit **Next**.
 The next screen will ask you to "Select a Start Menu Folder." Keep the default
 value of Git and hit **Next**:
 
-![Selecting a start location for the app](`r url28`)
+![Selecting a start location for the app](/img/win_git_install_10_start_menu.png)
 
 Leave the default "Use Vim (the ubiquitous text editor) as Git's default
 editor" selected on the "Choosing the default editor used by Git" screen and
 hit **Next**:
 
-![Using Vim as the default text editor for git](`r url29`)
+![Using Vim as the default text editor for git](/img/win_git_install_11_editor.png)
 
 On the next screen, leave the default "let Git decide" option selected and hit
 **Next**:
 
-![Letting git decide branch and repository details](`r url30`)
+![Letting git decide branch and repository details](/img/win_git_install_12_initial_branch.png)
 
 Leave the default "Git from the command line and also from 3rd-party software"
 selected and hit **Next**:
 
-![Path options for git](`r url31`)
+![Path options for git](/img/win_git_install_13_path.png)
 
 On the next "Choosing HTTPS transport backend" page leave the default "Use the
 OpenSSL library" option selected and hit **Next**:
 
-![Using the OpenSSL library for git](`r url32`)
+![Using the OpenSSL library for git](/img/win_git_install_14_HTTPS_openssl.png)
 
 Leave the default "Checkout Windows-style, commit Unix-style line endings"
 selected on the next page and hit **Next**:
 
-![Using Unix-style lind endings](`r url33`)
+![Using Unix-style lind endings](/img/win_git_install_15_line_ending.png)
 
 Keep the default "Use MinTTY (the default terminal of MSYS2)" selected on the
 "Configuring the terminal emulator to use with Git Bash" window and hit
 **Next**:
 
-![Default Git Bash view](`r url34`)
+![Default Git Bash view](/img/win_git_install_16_terminal_emulator.png)
 
 Keep the default value of "Default (fast-forward or merge)" on the "Choose the
 default behavior of 'git pull'" page and hit **Next**:
 
-![Default merge behavior](`r url35`)
+![Default merge behavior](/img/win_git_install_17_git_pull.png)
 
 Keep the default value of "Git Credential Manager Core" on the "Choose a
 credential helper" page and hit **Next**:
 
-![Default credential manager](`r url36`)
+![Default credential manager](/img/win_git_install_18_credential_helper.png)
 
 Keep the default values on the "Configuration extra options" page by keeping
 "Enable file system caching" checked and "Enable symbolic links" unchecked and
 then hit **Next**:
 
-![Default configuration options](`r url37`)
+![Default configuration options](/img/win_git_install_19_extra_options.png)
 
 Make sure that no options are checked in the "Configuring experimental options"
 page and hit **Install**:
 
-![No experimental options for configuration](`r url38`)
+![No experimental options for configuration](/img/win_git_install_20_experimental_options.png)
 
 After you hit this **Install** button as per above, you will see an install
 progress screen like the one below:
 
-![A progress bar for installing git](`r url39`)
+![A progress bar for installing git](/img/win_git_install_21_install_progress.png)
 
 When the install is complete, a new, "Completing the Git Setup Wizard" window
 like the one below will appear:
 
-![A successfully installation message](`r url40`)
+![A successfully installation message](/img/win_git_install_22_install_complete.png)
 
 Make sure that all of the options on this window are unchecked as in the image
 below and then hit the **Finish** button:
 
-![Unchecking the two boxes of the installation message](`r url41`)
+![Unchecking the two boxes of the installation message](/img/win_git_install_23_deslect_and_finish.png)
 
 This will complete your installation process.
 
@@ -188,7 +188,7 @@ application, go to:
 
 When you launch the application, you will see something like this:
 
-![A Mac Terminal window](`r url12`)
+![A Mac Terminal window](/img/mac_terminal.png)
 
 Windows users will use an application called Git Bash, which was installed on 
 your system when you installed Git. To launch Git Bash, go to:
@@ -201,7 +201,7 @@ Alternatively,
 
 When you launch the application, you will see something like this:
 
-![A Git Bash terminal window](`r url13`)
+![A Git Bash terminal window](/img/bash.png)
 
 ### Checking the Git Version
 

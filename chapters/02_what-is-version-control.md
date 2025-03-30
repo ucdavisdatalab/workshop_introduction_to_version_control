@@ -12,11 +12,11 @@ Chances are good that you are already doing some kind of version control
 yourself. Most people have a folder/directory somewhere on their computer that
 looks something like this:
 
-![A finder window of .docx files labeled with different versions](`r url`)
+![A finder window of .docx files labeled with different versions](/img/mac_finder_1.png)
 
 Or perhaps, this:
 
-![A finder window of .docx files labeled with dates](`r url2`)
+![A finder window of .docx files labeled with dates](/img/mac_window_2.png)
 
 This is a rudimentary form of version control that relies completely on a manual 
 workflow of saving multiple versions of a file. This system works minimally well, 
@@ -96,7 +96,7 @@ and 2) Distributed Version Control Systems (Distributed VCS).
 architecture worldwide. Centralized VCS implement a "spoke and wheel"
 architecture to provided server-based version control.
 
-![Spoke and wheel diagram showing computers connected to a central cloud](`r url3`)
+![Spoke and wheel diagram showing computers connected to a central cloud](/img/spoke_and_where_cloud.png)
 
 With the spoke and wheel architecture, the server maintains a centralized
 collection of file versions. Users utilize version control clients to
@@ -119,7 +119,7 @@ architecture (as opposed to the spoke and wheel of the centralized VCS as
 pictured above) to allow each user to communicate directly with every other
 user.
 
-![Distributed VCS showing computers connected to each other](`r url4`)
+![Distributed VCS showing computers connected to each other](/img/distributed_network.png)
 
 In distributed VCS, each user maintains their own version history of the files
 being tracked, and the VCS software communicates between users to keep the
@@ -145,7 +145,7 @@ choose to include a central server as a node in the distributed network. This
 creates an hybrid universe in which some users will sync directly to each other
 while other users will sync through a central server.
 
-![A hybrid diagram of spoke and wheel VCS and distributed VCS](`r url5`)
+![A hybrid diagram of spoke and wheel VCS and distributed VCS](/img/hybrid_network.png)
 
 Syncing with a cloud-based server provides an extra level of backup for your
 files and also facilitates communication between users. But treating the server
@@ -165,13 +165,13 @@ Most users think about version control as a process of managing files. For
 example, you might have a directory called `My Project` that holds several
 files related to this project as follows: 
 
-![A finder window with different files related to a project](`r url9`)
+![A finder window with different files related to a project](/img/mac_finder_3.png)
 
 One approach to managing changes to the above project files would be to store
 multiple versions of each file as in the figure below for the file
 `analysis.r`:
 
-![Diagram of analysis.r in a working directory referenced to its versions](`r url10`)
+![Diagram of analysis.r in a working directory referenced to its versions](/img/version_tree.png)
 
 In fact, many VCS do exactly this. They treat each file as the minimum unit of
 data and simply save various versions of each file along with some additional
@@ -194,7 +194,7 @@ rather than collections of files. Git's primary unit of management is the
 directory/folder structure. Consider, for example, the following file
 structure:
 
-![A hierarchical file tree with files and subdirectories](`r url11`)
+![A hierarchical file tree with files and subdirectories](/img/TT_tree_mobile.jpg)
 
 Here we see a user, Tom's, home directory, which contains three sub directories
 (`Data`, `Thesis`, and `Tools`) and one file (`Notes.txt`). Both the `Data` and

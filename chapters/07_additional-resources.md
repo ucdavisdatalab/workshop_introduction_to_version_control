@@ -8,7 +8,7 @@ collaborative development.
 
 [second workshop]: https://ucdavisdatalab.github.io/workshop_git_for_teams/
 
-![Different local repositories synched across a remote source](`r url17`)
+![Different local repositories synched across a remote source](/img/git_for_teams.png)
 
 ## The Git Book
 
