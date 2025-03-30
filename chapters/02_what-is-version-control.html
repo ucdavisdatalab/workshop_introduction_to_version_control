@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Version Control &#8212; Introduction to Version Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=dddfd265"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02_what-is-version-control';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Installing Git" href="03_installing-git.html" />
+    <link rel="prev" title="1. Introduction" href="01_overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-us"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-light" alt="Introduction to Version Control - Home"/>
+    <script>document.write(`<img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-dark" alt="Introduction to Version Control - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Version Control</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_overview.html">1. Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Version Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_installing-git.html">3. Installing Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_working-with-git.html">4. Creating Your First Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_branching.html">5. Git Branching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_troubleshooting.html">6. Troubleshooting Problems and Fixing Mistakes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Back Matter</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="07_additional-resources.html">Additional Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_assessment.html">Assessment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/issues/new?title=Issue%20on%20page%20%2Fchapters/02_what-is-version-control.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/02_what-is-version-control.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Version Control</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-version-control">2.1. What is Version Control?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-assisted-version-control">2.2. Software Assisted Version Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vs-server-based-version-control">2.3. Local vs Server-based Version Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-version-control-systems">2.4. Central Version Control Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-version-control-systems">2.5. Distributed Version Control Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-of-both-worlds">2.6. The Best of Both Worlds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-vcs-manage-your-files">2.7. How VCS Manage Your Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-based-data-management">2.8. Graph-Based Data Management</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="version-control">
+<h1><span class="section-number">2. </span>Version Control<a class="headerlink" href="#version-control" title="Link to this heading">#</a></h1>
+<section id="what-is-version-control">
+<h2><span class="section-number">2.1. </span>What is Version Control?<a class="headerlink" href="#what-is-version-control" title="Link to this heading">#</a></h2>
+<p><strong>Version control</strong> describes the process of storing and organizing multiple
+versions (or copies) of documents on your computer. Approaches to version
+control range from simple to complex and they can involve the use of both
+manual and automatic workflows. Ultimately, the overall goal of version control
+is to store and manage multiple versions of the same document(s).</p>
+<p>Chances are good that you are already doing some kind of version control
+yourself. Most people have a folder/directory somewhere on their computer that
+looks something like this:</p>
+<p><img alt="A finder window of .docx files labeled with different versions" src="../_images/mac_finder_1.png" /></p>
+<p>Or perhaps, this:</p>
+<p><img alt="A finder window of .docx files labeled with dates" src="../_images/mac_window_2.png" /></p>
+<p>This is a rudimentary form of version control that relies completely on a manual
+workflow of saving multiple versions of a file. This system works minimally well,
+in that it provides you with a history of file versions theoretically organized
+by their time sequence. But this <strong>file system method</strong> offers no information
+about how the file has changed from version to version, why you might have saved
+a particular version, or specifically how the various versions are related. This
+self-managed file system approach is more subject to error than software-assisted
+version control systems; it is not uncommon for users to make mistakes when
+naming file versions, or to go back and edit files out of sequence. Software-assisted
+version control systems (VCS) such as Git were designed to solve this problem.</p>
+</section>
+<section id="software-assisted-version-control">
+<h2><span class="section-number">2.2. </span>Software Assisted Version Control<a class="headerlink" href="#software-assisted-version-control" title="Link to this heading">#</a></h2>
+<p>Version control software has its roots in the software development community,
+where it is common for many coders to work on the same file, sometimes
+synchronously, amplifying the need to track and understand revisions. But
+nearly all types of computer files, not just code, can be tracked using modern
+version control systems.  IBM’s OS/360 IEBUPDTE software update tool is widely
+regarded as the earliest and most widely adopted precursor to modern, version
+control systems. Its release in 1972 of the Source Code Control System (SCCS)
+package marked the first, fully fledged system designed specifically for
+software version control.</p>
+<p>Today’s marketplace offers many options when it comes to choosing a version
+control software system. They include systems such as Git, Visual Source Safe,
+Subversion, Mercurial, CVS, and Plastic SCM, to name a few. Each of these
+systems offers its twist on version control, differing sometimes in the area of
+user functionality, sometimes in how it handles things on the back-end, and
+sometimes both. This tutorial focuses on the Git VCS, but in the sections that
+follow we offer some general information about classes of version control
+systems to help you better understand how Git does what it does and to help you
+make more informed decisions about how to deploy it for you own work.</p>
+</section>
+<section id="local-vs-server-based-version-control">
+<h2><span class="section-number">2.3. </span>Local vs Server-based Version Control<a class="headerlink" href="#local-vs-server-based-version-control" title="Link to this heading">#</a></h2>
+<p>There are two general types of version control systems: <strong>local</strong> and
+<strong>server</strong> (sometimes called cloud) based systems. When working with a
+<strong>local</strong> version control system, all files, metadata, and everything
+associated with the version control system live on your local drive in a
+universe unto itself. Working locally is a perfectly reasonable option for
+those who work independently (not as part of a team), have no need to regularly
+share their files or file versions, and who have robust back-up practices for
+their local storage drive(s). Working locally is also sometimes the only option
+for projects involving protected data and/or proprietary code that cannot be
+shared.</p>
+<p><strong>Server-based VCS</strong> utilize software running on your local computer that
+communicates with a remote server (or servers) that store your files and data.
+Depending on the system being deployed, files and data may reside exclusively
+on the server and are downloaded to temporary local storage only when a file is
+being actively edited. Or, the system may maintain continuous local and remote
+versions of your files. Server-based systems facilitate team science because
+they allow multiple users to have access to the same files, and all their
+respective versions, via the server. They can also provide an important,
+non-local back-up of your files, protecting you from loss of data should your
+local storage fail.</p>
+<p><strong>Git is a free server-based version control system that can store files both
+locally and on a remote server.</strong> While the sections that follow offer a
+broader description of server-based version control, in this workshop we will
+focus only on using Git locally and will not configure the software to
+communicate with, store files on, or otherwise interact with a remote server.
+DataLab’s companion <a class="reference external" href="https://ucdavisdatalab.github.io/workshop_git_for_teams/">Git for Teams</a> workshop focuses on using Git with the
+GitHub cloud service to capitalize on Git’s distributed version control
+capabilities.</p>
+<p>Server-based version control systems can generally be segmented into two
+distinct categories: 1) Centralized Version Control Systems (Centralized VCS)
+and 2) Distributed Version Control Systems (Distributed VCS).</p>
+</section>
+<section id="central-version-control-systems">
+<h2><span class="section-number">2.4. </span>Central Version Control Systems<a class="headerlink" href="#central-version-control-systems" title="Link to this heading">#</a></h2>
+<p><strong>Centralized VCS</strong> is the oldest and the predominant form of version control
+architecture worldwide. Centralized VCS implement a “spoke and wheel”
+architecture to provided server-based version control.</p>
+<p><img alt="Spoke and wheel diagram showing computers connected to a central cloud" src="../_images/spoke_and_where_cloud.png" /></p>
+<p>With the spoke and wheel architecture, the server maintains a centralized
+collection of file versions. Users utilize version control clients to
+“check-out” a file of interest to their local file storage, where they are free
+to make changes to the file. Centralized VCS typically restrict other users
+from checking out editable versions of a file if another user currently has the
+file checked out.  Once the user who has checked out the file has finished
+making changes, they “check-in” their new version, which is then stored on the
+server from where it can be retrieved and “checked-out” by another user. Taken
+together, centralized VCS provide a very controlled and ordered universe that
+ensures file integrity and tracking of changes. However, this regulation comes
+at a cost: namely, it it reduces the ease with which multiple users can work
+simultaneously on the same file.</p>
+</section>
+<section id="distributed-version-control-systems">
+<h2><span class="section-number">2.5. </span>Distributed Version Control Systems<a class="headerlink" href="#distributed-version-control-systems" title="Link to this heading">#</a></h2>
+<p><strong>Distributed VCS</strong> are not dependent on a central repository as a means of
+sharing files or tracking versions. Distributed VCS implement a network
+architecture (as opposed to the spoke and wheel of the centralized VCS as
+pictured above) to allow each user to communicate directly with every other
+user.</p>
+<p><img alt="Distributed VCS showing computers connected to each other" src="../_images/distributed_network.png" /></p>
+<p>In distributed VCS, each user maintains their own version history of the files
+being tracked, and the VCS software communicates between users to keep the
+various local file systems in sync with each other. With this type of system,
+the local versions of two different users will diverge from each other if both
+users make changes to the file. This divergence will remain in place until the
+local repositories are synced, at which time the VCS stitches (or <strong>merges</strong>)
+the two different versions of the file into a single version that reflects the
+changes made by each individual, and then saves the stitched version of the
+file onto both systems as the current version. Various mechanisms can then be
+used to resolve the conflicts that may arise during this merge process.
+Distributed VCS offer greater flexibility and facilitate collaborative work,
+but a lack of understanding of the sync/merge workflow can cause problems. It
+is not uncommon for a user to forget to sync their local repository with the
+repositories of other team members and, as a result, work for extended periods
+of time on outdated files that don’t reflect their teammates and result in work
+inefficiencies and merge challenges.</p>
+</section>
+<section id="the-best-of-both-worlds">
+<h2><span class="section-number">2.6. </span>The Best of Both Worlds<a class="headerlink" href="#the-best-of-both-worlds" title="Link to this heading">#</a></h2>
+<p>An important feature of distributed VCS is that many users and organizations
+choose to include a central server as a node in the distributed network. This
+creates an hybrid universe in which some users will sync directly to each other
+while other users will sync through a central server.</p>
+<p><img alt="A hybrid diagram of spoke and wheel VCS and distributed VCS" src="../_images/hybrid_network.png" /></p>
+<p>Syncing with a cloud-based server provides an extra level of backup for your
+files and also facilitates communication between users. But treating the server
+as just another node on the network (as opposed to a centralized point of
+control) puts the control and flexibility back in the hands of the individual
+developer. For example, in a true centralized VCS, if the server goes down
+then nobody can check files in and out of the server, which means that nobody
+can work. But in a distributed VCS this is not an issue. Users can continue to
+work on local versions and the system will sync any changes when the server
+becomes available. <strong>Git, the focus of this tutorial, is a Distributed VCS.</strong>
+You can use Git to share and sync repositories directly with other users or
+through a central Git server such as GitHub or GitLab.</p>
+</section>
+<section id="how-vcs-manage-your-files">
+<h2><span class="section-number">2.7. </span>How VCS Manage Your Files<a class="headerlink" href="#how-vcs-manage-your-files" title="Link to this heading">#</a></h2>
+<p>Most users think about version control as a process of managing files. For
+example, you might have a directory called <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Project</span></code> that holds several
+files related to this project as follows:</p>
+<p><img alt="A finder window with different files related to a project" src="../_images/mac_finder_3.png" /></p>
+<p>One approach to managing changes to the above project files would be to store
+multiple versions of each file as in the figure below for the file
+<code class="docutils literal notranslate"><span class="pre">analysis.r</span></code>:</p>
+<p><img alt="Diagram of analysis.r in a working directory referenced to its versions" src="../_images/version_tree.png" /></p>
+<p>In fact, many VCS do exactly this. They treat each file as the minimum unit of
+data and simply save various versions of each file along with some additional
+information about the version. This approach can work reasonably well. However,
+it has limitations. First, this approach can unnecessarily consume space on the
+local storage device, especially if you are saving many versions of a very
+large file. It also has difficulty dealing with changes in file names,
+typically treating the same file with a new name as a completely new file,
+thereby breaking the chain of version history.</p>
+<p><strong>To combat these issues, good VCS don’t actually manage files at all. They
+manage directories.</strong> Distributed VCS like Git take this alternate approach to
+data storage that is directory, rather than file, based.</p>
+</section>
+<section id="graph-based-data-management">
+<h2><span class="section-number">2.8. </span>Graph-Based Data Management<a class="headerlink" href="#graph-based-data-management" title="Link to this heading">#</a></h2>
+<p>Git (and many other distributed VCS) manage your files as collections of data
+rather than collections of files. Git’s primary unit of management is the
+<strong>repository,</strong> or <strong>repo</strong> for short, which is aligned with your computer’s
+directory/folder structure. Consider, for example, the following file
+structure:</p>
+<p><img alt="A hierarchical file tree with files and subdirectories" src="../_images/TT_tree_mobile.jpg" /></p>
+<p>Here we see a user, Tom’s, home directory, which contains three sub directories
+(<code class="docutils literal notranslate"><span class="pre">Data</span></code>, <code class="docutils literal notranslate"><span class="pre">Thesis</span></code>, and <code class="docutils literal notranslate"><span class="pre">Tools</span></code>) and one file (<code class="docutils literal notranslate"><span class="pre">Notes.txt</span></code>). Both the <code class="docutils literal notranslate"><span class="pre">Data</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Tools</span></code> directories contain sub files and/or directories. If Tom wanted to
+track changes to the two files in the <code class="docutils literal notranslate"><span class="pre">Data</span></code> directory, he would first create a
+Git repository by placing the Data directory <strong>under version control.</strong></p>
+<p>When a repository is created, the Git system writes a collection of <em>hidden
+files</em> into the data directory that it uses to store information about all of
+the data that lives under that directory. This includes information about the
+addition, renaming, and deletion of both files and folders as well as
+information about changes to the data contained in the files themselves.
+Additions, deletions and versions of files are tracked and stored not as copies
+of files, but rather as a set of instructions that describes changes made to
+the underling data and the directory structure that describes them.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_installing-git.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Installing Git</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-version-control">2.1. What is Version Control?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-assisted-version-control">2.2. Software Assisted Version Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vs-server-based-version-control">2.3. Local vs Server-based Version Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-version-control-systems">2.4. Central Version Control Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-version-control-systems">2.5. Distributed Version Control Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-of-both-worlds">2.6. The Best of Both Worlds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-vcs-manage-your-files">2.7. How VCS Manage Your Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-based-data-management">2.8. Graph-Based Data Management</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+  <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"> 
+</a>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

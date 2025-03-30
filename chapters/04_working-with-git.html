@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Creating Your First Repo &#8212; Introduction to Version Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=dddfd265"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04_working-with-git';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Git Branching" href="05_branching.html" />
+    <link rel="prev" title="3. Installing Git" href="03_installing-git.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-us"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-light" alt="Introduction to Version Control - Home"/>
+    <script>document.write(`<img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-dark" alt="Introduction to Version Control - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Version Control</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_overview.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_what-is-version-control.html">2. Version Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_installing-git.html">3. Installing Git</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Creating Your First Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_branching.html">5. Git Branching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_troubleshooting.html">6. Troubleshooting Problems and Fixing Mistakes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Back Matter</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="07_additional-resources.html">Additional Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_assessment.html">Assessment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/issues/new?title=Issue%20on%20page%20%2Fchapters/04_working-with-git.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/04_working-with-git.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Creating Your First Repo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repo">4.1. Your First Repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-status-of-a-repo">4.2. Checking the Status of a Repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-stage-commit">4.3. Save, Stage, Commit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-save-the-file">4.3.1. Step 1: Save the file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-stage-the-file">4.3.2. Step 2: Stage the file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-commit-the-file">4.3.3. Step 3: Commit the file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-a-history-of-your-commits">4.4. View a History of Your Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-commits">4.5. Comparing Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-files">4.6. Comparing Files</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-your-first-repo">
+<h1><span class="section-number">4. </span>Creating Your First Repo<a class="headerlink" href="#creating-your-first-repo" title="Link to this heading">#</a></h1>
+<p>Now that we’ve established how version control works, we can start using it. To
+do so, we’ll create a new directory under Home and initialize a new Git
+<em>repository</em> inside it.</p>
+<section id="your-first-repo">
+<h2><span class="section-number">4.1. </span>Your First Repo<a class="headerlink" href="#your-first-repo" title="Link to this heading">#</a></h2>
+<p>Using the command line, move to your Home directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~
+</pre></div>
+</div>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">$</span></code> character represents your command prompt. You do not need to
+type it into your terminal.</p>
+<p>Create a new directory for this workshop</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir intro_to_git
+</pre></div>
+</div>
+<p>Change to the new directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd intro_to_git
+</pre></div>
+</div>
+<p>To put this directory under version control, we simply use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
+Initialized empty Git repository in /Users/username/intro_to_git/.git/
+</pre></div>
+</div>
+<p>The message your command line sends back indicates what, exactly, putting a
+directory under version control means. Notice that Git has created a new,
+hidden directory inside <code class="docutils literal notranslate"><span class="pre">intro_to_git</span></code> called <code class="docutils literal notranslate"><span class="pre">.git</span></code>. This is the Git
+repository. It doesn’t contain any information about your files (yet), but it
+does set up all the necessary files and directories that you need to track a
+project.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -a .git
+HEAD        config      description hooks       info        objects     refs
+</pre></div>
+</div>
+<p>The nice thing about Git is that, for the most part, it automatically
+interfaces with the contents of the repository. You can mostly ignore them when
+working on a project; they do the important work of keeping track of what
+you’ve committed.</p>
+</section>
+<section id="checking-the-status-of-a-repo">
+<h2><span class="section-number">4.2. </span>Checking the Status of a Repo<a class="headerlink" href="#checking-the-status-of-a-repo" title="Link to this heading">#</a></h2>
+<p>With our repository made, we can check its status</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>That makes sense! We haven’t done anything yet. We’ll discuss some of the
+pieces of this message in a bit, but first, let’s make a new file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;Hello world&quot; &gt; hello.txt 
+</pre></div>
+</div>
+<p>Now, we could edit this file, if we like. For example, we could open it with a
+text editor (either with Vim or something else), add an exclamation mark at the
+end of “world,” and save it. Once we do this, the file will read:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat hello.txt
+Hello world!
+</pre></div>
+</div>
+</section>
+<section id="save-stage-commit">
+<h2><span class="section-number">4.3. </span>Save, Stage, Commit<a class="headerlink" href="#save-stage-commit" title="Link to this heading">#</a></h2>
+<p>So far, this should feel very familiar: it’s how you probably interact with
+your files on a daily basis. But saving a file is not the same thing as
+tracking it with a VCS. Git does not automatically preserve <strong>versions</strong> of
+every save action.  When working with Git, you can save as you always do, but
+this has no impact on the states of this file that are preserved in the
+repository. To create a version, you must add saved files to a staging area and
+then <strong>commit</strong> those staged files to the repository. The commits you make then
+constitute the versions of those files.</p>
+<p>As is probably clear, this is a multi-step process: first we save, then we
+stage, then we commit.</p>
+<p><img alt="Diagram of files in your directory, in the staging area, and finally the git commits" src="../_images/save_stage_commit.png" /></p>
+<p>A more formalized representation of the above diagram is below: you make
+changes in your working area, then you stage them, and finally you commit them.</p>
+<p><img alt="Diagram of files moving across the working directory, staging area, and git commits" src="../_images/git_three_areas.png" /></p>
+<section id="step-1-save-the-file">
+<h3><span class="section-number">4.3.1. </span>Step 1: Save the file<a class="headerlink" href="#step-1-save-the-file" title="Link to this heading">#</a></h3>
+<p>So far, we’ve done the first part of this process: we saved our file.</p>
+</section>
+<section id="step-2-stage-the-file">
+<h3><span class="section-number">4.3.2. </span>Step 2: Stage the file<a class="headerlink" href="#step-2-stage-the-file" title="Link to this heading">#</a></h3>
+<p>With the file saved, Git can start tracking it. In fact, Git is already aware
+that there’s a new file in our directory. We can see this if we run another
+status check</p>
+<pre style="font-size: small;">
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	<span style="color:red;">hello.txt</span>
+
+nothing added to commit but untracked files present (use "git add" to track)
+</pre>
+<p>Notice that Git is pretty verbose. Here, it’s telling us that there is an
+<strong>untracked</strong> file in the directory. And that makes sense: we’ve made and saved
+<code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> but haven’t let Git know that it needs to track this file. This
+will involve adding the file to Git’s <strong>staging area</strong>.</p>
+<p>To do so, we do exactly what the status message above tells us to do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add hello.txt
+</pre></div>
+</div>
+<p>When we do another status check</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+	new file:   hello.txt
+</pre></div>
+</div>
+<p>…Git tells us that <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> is staged. Even now, however, we haven’t made
+a version of this file. To do so, we need run a commit command. This will
+create a new version of every file in the staging area (in this case, just
+<code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>).</p>
+</section>
+<section id="step-3-commit-the-file">
+<h3><span class="section-number">4.3.3. </span>Step 3: Commit the file<a class="headerlink" href="#step-3-commit-the-file" title="Link to this heading">#</a></h3>
+<p>Typically, we commit our files in one of two ways. The first is just to run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit
+</pre></div>
+</div>
+<p>If you run this, you might be surprised at what happens next. Git dumps you
+into a command line text editor and asks you to write a message explaining what
+changes you’ve made to your files. Every commit has a message (or should have
+one) associated with it, as this helps you track what makes one version
+different from another.</p>
+<p>Here’s the message you’ll get if you run the above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Please enter the commit message for your changes. Lines starting</span>
+<span class="c1"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
+<span class="c1">#</span>
+<span class="c1"># On branch main</span>
+<span class="c1">#</span>
+<span class="c1"># Initial commit</span>
+<span class="c1">#</span>
+<span class="c1"># Changes to be committed:</span>
+<span class="c1">#   new file:   hello.txt</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<p>All you’d need to do is write your message on the first empty line and save and
+quit. This would be the end of the commit.</p>
+<p>But there’s some shorthand for this, which is the second way to do a commit.
+You’ll probably find yourself using it more.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &#39;Adding my first file to the repository&#39;
+</pre></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> flag injects your message directly into the commit, without the
+need for a text editor (don’t include un-escaped apostrophes your message, as
+this will throw off the message!). This is great for short commits, but if you
+need to write a longer message about what you’ve changed, use the other method.</p>
+<p>Whichever method you use, once you commit your file, you should see something
+like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &#39;Adding my first file to the repository&#39;
+[main (root-commit) be5fd7e] Adding my first file to the repository
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.txt
+</pre></div>
+</div>
+<p>Again, Git is verbose: it shows the message, returns the number of files
+changed in the commit, and tracks what/how many changes were made (here,
+“insertion”).</p>
+<p>Running a status check one last time now shows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch main
+nothing to commit, working tree clean
+</pre></div>
+</div>
+<p>You’re ready to keep working on other parts of the file or project. Before we
+move on, let’s review some terms for how files flow between states in a Git
+repository.</p>
+<p><img alt="The whole process of working across untracked, tracked, unmodified, and modified files" src="../_images/git_file_lifecycle.png" /></p>
+<p>Files begin as untracked. The command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> adds the file to the staged
+area, and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> adds the new file to the historical record of your
+directory. Git takes note of tracked files as you change them. When you do, you
+can stage those changes and commit them, thus adding them to the historical
+record of the repository. Finally, you can remove a file with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remove</span></code>,
+which will tell git to stop tracking future changes to a file.</p>
+<div class="{.exercise docutils">
+<p>Now that you’ve committed a new file to the repository, let’s try an exercise.
+See if you can change the file <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> and commit the changes.</p>
+</div>
+</section>
+</section>
+<section id="view-a-history-of-your-commits">
+<h2><span class="section-number">4.4. </span>View a History of Your Commits<a class="headerlink" href="#view-a-history-of-your-commits" title="Link to this heading">#</a></h2>
+<p>If you’d like to see a history of all the commits in a repository, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; main)
+Author: YOUR NAME &lt;YOU@EMAIL.COM&gt;
+Date:  DATE OF THE COMMIT
+
+    Adding my first file to the repository
+</pre></div>
+</div>
+<p>If you want to see the specific changes made in the last commit, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log -p -1
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; main)
+Author: YOUR NAME &lt;YOU@EMAIL.COM&gt;
+Date:  DATE OF THE COMMIT
+
+    Adding my first file to the repository
+
+diff --git a/hello.txt b/hello.txt
+new file mode 100644
+index 0000000..cd08755
+--- /dev/null
++++ b/hello.txt
+@@ -0,0 +1 @@
++Hello world!
+</pre></div>
+</div>
+<p>This reflects the information we saw when we first committed the file. There’s
+also a way to see this in a more abbreviated fashion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --stat
+commit be5fd7eca84a745569b7dbc7ce03ae8517ace7c6 (HEAD -&gt; main)
+Author: YOUR NAME &lt;YOU@EMAIL.COM&gt;
+Date:  DATE OF THE COMMIT
+
+    Adding my first file to the repository
+
+ hello.txt | 1 +
+ 1 file changed, 1 insertion(+)
+</pre></div>
+</div>
+</section>
+<section id="comparing-commits">
+<h2><span class="section-number">4.5. </span>Comparing Commits<a class="headerlink" href="#comparing-commits" title="Link to this heading">#</a></h2>
+<p>Let’s make a change to our file and re-commit it. We’ll open the file and, on a
+new line, add the following: “This is my first Git repo.”</p>
+<p>The contents of the file now look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello world!
+ 
+This is my first Git repo.
+</pre></div>
+</div>
+<p>Save the file, stage it, and commit it with the message “Explaining why I made
+this file.”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &#39;Explaining why I made this file&quot;
+</pre></div>
+</div>
+<p>One thing we haven’t talked about yet is the long string of alphanumeric
+characters in a commit message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">259143503862</span><span class="n">af800a2946381bad30774291f8d9</span>
+</pre></div>
+</div>
+<p>This string is the unique identifier, or <strong>hash</strong>, for a commit. You can use it
+to compare one commit against another. But this hash rather long, so it’s a bit
+more manageable to get its shortened version with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --oneline
+2591435 (HEAD -&gt; main) Explaining why I made this file
+be5fd7e Adding my first file to the repository
+</pre></div>
+</div>
+<p>Now, simply copy/paste these two hashes with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff be5fd7e 2591435
+diff --git a/hello.txt b/hello.txt
+index cd08755..6c32fd5 100644
+--- a/hello.txt
++++ b/hello.txt
+@@ -1 +1,3 @@
+ Hello world!
++
++This is my first Git repo.
+</pre></div>
+</div>
+<p>See the insertions?</p>
+</section>
+<section id="comparing-files">
+<h2><span class="section-number">4.6. </span>Comparing Files<a class="headerlink" href="#comparing-files" title="Link to this heading">#</a></h2>
+<p>Running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> on the entire repository will return changes for all files
+in that commit. If you wanted to look at a commit for a single file, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff be5fd7e hello.txt
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff be5fd7e:hello.txt 2591435:hello.txt
+</pre></div>
+</div>
+<p>Because we only have one file in our directory, the output of either of these
+commands will be the same as above.</p>
+<div class="{.exercise docutils">
+<p>Check out a previous commit, look at the <code class="docutils literal notranslate"><span class="pre">git</span></code> log and status, then check out
+the latest commit and look at log and status.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_installing-git.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Installing Git</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="05_branching.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Git Branching</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repo">4.1. Your First Repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-status-of-a-repo">4.2. Checking the Status of a Repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-stage-commit">4.3. Save, Stage, Commit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-save-the-file">4.3.1. Step 1: Save the file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-stage-the-file">4.3.2. Step 2: Stage the file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-commit-the-file">4.3.3. Step 3: Commit the file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-a-history-of-your-commits">4.4. View a History of Your Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-commits">4.5. Comparing Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-files">4.6. Comparing Files</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+  <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"> 
+</a>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
