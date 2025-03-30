@@ -1,6 +1,6 @@
 # Overview
 
-![Git branching diagram](/img/GIT-Branchand-its-Operations.png)
+![Git branching diagram](/images/GIT-Branchand-its-Operations.png)
 
 This workshop covers the fundamentals of using version control for reproducible 
 research. Topics covered will include installing the Git versioning control 

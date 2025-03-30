@@ -4,7 +4,7 @@
 title: Introduction to Version Control
 author: Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
 copyright: "2025"
-logo: img/datalab-logo-full-color-rgb.png
+logo: images/datalab-logo-full-color-rgb.png
 exclude_patterns: [_build, .pixi]
 only_build_toc_files: true
 

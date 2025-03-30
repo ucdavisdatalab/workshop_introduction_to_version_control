@@ -94,12 +94,12 @@ constitute the versions of those files.
 As is probably clear, this is a multi-step process: first we save, then we
 stage, then we commit.
 
-![Diagram of files in your directory, in the staging area, and finally the git commits](/img/save_stage_commit.png)
+![Diagram of files in your directory, in the staging area, and finally the git commits](/images/save_stage_commit.png)
 
 A more formalized representation of the above diagram is below: you make
 changes in your working area, then you stage them, and finally you commit them.
 
-![Diagram of files moving across the working directory, staging area, and git commits](/img/git_three_areas.png)
+![Diagram of files moving across the working directory, staging area, and git commits](/images/git_three_areas.png)
 
 ### Step 1: Save the file
 
@@ -224,7 +224,7 @@ You're ready to keep working on other parts of the file or project. Before we
 move on, let's review some terms for how files flow between states in a Git
 repository.
 
-![The whole process of working across untracked, tracked, unmodified, and modified files](/img/git_file_lifecycle.png)
+![The whole process of working across untracked, tracked, unmodified, and modified files](/images/git_file_lifecycle.png)
 
 Files begin as untracked. The command `git add` adds the file to the staged
 area, and `git commit` adds the new file to the historical record of your

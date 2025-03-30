@@ -7,7 +7,7 @@ current state, which you can work on without affecting the primary version from
 which it was copied. This allows you (or a team) to work down multiple paths
 without affecting the main (or another person's) codebase.
 
-![A stream of branched files in a git repository](/img/branching_workflows.png)
+![A stream of branched files in a git repository](/images/branching_workflows.png)
 
 Why branch?
 
