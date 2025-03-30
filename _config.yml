@@ -1,0 +1,55 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Introduction to Version Control
+author: Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
+copyright: "2025"
+logo: images/datalab-logo-full-color-rgb.png
+exclude_patterns: [_build, .pixi]
+only_build_toc_files: true
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+  timeout: 120
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# If desired, add a bibtex file so that we can create citations
+#bibtex_bibfiles:
+#  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/
+  path_to_book: docs
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+  extra_footer: |
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+      <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"> 
+    </a>
+
+# Jupyter Books defaults to a copyright in the footer. We take this out and use a
+# custom license badge instead
+sphinx:
+  config:
+    html_show_copyright: false
+    language: en-us
+
+parse:
+  myst_enable_extensions:
+    - colon_fence
+    - dollarmath
+    - html_image
+    - linkify
+    - substitution
+

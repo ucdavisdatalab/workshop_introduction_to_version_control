@@ -1,0 +1,19 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: chapters/index
+parts:
+  - caption: Introduction to Version Control
+    numbered: true
+    chapters:
+    - file: chapters/01_overview
+    - file: chapters/02_what-is-version-control
+    - file: chapters/03_installing-git
+    - file: chapters/04_working-with-git
+    - file: chapters/05_branching
+    - file: chapters/06_troubleshooting
+  - caption: Back Matter
+    chapters:
+    - file: chapters/07_additional-resources
+    - file: chapters/08_assessment
