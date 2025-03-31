@@ -1,7 +1,7 @@
 # Version Control
 
-
-::: {.callout-note title="Learning Goals" collapse="false"}
+:::{admonition} Learning Goals
+:class: note
 After this lesson, you should be able to:
 
 * Explain the purpose of using a version control system (VCS)
@@ -37,11 +37,11 @@ Chances are good that you are already doing some kind of version control
 yourself. Most people have a folder/directory somewhere on their computer that
 looks something like this:
 
-![](/images/ch02/mac_finder_1.png)
+![](/images/mac_finder_1.png)
 
 Or perhaps, this:
 
-![](/images/ch02/mac_window_2.png)
+![](/images/mac_window_2.png)
 
 This is a rudimentary form of version control where it's completely up to you
 to name, save, and keep track of multiple versions of a file. This **filesystem
@@ -54,7 +54,8 @@ to make a mistake when naming a file version, or to go back and edit a file
 without saving a new copy.
 
 
-### Version Control Systems {#sec-version-control-systems}
+(sec-version-control-systems)=
+### Version Control Systems
 
 A **version control system** (VCS) is software designed to automate version
 control. Version control systems originated in the software development
@@ -63,7 +64,8 @@ sometimes synchronously, amplifying the need to track and understand revisions.
 But nearly all types of computer files, not just code, can be tracked using
 modern version control systems.
 
-::: {.callout-note title="Historical Note"}
+:::{admonition} Historical Note
+:class: note
 IBM’s OS/360 IEBUPDTE software update tool is widely regarded as the earliest
 and most widely adopted precursor to modern, version control systems. Its
 release in 1972 of the Source Code Control System (SCCS) package marked the
@@ -99,17 +101,28 @@ categories based on how they do this:
    into a single version that reflects the changes made by both users. You can
    think of this as a "network" model (like a social network).
 
-::: {#fig-vcs layout-ncol=2}
-![Centralized (hub and spoke) model](/images/ch02/spoke_and_where_cloud.png){}
+:::::{grid}
 
-![Distributed (network) model](/images/ch02/distributed_network.png){}
+::::{grid-item}
+:::{figure} /images/spoke_and_where_cloud.png
+Centralized (hub and spoke) model
 :::
+::::
+
+::::{grid-item}
+:::{figure} /images/distributed_network.png
+Distributed (network) model
+:::
+::::
+
+:::::
 
 Centralized VCS provide a very ordered and controlled universe. They ensure
 users have access to the most recent version of every file in the repository,
 which reduces the potential for conflicting changes to files.
 
-::: {.callout-note title="Historical Note"}
+:::{admonition} Historical Note
+:class: note
 Early centralized version control systems typically required users to check out
 individual files or directories rather than entire repositories, and only
 allowed one user to check out a given file at time. This prevented conflicting
@@ -144,7 +157,7 @@ changes with your name and email. In collaborative projects, these annotations
 are important for determining who made which changes. Thus the first time you
 use Git, you need to set your name and email.
 
-::: {.callout-tip}
+:::{tip}
 All Git commands begin with `git` and the name of a subcommand.
 
 You can view the documentation for any subcommand by adding `--help` to the
@@ -170,14 +183,14 @@ open-source, community-developed software, so it won't share your email address
 with spammers, but your email address *will* be visible on any changes you make
 to public repositories.
 
-::: {.callout-tip}
+:::{tip}
 Many developers configure Git to use their real name. This can be beneficial
 for ensuring you receive credit for any open-source or academic computing work
 you do while building your career.
 
 If you're not comfortable attaching your real name to work you do with Git, a
 reasonable alternative is to use an alias you control, such as your GitHub
-username. @sec-github explains more about GitHub.
+username. {numref}`sec-github` explains more about GitHub.
 
 Likewise, if you don't want to attach your primary email address to work you do
 with Git, set up a new email address and use that. Avoid making up a fake email
@@ -204,7 +217,9 @@ To make this change, run:
 git config --global init.defaultBranch main
 ```
 
-## Creating a Repository {#sec-creating-a-repository}
+
+(sec-creating-a-repository)=
+## Creating a Repository
 
 Now that we've established what version control systems are, and you've
 configured Git, it's time to create a repository.
@@ -232,7 +247,7 @@ directory (`my_first_repository/`) exists, and creates it if it doesn't. Then
 Git makes the directory a repository by creating a hidden `.git/` subdirectory.
 This subdirectory is where Git will store the history of the repository.
 
-::: {.callout-warning}
+:::{warning}
 The `.git/` subdirectory is hidden for a reason: generally, you should let Git
 manage its contents. Avoid creating or modifying files and directories inside
 `.git/`, as this might break your repository. If you delete `.git/`, your
@@ -240,7 +255,7 @@ repository will no longer be a repository---it will just be an ordinary
 directory.
 :::
 
-::: {.callout-tip}
+:::{tip}
 How many repositories to create is up to you, and depends on how you like to
 work, but we recommend that you create a separate repository for each distinct
 project.
@@ -278,7 +293,7 @@ just created the repository. Finally, in the third part of the message, Git
 says that there is nothing to commit. This also makes sense, since we haven't
 created any files in the repository yet.
 
-::: {.callout-note}
+:::{note}
 When Git doesn't recognize a directory as a repository, the output from `git
 status` instead looks like:
 
@@ -288,7 +303,8 @@ fatal: not a git repository
 :::
 
 
-## Adding & Committing Changes {#sec-adding-committing-changes}
+(sec-adding-committing-changes)=
+## Adding & Committing Changes
 
 Let's create a new file in the repository called `hello.txt`. Open a text
 editor (like `nano` or `vim`), enter the following text, and save it as
@@ -327,7 +343,7 @@ the commit. It might help to imagine the staging area as a box 📦 that you're
 packing up to store or to send to a friend. The `git add` command adds a file
 or set of changes to the box.
 
-::: {.callout-tip}
+:::{tip}
 Putting distinct work in distinct commits makes it easier to inspect (and
 occasionally undo) the work. Use `git add` (and its inverse, `git restore
 --staged` or `git reset --`) to curate the contents of your commits.
@@ -387,7 +403,7 @@ message must be a summary of the commit in 72 characters or less. You can also
 optionally follow this with a blank second line and then a longer description
 of the commit beginning on the third line.
 
-::: {.callout-note}
+:::{note}
 Conventionally, the first line of a commit message should be 50 characters or
 less, a complete sentence, and written in the imperative mood. For example:
 
@@ -420,7 +436,8 @@ Add first file.
 Finally, you can let Git know that you're done writing the commit message by
 saving the text and exiting the text editor.
 
-::: {.callout-note title="Using Vim" collapse="true"}
+:::{admonition} Using Vim
+:class: note, dropdown
 In Vim, press `i` to enter insert mode and type the commit message.
 
 When you're finished, press `Esc` to return to normal mode, type `:wq` (the
@@ -430,7 +447,7 @@ If you want to cancel the commit instead, press `Esc` to return to normal mode,
 type `:q!` (the command to quit without saving), and press `Enter`.
 :::
 
-::: {.callout-tip}
+:::{tip}
 If you exit the text editor without saving, Git will cancel the commit.
 :::
 
@@ -515,7 +532,7 @@ It might seem counterintuitive to add `hello.txt`, since it no longer exists.
 What you should keep in mind is that `git add` adds *changes* to the staging
 area, *not files,* and moving (or removing) a file is a change to that file.
 
-::: {.callout-important}
+:::{important}
 Removing/deleting a file is a change to that file, just like creating, editing,
 or moving the file.
 
@@ -557,7 +574,7 @@ git commit
 If you check the status now, you'll see that the working tree is once again
 clean.
 
-::: {.callout-important}
+:::{important}
 Remember, saving your work in Git is a two step process:
 
 1. `git add` (for each file with changes you want to save)
@@ -568,7 +585,7 @@ see later) before `git commit` to check that you've added the changes you meant
 to add to the staging area.
 :::
 
-::: {.callout-tip}
+:::{tip}
 You can also make commits without opening a text editor. Use this command:
 
 ```sh
@@ -608,7 +625,7 @@ Date:   Wed Jan 8 13:59:08 2025 -0800
 For each commit, the log lists the hash, name and email of the author, the
 timestamp, and commit message.
 
-::: {.callout-note}
+:::{note}
 When a repository has a long history, `git log` will display the commits in a
 scrolling window. You can use the up and down arrow keys to scroll, and type
 `q` (for quit) to return to the terminal.
@@ -666,7 +683,7 @@ usually also includes a few lines that didn't change (no prefix). It's a good
 idea to check `git diff` before adding files to the staging area, so that you
 know what you're adding.
 
-::: {.callout-tip}
+:::{tip}
 If you've changed a lot of files, the output from `git diff` can be
 overwhelming. You can use the command `git diff PATH` to view only the changes
 to the file or directory at `PATH`.
@@ -725,7 +742,7 @@ Date:   Wed Jan 8 13:59:08 2025 -0800
 In this example, the hash begins `4f5702`, but it will be different for your
 commit.
 
-::: {.callout-tip}
+:::{tip}
 As you can see from `git log`, the full hash for each commit is quite long. For
 most Git commands that require a hash, you can just use the first 5-6 digits.
 Git will let you know if it needs more digits to disambiguate which commit you
@@ -761,7 +778,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 As with any other change, you can add and commit this change if you want to
 save it in the repository's history.
 
-::: {.callout-warning}
+:::{warning}
 Be careful with `git restore`: when you restore a file, any *uncommitted*
 changes you've made to the file will be erased, and there's no undo.
 
@@ -770,13 +787,13 @@ show HASH:FILE` instead, where `HASH` is the commit's hash and `FILE` is the
 path to the file.
 :::
 
-::: {.callout-note}
+:::{note}
 There are many other ways to use `git restore`. For instance, you can use `git
 restore --staged FILE` to remove a file from the staging area. To learn more,
 check the documentation (`git restore --help`).
 :::
 
-::: {.callout-tip}
+:::{tip}
 If you want to revert/undo an entire commit, use `git revert` rather than `git
 restore`. Specifically, run:
 
@@ -833,12 +850,13 @@ repository's history.
 -->
 
 
-## GitHub {#sec-github}
+(sec-github)=
+## GitHub
 
 Up to this point, you've only used Git to work with a single repository
 **local** to your computer. As a distributed VCS
-(@sec-version-control-systems), one of Git's major features is that you can
-share commits between repositories (or copies of a repository).
+({numref}`sec-version-control-systems`), one of Git's major features is that
+you can share commits between repositories (or copies of a repository).
 
 From the perspective of your repository, other repositories are remote. Remote
 repositories, or **remotes**, are typically stored on some other computer
@@ -857,7 +875,7 @@ We'll use a remote repository hosted on GitHub to demonstrate how to share
 commits, but all of the Git commands described will work with any remote
 repository.
 
-::: {.callout-important}
+:::{important}
 Remember that Git and GitHub are different things! Git is a version control
 system, while GitHub is a hosting service built around Git.
 
@@ -891,7 +909,7 @@ look for an email from GitHub. Click the "Verify email address" button. Doing
 so will take you to your profile, where, if you'd like, you can add a few
 details about yourself.
 
-![](/images/ch02/github_new_homepage.png)
+![](/images/github_new_homepage.png)
 
 You now have a GitHub account! 🎉
 
@@ -917,7 +935,7 @@ key. An SSH key consists of two separate key files:
 SSH keys are much more secure than passwords, which is one reason why GitHub
 uses them for authentication.
 
-::: {.callout-note}
+:::{note}
 SSH stands for **secure shell protocol**, a protocol for communication between
 two computers. The "secure" in secure shell means that all messages sent
 between the computers are encrypted. This makes it practically impossible for a
@@ -942,13 +960,14 @@ sections of the documentation to set up SSH key authentication with GitHub:
 [gh-add]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 [gh-test]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection
 
-::: {.callout-important}
+:::{important}
 Don't skip this part---it's necessary if you want to follow along with the
 subsequent examples.
 :::
 
 
-## Sharing a Repository {#sec-sharing-a-repository}
+(sec-sharing-a-repository)=
+## Sharing a Repository
 
 With a GitHub account and SSH key set up, you're ready to upload your first
 shared repository to GitHub.
@@ -969,24 +988,24 @@ git init USERNAME_first_shared_repo
 In the repository, use a text editor to create a `README.md` file with contents
 `Hello world!`. It should look something like this:
 
-![](/images/ch02/hello_world.png)
+![](/images/hello_world.png)
 
 Commit `README.md` and write a descriptive commit message like `Add a README."
 
-So far so good! These steps should be familiar from @sec-creating-a-repository
-and @sec-adding-committing-changes. But now it's time to do something new: we
-need to set up a repository on GitHub where we can **push**, or send, commits
-from the local repository.
+So far so good! These steps should be familiar from
+{numref}`sec-creating-a-repository` and
+{numref}`sec-adding-committing-changes`. But now it's time to do something new:
+we need to set up a repository on GitHub where we can **push**, or send,
+commits from the local repository.
 
 Open a web browser and go to [GitHub][]. Make sure you're logged in, then click
 the "+" button in the upper-right corner and select the "New repository"
 option. You'll be taken to a page like this:
 
-![(click image to enlarge)](/images/ch02/gh_new_repository.png){
-  fig-align="center"
-  style="max-height: 40em"
-  .lightbox
-}
+:::{figure} /images/gh_new_repository.png
+:align: center
+:height: 40em
+:::
 
 The page asks for several details about the new repository:
 
@@ -1005,11 +1024,10 @@ GitHub username). Leave the description blank and make sure the repository is
 public. Because you already initialized the repository locally, leave all of
 the initialization options unchecked. It should look something like this:
 
-![(click image to enlarge)](/images/ch02/gh_new_repository_filled.png){
-  fig-align="center"
-  style="max-height: 40em"
-  .lightbox
-}
+:::{figure} /images/gh_new_repository_filled.png
+:align: center
+:height: 40em
+:::
 
 Once you've filled in the details, click the green "Create repository" button
 at the bottom of the page.
@@ -1018,11 +1036,10 @@ GitHub will take you to a new page with "Quick setup" and instructions to
 "create a new repository on the command line" or "push an existing repository
 from the command line." The page should look something like this:
 
-![(click image to enlarge)](/images/ch02/gh_new_repository_created.png){
-  fig-align="center"
-  style="max-height: 40em"
-  .lightbox
-}
+:::{figure} /images/gh_new_repository_created.png
+:align: center
+:height: 40em
+:::
 
 Under "Quick setup," click on the "SSH" button, so that the instructions show
 how to connect to GitHub with SSH. Since we already created a repository
@@ -1065,11 +1082,10 @@ can simply run `git push` (without any arguments).
 Now go back to your web browser and refresh the repository's page on GitHub.
 You should now see the message in your `README.md` file:
 
-![(click image to enlarge)](/images/ch02/gh_new_repository_pushed.png){
-  fig-align="center"
-  style="max-height: 40em"
-  .lightbox
-}
+:::{figure} /images/gh_new_repository_pushed.png
+:align: center
+:height: 40em
+:::
 
 GitHub automatically checks for a README file in your repository and if it
 finds one, displays it on the repository's main page. If the README file is
@@ -1077,7 +1093,7 @@ written in [Markdown][], GitHub will even render the formatting.
 
 [Markdown]: https://guides.github.com/features/mastering-markdown/
 
-::: {.callout-note title="See also"}
+:::{seealso}
 More information about writing effective README files is available through the
 DataLab's [README, Write Me! workshop][datalab-readme].
 
@@ -1087,7 +1103,7 @@ DataLab's [README, Write Me! workshop][datalab-readme].
 
 ## Collaborating
 
-::: {.callout-important}
+:::{important}
 For this this part, you'll need to work with a partner. Take a moment to find a
 partner and exchange GitHub usernames. Pay careful attention to the spelling
 and capitalization.
@@ -1096,28 +1112,26 @@ and capitalization.
 You now know how to push commits from a local repository to a remote. The
 counterpart to this is **pulling**, or downloading, commits from a remote to a
 local repository. In order to learn how to collaborate on repositories and how
-to pull commits, let's share the repository from @sec-sharing-a-repository with
-a partner. Then they can push a change up to GitHub, and you can pull the
-change down to your local repository.
+to pull commits, let's share the repository from
+{numref}`sec-sharing-a-repository` with a partner. Then they can push a change
+up to GitHub, and you can pull the change down to your local repository.
 
 To get started, open a web browser to your repository's main page on GitHub.
 Click on the "Settings" button. You'll be taken to a page that looks like this:
 
-![(click image to enlarge)](/images/ch02/gh_repository_settings.png){
-  fig-align="center"
-  style="max-height: 40em"
-  .lightbox
-}
+:::{figure} /images/gh_repository_settings.png
+:align: center
+:height: 40em
+:::
 
 On the left side, click on "Collaborators". GitHub might ask you to enter your
 password or complete two-factor authentication. Once you've done that, you'll
 end up at a page like this:
 
-![(click image to enlarge)](/images/ch02/gh_repository_collaborators.png){
-  fig-align="center"
-  style="max-height: 40em"
-  .lightbox
-}
+:::{figure} /images/gh_repository_collaborators.png
+:align: center
+:height: 40em
+:::
 
 Click on the green "Add people" button near the bottom of the page, then enter
 your partner's GitHub username in the popup that appears. Then tell your
@@ -1201,7 +1215,7 @@ someone.
 
 ## Recap
 
-![](/images/ch02/git_workflow_bg.png)
+![](/images/git_workflow_bg.png)
 
 As shown in the figure above, a typical Git workflow is:
 
@@ -1216,7 +1230,7 @@ can go wrong. _Pay attention to error messages_ and search online if you get
 stuck. Lots of people use Git, and your question has probably been asked and
 answered :)
 
-::: {.callout-note title="See also"}
+:::{seealso}
 The [Git Book][] is the definitive Git resource and an excellent reference to
 keep at hand as you begin to work with Git after finishing this reader.
 :::
