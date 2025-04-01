@@ -11,8 +11,8 @@ parts:
       - file: chapters/02_github
   - caption: Back Matter
     chapters:
-    - file: chapters/07_additional-resources
-    - file: chapters/08_assessment
+    - file: chapters/assessment
+    - file: chapters/references
   - caption: Retired
     numbered: true
     chapters:
