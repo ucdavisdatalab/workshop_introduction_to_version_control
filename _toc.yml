@@ -8,6 +8,7 @@ parts:
     numbered: true
     chapters:
       - file: chapters/01_version-control
+      - file: chapters/02_github
   - caption: Back Matter
     chapters:
     - file: chapters/07_additional-resources
