@@ -1,4 +1,4 @@
-# Version Control
+# Getting Started
 
 :::{admonition} Learning Goals
 :class: note
@@ -18,19 +18,22 @@ After this lesson, you should be able to:
 :::
 
 
-**Version control** describes the process of storing and organizing multiple
-versions (or copies) of files on your computer. Approaches to version control
-range from simple to complex and they can involve the use of both manual and
-automatic workflows. Ultimately, the overall goal of version control is to
-store and manage multiple versions of the same file(s).
+## What is Version Control?
 
-Chances are good that you are already doing some kind of version control
-yourself. Most people have a folder/directory somewhere on their computer that
-looks something like this:
+<!-- TODO -->
+**Version control** is the process of storing and organizing multiple versions
+(or copies) of files on your computer. Approaches to version control range from
+simple to complex and they can involve the use of both manual and automatic
+workflows. Ultimately, the overall goal of version control is to store and
+manage multiple versions of the same file(s).
+
+Chances are good that you're already doing some kind of version control
+yourself. You might have a directory somewhere on your computer that looks
+something like this:
 
 ![](/images/mac_finder_1.png)
 
-Or perhaps, this:
+Or perhaps this:
 
 ![](/images/mac_window_2.png)
 
@@ -58,9 +61,9 @@ modern version control systems.
 :::{admonition} Historical Note
 :class: note
 IBM’s OS/360 IEBUPDTE software update tool is widely regarded as the earliest
-and most widely adopted precursor to modern, version control systems. Its
+and most widely adopted precursor to modern version control systems. Its
 release in 1972 of the Source Code Control System (SCCS) package marked the
-first, fully fledged system designed specifically for software version control.
+first fully-fledged system designed specifically for software version control.
 :::
 
 It's common for projects to have multiple associated files, so most version
@@ -69,6 +72,7 @@ files. Generally, a repository (or repo) is just a directory where you've set
 up a version control system to keep track of changes to the contents. A
 repository can contain any number of files and subdirectories.
 
+<!-- TODO -->
 It's also common for people to collaborate on projects, so most version control
 systems provide a way to create multiple copies of a repository and share
 changes between them. Version control systems can be divided into two
@@ -129,8 +133,8 @@ the final authority on the repository's history. This gives users the best of
 both worlds, by allowing some to sync directly with each other while others
 sync with this authoritative copy.
 
-Today, a distributed VCS, [Git][], is the most popular VCS. Some polls estimate
-that it's used by more than 90% of all developers. A few other version control
+The most popular VCS today is [Git][], a distributed VCS. Some polls estimate
+that more than 90% of all developers use Git. A few other version control
 systems in use today include Mercurial, Subversion, Perforce, and Plastic SCM.
 Many document editors, such as Google Docs and Microsoft Word, also have
 built-in version control systems. Each of these systems offers a twist on
@@ -140,57 +144,119 @@ this reader, we'll focus on Git.
 
 [Git]: https://git-scm.com/
 
+:::::{important}
+Git is available for Windows, macOS, and Linux.
 
-### First-time Git Configuration
+Install Git by following the instructions for your computer's operating system:
 
-When you save changes to a repository, Git will automatically annotate the
-changes with your name and email. In collaborative projects, these annotations
-are important for determining who made which changes. Thus the first time you
-use Git, you need to set your name and email.
+::::{tab-set}
 
-:::{tip}
-All Git commands begin with `git` and the name of a subcommand.
-
-You can view the documentation for any subcommand by adding `--help` to the
-end. For instance, to get help with the `git config` subcommand used in the
-next example, run `git config --help`.
+:::{tab-item} Windows
+On Windows, download Git from [the Git downloads page][install-git]. We
+recommend the default installation options, which also install Git Bash. You'll
+need Git Bash to follow along with this workshop.
 :::
 
-To set your name, open a terminal and type:
+:::{tab-item} macOS
+<!-- FIXME: do we want them to install with Pixi instead? Xcode is ~30GB -->
+On macOS, there are many ways to install Git. The easiest is generally to
+install Xcode by opening a terminal and entering:
 
-```sh
-git config --global user.name "YOUR_NAME"
+```
+git --version
 ```
 
-Replace `YOUR_NAME` with your name or preferred alias. Then press `Enter`. To
-set your email, enter:
+Then follow the prompts to install Xcode. If you prefer not to install Xcode
+(it is quite large), installing Git with a package manager such as Homebrew,
+MacPorts, or [Pixi][dl-pixi] is also okay.
+:::
 
-```sh
-git config --global user.email "YOUR_EMAIL"
-```
+:::{tab-item} Linux
+On Linux, we recommend installing Git with your distribution's package manager
+(many distributions install Git by default). Installing Git with a user-level
+package manager such as [Pixi][dl-pixi] is also okay.
+:::
 
-Replace `YOUR_EMAIL` with your preferred public email address. Git is
-open-source, community-developed software, so it won't share your email address
-with spammers, but your email address *will* be visible on any changes you make
-to public repositories.
+[dl-pixi]: https://ucdavisdatalab.github.io/workshop_installing_software/
+::::
 
-:::{tip}
-Many developers configure Git to use their real name. This can be beneficial
-for ensuring you receive credit for any open-source or academic computing work
-you do while building your career.
+You can also find more information about how to install Git in the section
+[Installing Git][pg-install] of the book _[Pro Git][pg]_ by Chacon and Straub.
+_Pro Git_ is an excellent reference for all things Git, so much so that a
+digital version is available for free on the Git website.
 
+[install-git]: https://git-scm.com/downloads/win
+[pg-install]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+[pg]: https://git-scm.com/book/en/v2
+:::::
+
+
+## Configuring Git
+
+<!-- TODO: better intro? -->
+
+When you save changes to a repository, Git will automatically sign the changes
+with your name and email. In collaborative projects, these signatures are
+important for determining who made which changes. Thus the first time you use
+Git, you need to set your name and email.
+
+We recommend that you configure Git with your real name (given name and
+surname) and a valid email address. These serve the same purpose in Git as they
+would on a publication: they ensure you receive credit for your work and give
+people a way to contact you about it. Git is open-source, community-developed
+software, so it won't share your name and email address with spammers, but the
+information *will* be visible on any changes you make to public repositories.
+
+:::{note}
 If you're not comfortable attaching your real name to work you do with Git, a
 reasonable alternative is to use an alias you control, such as your GitHub
 username. {numref}`sec-github` explains more about GitHub.
 
 Likewise, if you don't want to attach your primary email address to work you do
-with Git, set up a new email address and use that. Avoid making up a fake email
-address, as this will make it impossible for people to contact you and might
-even allow someone else to take credit for your work.
+with Git, set up a new email address and use that. Don't make up a fake email
+address---someone else could take credit for your work or even impersonate you.
 :::
 
-You can run either of these commands again later to change the name and email
-address with which Git annotates your work.
+To set your name in Git, open a terminal and type:
+
+```none
+git config set --global user.name "YOUR_NAME"
+```
+
+Replace `YOUR_NAME` with your name, keeping the quotes. Then press `Enter`. If
+you make a mistake, don't worry: you can run this command to change your name
+as many times as you need.
+
+Let's break down what the command means. All Git commands begin with `git`
+followed by the name of a subcommand. The command to set Git's configuration
+options is `git config set`. The `--global` argument makes the command set
+options globally (that is, for all of your repositories). Git stores your name
+under the `user.name` configuration option. The final argument is the new value
+for `user.name`. So the command sets `user.name` for all repositories to the
+    name you put inside the quotes.
+
+The related command `git config get` gets the value of an option. You can use
+this to check how Git is configured. For instance, to check what Git thinks
+your name is:
+
+```none
+git config get user.name
+```
+
+:::{tip}
+You can view the documentation for any subcommand by adding `--help` to the
+end. For instance, to get help with the `git config` subcommand, run `git
+config --help`.
+:::
+
+Git stores your email address under the `user.email` configuration option. So
+to set your email, type:
+
+```none
+git config set --global user.email "YOUR_EMAIL"
+```
+
+Replace `YOUR_EMAIL` with your preferred public email address.
 
 Finally, we suggest that you change the default branch name from `master` to
 `main`. You'll learn more about what branches are later, but we advise making
@@ -202,11 +268,18 @@ instances, language matters.
 
 [sfconservancy]: https://sfconservancy.org/news/2020/jun/23/gitbranchname/
 
-To make this change, run:
+To change the default branch name to `main`, run:
 
-```sh
-git config --global init.defaultBranch main
+```none
+git config set --global init.defaultBranch main
 ```
+
+:::{seealso}
+This section is based on the section [First-Time Git Setup][pg-first] of the
+book _Pro Git_.
+
+[pg-first]: https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+:::
 
 
 (sec-creating-a-repository)=
@@ -229,7 +302,7 @@ git init my_first_repository
 
 Git will reply with a message like:
 
-```
+```none
 Initialized empty Git repository in /home/USERNAME/my_first_repository/.git/
 ```
 
@@ -239,17 +312,10 @@ Git makes the directory a repository by creating a hidden `.git/` subdirectory.
 This subdirectory is where Git will store the history of the repository.
 
 :::{warning}
-The `.git/` subdirectory is hidden for a reason: generally, you should let Git
-manage its contents. Avoid creating or modifying files and directories inside
-`.git/`, as this might break your repository. If you delete `.git/`, your
-repository will no longer be a repository---it will just be an ordinary
-directory.
-:::
-
-:::{tip}
-How many repositories to create is up to you, and depends on how you like to
-work, but we recommend that you create a separate repository for each distinct
-project.
+The `.git/` subdirectory is hidden for a reason. Let Git manage its contents.
+Avoid creating or modifying files and directories inside `.git/`, as this might
+break your repository. If you delete `.git/`, your repository will no longer be
+a repository---it will just be an ordinary directory.
 :::
 
 Now let's check that Git actually recognizes `my_first_repository/` as a
@@ -268,7 +334,7 @@ git status
 
 Since the directory is a repository, Git will respond with output like:
 
-```
+```none
 On branch main
 
 No commits yet
@@ -286,32 +352,79 @@ created any files in the repository yet.
 
 :::{note}
 When Git doesn't recognize a directory as a repository, the output from `git
-status` instead looks like:
+status` (and most other `git` subcommands) instead looks like:
 
-```
+```none
 fatal: not a git repository
 ```
+
+If you see this message, your working directory is not a Git repository. Most
+likely you meant to run the command in a different directory.
+:::
+
+:::{tip}
+How many repositories to create is up to you, and depends on how you like to
+work, but we recommend that you create a separate repository for each distinct
+project.
 :::
 
 
 (sec-adding-committing-changes)=
 ## Adding & Committing Changes
 
-Let's create a new file in the repository called `hello.txt`. Open a text
-editor (like `nano` or `vim`), enter the following text, and save it as
-`hello.txt`:
+Let's create a new file in the repository called `hello.txt`. Start by opening
+a text editor.
+
+:::{admonition} Choosing a Text Editor
+:class: note, dropdown
+Even if you primarily use software with graphical user interfaces, it's good to
+be familiar with a command-line text editor. You can use the editor for quick
+edits while at the command-line and on computers that don't provide a graphical
+environment (as is often the case for cloud and high-performance computing
+resources).
+
+The [GNU nano][nano] text editor is a simple and easy-to-learn. It's typically
+pre-installed on Linux and bundled with Git Bash on Windows. On macOS, Pico,
+nano's almost-identical predecessor, is pre-installed. You can run nano with
+the `nano` command (or run Pico with the `pico` command).
+
+[nano]: https://nano-editor.org/
+
+If you like the simplicity of nano but want features like modern keyboard
+shortcuts and syntax highlighting by default, install the [micro][] editor.
+It's available for all major operating systems; see the website for details.
+
+[micro]: https://micro-editor.github.io/
+
+[Vim][] is a powerful, customizable text editor, but takes some time to learn.
+Vim (or its predecessor vi) is typically pre-installed on macOS and Linux, and
+is bundled with Git Bash on Windows. You can run Vim with the `vim` command (or
+run vi with the `vi` command).
+
+[Vim]: https://www.vim.org/
+
+Popular alternatives to Vim with similar features include [GNU Emacs][Emacs]
+and [Neovim][].
+
+[Emacs]: https://www.gnu.org/software/emacs/
+[Neovim]: https://neovim.io/
+:::
+
+
+In the text editor, enter the following text:
 
 ```
 Hello world!
 ```
 
-Now check the status of the repository again:
+Save this as `hello.txt` in the repository directory. Then check the status of
+the repository again:
 
 ```sh
 git status
 ```
 
-```
+```none
 On branch main
 
 No commits yet
@@ -324,23 +437,17 @@ nothing added to commit but untracked files present (use "git add" to track)
 ```
 
 Git notices the new file, `hello.txt`, and says it's **untracked**, which means
-Git doesn't have any history for the file. You just created the file and
-haven't committed it yet, so it makes sense that there's no history.
+Git doesn't have any history for it. You just created the file and haven't
+committed it yet, so it makes sense that there's no history.
 
 Let's commit `hello.txt` now. The first step is to add the file to Git's
 **staging area** (or **index**). The staging area is a virtual space for
-preparing commits, where you can select which files or changes to include in
-the commit. It might help to imagine the staging area as a box 📦 that you're
-packing up to store or to send to a friend. The `git add` command adds a file
-or set of changes to the box.
+preparing commits, where you can select which changes to include in the commit.
+It might help to imagine the staging area as a box 📦 that you're packing up to
+store or to send to a friend.
 
-:::{tip}
-Putting distinct work in distinct commits makes it easier to inspect (and
-occasionally undo) the work. Use `git add` (and its inverse, `git restore
---staged` or `git reset --`) to curate the contents of your commits.
-:::
-
-Go ahead and add `hello.txt` to the staging area:
+The `git add` command adds changes to the staging area. Go ahead and add the
+changes to `hello.txt`:
 
 ```sh
 git add hello.txt
@@ -352,7 +459,7 @@ Now check the status of the repository again:
 git status
 ```
 
-```
+```none
 On branch main
 
 No commits yet
@@ -362,8 +469,39 @@ Changes to be committed:
         new file:   hello.txt
 ```
 
-Now Git reports that `hello.txt` is in the staging area and ready to be
-committed.
+Git reports that the changes to `hello.txt` are in the staging area and ready
+to be committed. It also lists the command to remove the changes from the
+staging area.
+
+:::{tip}
+Take advantage of the staging area to curate the contents of your commits.
+Putting distinct work in distinct commits makes it easier to inspect (and
+occasionally undo) the work.
+:::
+
+:::{tip}
+In a new repository without any commits, the command to unstage changes is `git
+rm --cached`.
+
+In a repository that has commits, the command to unstage changes is `git
+restore --staged`. This is the command to remember, since most repositories
+have commits.
+
+The distinction can trip up even experienced Git users. If you want a single
+unstage command you can use under any circumstances, run:
+
+```none
+git config set --global alias.unstage "reset --"
+```
+
+Then you can use `git unstage` whenever you want to unstage changes.
+
+<!-- FIXME: uncomment this when the section is added
+You can
+learn more about what the `git config` command above does in
+{numref}`sec-aliases`.
+-->
+:::
 
 You can make a commit with the `git commit` command. Enter the command:
 
@@ -371,10 +509,10 @@ You can make a commit with the `git commit` command. Enter the command:
 git commit
 ```
 
-In response, Git will open a text editor (typically `vim`) with the following
+In response, Git will open a text editor (Vim by default) with the following
 text:
 
-```
+```none
 
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
@@ -394,11 +532,11 @@ message must be a summary of the commit in 72 characters or less. You can also
 optionally follow this with a blank second line and then a longer description
 of the commit beginning on the third line.
 
-:::{note}
+:::{tip}
 Conventionally, the first line of a commit message should be 50 characters or
 less, a complete sentence, and written in the imperative mood. For example:
 
-```
+```none
 Fix typos in the main text.
 ```
 
@@ -408,9 +546,9 @@ best approach is to talk to your collaborators about specific conventions they
 want to follow, and check in with them about exceptions to the conventions.
 :::
 
-Edit the first line of the text to look like this:
+Edit the commit message to look like this:
 
-```
+```none
 Add first file.
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
@@ -424,9 +562,16 @@ Add first file.
 #
 ```
 
-Finally, you can let Git know that you're done writing the commit message by
-saving the text and exiting the text editor.
+Finally, to let Git know that you're done, save the commit message and exit the
+text editor.
 
+:::{note}
+If you exit the text editor without saving, Git will cancel the commit. This is
+helpful if you change your mind about making a commit or forget to add
+something to the staging area.
+:::
+
+<!--
 :::{admonition} Using Vim
 :class: note, dropdown
 In Vim, press `i` to enter insert mode and type the commit message.
@@ -437,14 +582,11 @@ command to write and quit), and press `Enter`.
 If you want to cancel the commit instead, press `Esc` to return to normal mode,
 type `:q!` (the command to quit without saving), and press `Enter`.
 :::
-
-:::{tip}
-If you exit the text editor without saving, Git will cancel the commit.
-:::
+-->
 
 Git will print some output to confirm that the commit was created:
 
-```
+```none
 [main (root-commit) 0f5c79d] Add first file.
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
@@ -465,7 +607,7 @@ commit:
 git status
 ```
 
-```
+```none
 On branch main
 nothing to commit, working tree clean
 ```
@@ -490,7 +632,7 @@ Now check the status of the repository:
 git status
 ```
 
-```
+```none
 On branch main
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
@@ -531,8 +673,8 @@ If you want to delete a file called `FILE` from a repository, first delete the
 file, then run `git add FILE` to add the change to the staging area, and
 finally run `git commit` to make a commit.
 
-Note that deleted files remain in the repository's history, so it's possible to
-restore them later.
+Deleted files remain in the repository's history, so it's possible to restore
+them later.
 :::
 
 Now check the status:
@@ -541,7 +683,7 @@ Now check the status:
 git status
 ```
 
-```
+```none
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
@@ -556,7 +698,7 @@ was moved/renamed. Go ahead and commit the change with the commit message
 git commit
 ```
 
-```
+```none
 [main 4f57023] Move hello.txt to README.md.
  1 file changed, 0 insertions(+), 0 deletions(-)
  rename hello.txt => README.md (100%)
@@ -589,16 +731,22 @@ simple commits.
 :::
 
 
-## Exploring & Restoring History
+(sec-exploring-history)=
+## Exploring History
+
+<!--
+FIXME: better to introduce diff at the same time as add (and possibly split
+adding and committing into two different sections).
+-->
 
 Now that you've made some commits, let's take a look at the repository's
-history. To view the history of commits to a repository, enter the command:
+history. To view the log of commits to a repository, enter the command:
 
 ```sh
 git log
 ```
 
-```
+```none
 commit 4f5702364c155faa260080671b63177550347ea0 (HEAD -> main)
 Author: YOUR_NAME <YOUR_EMAIL>
 Date:   Wed Jan 8 14:32:21 2025 -0800
@@ -613,7 +761,7 @@ Date:   Wed Jan 8 13:59:08 2025 -0800
 
 ```
 
-For each commit, the log lists the hash, name and email of the author, the
+For each commit, the log lists the hash, name and email of the author,
 timestamp, and commit message.
 
 :::{note}
@@ -623,9 +771,9 @@ scrolling window. You can use the up and down arrow keys to scroll, and type
 :::
 
 Let's make one more commit: we'll add a title to the `README.md` file. Open the
-file with a text editor and edit it so that the contents are:
+file with a text editor and add a title, so that it looks like this:
 
-```
+```md
 # My README
 
 Hello world!
@@ -638,7 +786,7 @@ the repository has changed:
 git status
 ```
 
-```
+```none
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -655,7 +803,7 @@ recent commit with `git diff`:
 git diff
 ```
 
-```
+```diff
 diff --git a/README.md b/README.md
 index cd08755..4e3eb18 100644
 --- a/README.md
@@ -689,7 +837,7 @@ There are many other ways to use `git diff`; check the documentation (`git diff
 Add and commit the changes. After you finish, you should have a third commit in
 the repository history (`git log`) that looks something like this:
 
-```
+```none
 commit e15d8c1355f16c26fe00354855c24bff3626fc1b (HEAD -> main)
 Author: YOUR_NAME <YOUR_EMAIL>
 Date:   Wed Jan 8 15:35:02 2025 -0800
@@ -698,18 +846,28 @@ Date:   Wed Jan 8 15:35:02 2025 -0800
 
 ```
 
-Now suppose you decide you don't like the new title in `README.md`. If you want
-to change the title to something new, the best approach is to edit the file and
-make a new commit. On the other hand, if you want to restore an earlier version
-of the file, manual editing is tedious and error-prone.
 
-Instead, you can use the `git restore --source` command to restore a file to
-how it was in a particular commit.
+## Restoring Old Versions of Files
+
+<!--
+FIXME: this example would be better if we went back several commits, and if
+there were multiple files in the repo (to show that only the restored file
+changes).
+-->
+
+Suppose you decide you don't like the title you added to `README.md` in
+{numref}`sec-exploring-history`. If you want to change the title to something
+different, the best approach is to edit the file and make a new commit. On the
+other hand, if you want to restore an older version of the file, manual editing
+is tedious and error-prone.
+
+Instead, use the `git restore --source` command to restore a file to how it was
+in a particular commit.
 
 To demonstrate this, let's restore `README.md` to how it was in the commit
 before we added a title. First check `git log` to get the commit's hash:
 
-```
+```none
 commit e15d8c1355f16c26fe00354855c24bff3626fc1b (HEAD -> main)
 Author: YOUR_NAME <YOUR_EMAIL>
 Date:   Wed Jan 8 15:35:02 2025 -0800
@@ -735,7 +893,7 @@ commit.
 
 :::{tip}
 As you can see from `git log`, the full hash for each commit is quite long. For
-most Git commands that require a hash, you can just use the first 5-6 digits.
+most Git commands that require a hash, you can just use the first few digits.
 Git will let you know if it needs more digits to disambiguate which commit you
 mean.
 :::
@@ -756,7 +914,7 @@ of the repository, you'll see that Git noticed the change:
 git status
 ```
 
-```
+```none
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -769,7 +927,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 As with any other change, you can add and commit this change if you want to
 save it in the repository's history.
 
-:::{warning}
+:::{danger}
 Be careful with `git restore`: when you restore a file, any *uncommitted*
 changes you've made to the file will be erased, and there's no undo.
 
@@ -778,11 +936,13 @@ show HASH:FILE` instead, where `HASH` is the commit's hash and `FILE` is the
 path to the file.
 :::
 
+<!--
 :::{note}
 There are many other ways to use `git restore`. For instance, you can use `git
 restore --staged FILE` to remove a file from the staging area. To learn more,
 check the documentation (`git restore --help`).
 :::
+-->
 
 :::{tip}
 If you want to revert/undo an entire commit, use `git revert` rather than `git

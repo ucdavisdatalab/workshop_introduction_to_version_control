@@ -1,4 +1,4 @@
-# GitHub
+# Remote Repositories
 
 :::{admonition} Learning Goals
 :class: note
@@ -14,17 +14,23 @@ After this lesson, you should be able to:
 
 [GitHub]: https://github.com/
 
+As a distributed version control system
+({numref}`sec-version-control-systems`), one of Git's major features is that
+you can share commits between repositories. From the perspective of a
+repository, the repository is **local** and all other repositories are
+**remote**. Remote repositories, or remotes, are typically stored on some other
+computer connected to yours by a network (such as the Internet). In this
+chapter, you'll learn how to use Git to send and receive commits from remote
+repositories.
+
+
 (sec-github)=
 ## GitHub
 
-Up to this point, you've only used Git to work with a single repository
-**local** to your computer. As a distributed VCS
-({numref}`sec-version-control-systems`), one of Git's major features is that
-you can share commits between repositories (or copies of a repository).
-
-From the perspective of your repository, other repositories are remote. Remote
-repositories, or **remotes**, are typically stored on some other computer
-connected to yours by a network (such as the Internet).
+<!--
+TODO: this section could provide more details about popular hosting services
+and explain why we focus on GitHub.
+-->
 
 [GitHub][] is a hosting service for Git repositories, much like Google Drive
 and Dropbox are hosting services for files. You don't have to use GitHub or
@@ -40,8 +46,8 @@ commits, but all of the Git commands described will work with any remote
 repository.
 
 :::{important}
-Remember that Git and GitHub are different things! Git is a version control
-system, while GitHub is a hosting service built around Git.
+Keep in mind that Git and GitHub are different things. Git is a version control
+system, while GitHub is a hosting service built to support Git.
 
 GitHub also offers an application called [GitHub Desktop][gh-desktop], which
 allows users to manage their local repositories with a point-and-click
@@ -79,6 +85,11 @@ You now have a GitHub account! 🎉
 
 
 ### Connecting to GitHub with SSH
+
+:::{important}
+Don't skip this part---it's necessary if you want to follow along with the
+subsequent examples.
+:::
 
 To connect to GitHub from the command line, you must have a GitHub account and
 a way to **authenticate**, or establish your identity (prove that you are who
@@ -124,11 +135,6 @@ sections of the documentation to set up SSH key authentication with GitHub:
 [gh-add]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 [gh-test]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection
 
-:::{important}
-Don't skip this part---it's necessary if you want to follow along with the
-subsequent examples.
-:::
-
 
 (sec-sharing-a-repository)=
 ## Sharing a Repository
@@ -149,12 +155,15 @@ Initialize a new Git repository called `USERNAME_first_shared_repo` (replace
 git init USERNAME_first_shared_repo
 ```
 
-In the repository, use a text editor to create a `README.md` file with contents
-`Hello world!`. It should look something like this:
+In the repository, use a text editor to create a `README.md` file. The contents
+should look something like this:
 
-![](/images/hello_world.png)
+```none
+Hello world!
+```
 
-Commit `README.md` and write a descriptive commit message like `Add a README."
+Add and commit the changes to `README.md`. Make sure to write a descriptive
+commit message like `Add a README.`
 
 So far so good! These steps should be familiar from
 {numref}`sec-creating-a-repository` and
@@ -230,7 +239,7 @@ Finally, the third command, `git push`, pushes the contents of the local
 repository to the repository on GitHub (`origin`). You should see some output
 like:
 
-```
+```none
 Enumerating objects: 3, done.
 Counting objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 1.39 KiB | 1.39 MiB/s, done.
@@ -258,11 +267,13 @@ written in [Markdown][], GitHub will even render the formatting.
 [Markdown]: https://guides.github.com/features/mastering-markdown/
 
 :::{seealso}
-More information about writing effective README files is available through the
-DataLab's [README, Write Me! workshop][datalab-readme].
+You can find more information about how to write effective README files in
+DataLab's [README, Write Me! workshop][dl-readme].
 
-[datalab-readme]: https://ucdavisdatalab.github.io/workshop_how-to-data-documentation/
+[dl-readme]: https://ucdavisdatalab.github.io/workshop_how-to-data-documentation/
 :::
+
+<!-- TODO: another example of pushing a commit -->
 
 
 ## Collaborating
@@ -310,7 +321,7 @@ the green "Code" button on their repository's main page, select the "Local"
 tab, and select "SSH". Then copy the listed URL to your clipboard. It will look
 something like this:
 
-```
+```none
 git@github.com:tshoemaker/tshoemaker_first_shared_repo.git
 ```
 
@@ -329,7 +340,7 @@ You'll need to paste the URL you copied to the end of the command:
 git clone git@github.com:tshoemaker/tshoemaker_first_shared_repo.git
 ```
 
-```
+```none
 Cloning into 'tshoemaker_first_shared_repo'...
 remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
@@ -358,7 +369,7 @@ git pull
 
 Git should print output that looks something like this:
 
-```
+```none
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
@@ -377,7 +388,7 @@ congratulations! You've successfully used Git and GitHub to collaborate with
 someone.
 
 
-## Recap
+## The Git Workflow
 
 ![](/images/git_workflow_bg.png)
 
@@ -395,9 +406,9 @@ stuck. Lots of people use Git, and your question has probably been asked and
 answered :)
 
 :::{seealso}
-The [Git Book][] is the definitive Git resource and an excellent reference to
+_[Pro Git][pg]_ is the definitive Git resource and an excellent reference to
 keep at hand as you begin to work with Git after finishing this reader.
 :::
 
-[Git Book]: https://git-scm.com/book/en/v2
+[pg]: https://git-scm.com/book/en/v2
 
