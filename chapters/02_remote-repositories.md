@@ -87,7 +87,7 @@ details about yourself.
 You now have a GitHub account!
 
 
-### Connecting to GitHub with SSH
+### Connecting with SSH
 
 To connect to GitHub from the command line, you must have a GitHub account and
 a way to **authenticate**, or establish your identity (prove that you are who
@@ -260,8 +260,9 @@ The second command, `git branch`, ensures that the default branch is called
 `main`.
 
 Finally, the third command, `git push`, pushes the contents of the local
-repository to the repository on GitHub (`origin`). You should see some output
-like:
+repository to the repository on GitHub (`origin`).
+
+You should see some output like:
 
 ```none
 Enumerating objects: 3, done.
@@ -273,8 +274,10 @@ To github.com:nick-ulle/nick-ulle_first_shared_repo.git
 branch 'main' set up to track 'origin/main'.
 ```
 
-From now on, when you want to push commits from this repository to GitHub, you
-can simply run `git push` (without any arguments).
+You only need to run these three commands the first time you upload a
+particular repository to GitHub. From now on, when you want to push commits
+from this repository to GitHub, you can simply run `git push` (without any
+arguments).
 
 Now go back to your web browser and refresh the repository's page on GitHub.
 You should see the message in your `README.md` file:
