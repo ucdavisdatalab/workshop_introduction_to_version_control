@@ -503,7 +503,7 @@ someone.
 
 ## The Git Workflow
 
-![](/images/git_workflow_bg.png)
+![](/images/git_workflow.svg)
 
 A typical Git workflow---as illustrated in the figure above---is:
 

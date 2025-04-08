@@ -101,13 +101,13 @@ on how they do this:
 :::::{grid}
 
 ::::{grid-item}
-:::{figure} /images/spoke_and_where_cloud.png
+:::{figure} /images/centralized_network.svg
 Centralized (hub and spoke) model
 :::
 ::::
 
 ::::{grid-item}
-:::{figure} /images/distributed_network.png
+:::{figure} /images/distributed_network.svg
 Distributed (network) model
 :::
 ::::
