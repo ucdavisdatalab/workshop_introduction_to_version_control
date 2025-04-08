@@ -41,14 +41,17 @@ repositories.
 [GitLab]: https://about.gitlab.com/
 [BitBucket]: https://bitbucket.org/
 
-We'll use a remote repository hosted on GitHub to demonstrate how to share
-commits, but all of the Git commands described will work with any remote
-repository.
-
 :::{important}
 Keep in mind that Git and GitHub are different things. Git is a version control
 system, while GitHub is a hosting service built to support Git.
 
+We'll use a remote repository hosted on GitHub to demonstrate how to share
+commits, but all of the Git commands described will work with any remote
+repository.
+:::
+
+:::{admonition} Note: GitHub Desktop
+:class: note, dropdown
 GitHub also offers an application called [GitHub Desktop][gh-desktop], which
 allows users to manage their local repositories with a point-and-click
 graphical user interface (GUI).
@@ -81,15 +84,10 @@ details about yourself.
 
 ![](/images/github_new_homepage.png)
 
-You now have a GitHub account! 🎉
+You now have a GitHub account!
 
 
 ### Connecting to GitHub with SSH
-
-:::{important}
-Don't skip this part---it's necessary if you want to follow along with the
-subsequent examples.
-:::
 
 To connect to GitHub from the command line, you must have a GitHub account and
 a way to **authenticate**, or establish your identity (prove that you are who
@@ -108,9 +106,31 @@ key. An SSH key consists of two separate key files:
   your private key with *anyone* else.
 
 SSH keys are much more secure than passwords, which is one reason why GitHub
-uses them for authentication.
+uses them for authentication. GitHub provides [detailed documentation][gh-ssh]
+about how to create an SSH key and add the public key to your GitHub account.
 
-:::{note}
+[gh-ssh]: https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+
+:::{important}
+Work through the following sections of the documentation to set up SSH key
+authentication with GitHub:
+
+* [Checking for existing SSH keys][gh-check]
+* [Generating a new SSH key and adding it to the ssh-agent][gh-generate]
+* [Adding a new SSH key to your GitHub account][gh-add]
+* [Testing your SSH connection][gh-test]
+
+[gh-check]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys
+[gh-generate]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+[gh-add]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+[gh-test]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection
+
+Don't skip this part---it's necessary if you want to use GitHub and follow
+along with the subsequent examples.
+:::
+
+:::{admonition} Note: What is SSH?
+:class: note, dropdown
 SSH stands for **secure shell protocol**, a protocol for communication between
 two computers. The "secure" in secure shell means that all messages sent
 between the computers are encrypted. This makes it practically impossible for a
@@ -120,50 +140,54 @@ Git uses SSH to connect GitHub. Git can also use SSH to connect to other
 servers hosting repositories.
 :::
 
-GitHub provides [detailed documentation][gh-ssh] about how to create an SSH key
-and add the public key to your GitHub account. Work through the following
-sections of the documentation to set up SSH key authentication with GitHub:
-
-* [Checking for existing SSH keys][gh-check]
-* [Generating a new SSH key and adding it to the ssh-agent][gh-generate]
-* [Adding a new SSH key to your GitHub account][gh-add]
-* [Testing your SSH connection][gh-test]
-
-[gh-ssh]: https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
-[gh-check]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys
-[gh-generate]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-[gh-add]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
-[gh-test]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection
-
 
 (sec-sharing-a-repository)=
 ## Sharing a Repository
 
 With a GitHub account and SSH key set up, you're ready to upload your first
-shared repository to GitHub.
+repository to GitHub. Some reasons to put a repository on GitHub include:
 
-To get started, open a terminal and navigate to your home directory:
+* To back up your work
+* To collaborate on a project with colleagues
+* To make your work available for other people to use and evaluate
 
-```sh
-cd
+Let's go through the steps to upload a repository, which we'll share with other
+people in {numref}`sec-collaborating`. To get started, open a terminal and
+navigate to your projects directory:
+
+```none
+cd ~/projects/
 ```
 
-Initialize a new Git repository called `USERNAME_first_shared_repo` (replace
-`USERNAME` with your GitHub username):
+We'll initialize a new repository to share, but you could also skip this step
+and follow the rest to share an existing repository. Name the new repository
+`USERNAME_first_shared_repo`, where `USERNAME` is your GitHub username:
 
-```sh
+```none
 git init USERNAME_first_shared_repo
 ```
 
-In the repository, use a text editor to create a `README.md` file. The contents
-should look something like this:
+Open a text editor and type out a short self-introduction and a question for
+people who access your repository. Pick something friendly and not too
+intrusive, like this:
 
-```none
-Hello world!
+```markdown
+# README
+
+Hi there, I'm Nick. My research interests include computer vision, programming
+languages, and data science pedagogy.
+
+What do you like about one of your hobbies?
 ```
 
-Add and commit the changes to `README.md`. Make sure to write a descriptive
-commit message like `Add a README.`
+Save this in the repository as as `README.md`, then add and commit the changes:
+
+```none
+git add README.md
+git commit
+```
+
+Make sure to write a descriptive commit message like `Add a README.`
 
 So far so good! These steps should be familiar from
 {numref}`sec-creating-a-repository` and
@@ -222,7 +246,7 @@ instructions.
 Open a terminal, navigate to the repository you created earlier, and then run
 the commands listed on the page. In the screenshot above, these are:
 
-```sh
+```none
 git remote add origin git@github.com:nick-ulle/nick-ulle_first_shared_repo.git
 git branch -M main
 git push -u origin main
@@ -253,22 +277,25 @@ From now on, when you want to push commits from this repository to GitHub, you
 can simply run `git push` (without any arguments).
 
 Now go back to your web browser and refresh the repository's page on GitHub.
-You should now see the message in your `README.md` file:
+You should see the message in your `README.md` file:
+
+<!-- FIXME: update this image -->
 
 :::{figure} /images/gh_new_repository_pushed.png
 :align: center
 :height: 40em
 :::
 
-GitHub automatically checks for a README file in your repository and if it
-finds one, displays it on the repository's main page. If the README file is
-written in [Markdown][], GitHub will even render the formatting.
+Congratulations, your repository is online! 🎉 GitHub automatically checks for
+a README file in your repository and if it finds one, displays it on the
+repository's main page. If the README file is written in [Markdown][], GitHub
+will even render the formatting.
 
 [Markdown]: https://guides.github.com/features/mastering-markdown/
 
 :::{seealso}
-You can find more information about how to write effective README files in
-DataLab's [README, Write Me! workshop][dl-readme].
+You can find information about how to write effective README files in DataLab's
+[README, Write Me! workshop reader][dl-readme].
 
 [dl-readme]: https://ucdavisdatalab.github.io/workshop_how-to-data-documentation/
 :::
@@ -276,23 +303,86 @@ DataLab's [README, Write Me! workshop][dl-readme].
 <!-- TODO: another example of pushing a commit -->
 
 
+(sec-collaborating)=
 ## Collaborating
 
+Uploading a repository to GitHub so that it's available to others, as in
+{numref}`sec-sharing-a-repository`, is the first step towards collaboration. In
+this section, you'll learn the next steps: how to download someone else's
+repository, how to add someone as a collaborator to your repository, and how to
+send commits to and receive commits from a collaborator.
+
 :::{important}
-For this this part, you'll need to work with a partner. Take a moment to find a
-partner and exchange GitHub usernames. Pay careful attention to the spelling
-and capitalization.
+For this part, you'll need to work with a partner. Take a moment to find a
+partner and exchange GitHub usernames. Pay careful attention to their
+username's spelling and capitalization.
+
+Throughout this section, we'll refer to your partner's username as `PARTNER`.
+Anywhere you see `PARTNER`, replace it with their actual username.
 :::
 
-You now know how to push commits from a local repository to a remote. The
-counterpart to this is **pulling**, or downloading, commits from a remote to a
-local repository. In order to learn how to collaborate on repositories and how
-to pull commits, let's share the repository from
-{numref}`sec-sharing-a-repository` with a partner. Then they can push a change
-up to GitHub, and you can pull the change down to your local repository.
+In your web browser, navigate to the main page for *your partner's* GitHub
+repository, which will be at:
 
-To get started, open a web browser to your repository's main page on GitHub.
-Click on the "Settings" button. You'll be taken to a page that looks like this:
+```none
+https://github.com/PARTNER/PARTNER_first_shared_repo
+```
+
+Make sure you can get to the page before proceeding. If you get a 404 error,
+ask your partner to check that you've spelled and capitalized their username
+correctly.
+
+
+### Cloning a Repository
+
+In order to use or contribute to a remote repository, you first need to
+**clone**---download a copy of---the repository to your computer. Let's try it
+out with your partner's repository. On their repository's main page, click on
+the green "Code" button, select the "Local" tab, and select "SSH". Then copy
+the listed URL to your clipboard. It will look something like this:
+
+```none
+git@github.com:PARTNER/PARTNER_first_shared_repo.git
+```
+
+The URL will have your partner's GitHub username rather than `PARTNER`.
+
+Next, open a terminal and navigate to your projects directory:
+
+```none
+cd ~/projects/
+```
+
+Then use the `git clone` command to clone a copy of your partner's repository.
+You'll need to paste the URL you copied to the end of the command:
+
+```none
+git clone git@github.com:PARTNER/PARTNER_first_shared_repo.git
+```
+
+```none
+Cloning into 'PARTNER_first_shared_repo'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+```
+
+Git will display some details about what it cloned from the remote repository.
+You now have a copy of your partner's repository as
+`PARTNER_first_shared_repo/` in your projects directory. Use a text editor to
+take a look at their repo's README.
+
+
+### Adding a Collaborator
+
+Anyone can clone a public repository, but only the owner of the repository and
+their approved collaborators can push commits. In this part, you'll make your
+partner an approved collaborator on your shared repository, so that they can
+add a reply to the question in the README.
+
+Open a web browser to *your repository's* main page on GitHub. Click on the
+"Settings" button. You'll be taken to a page that looks like this:
 
 :::{figure} /images/gh_repository_settings.png
 :align: center
@@ -313,57 +403,80 @@ your partner's GitHub username in the popup that appears. Then tell your
 partner to check their email (the one they used to register with GitHub) for an
 invitation to collaborate on your repository.
 
-After you and your partner have each accepted the invitation to the other's
-repository, open the main page of *your partner's repository* in your web
-browser. In order to make and commit changes, you first need to
-**clone**---download a copy of---their repository to your computer. Click on
-the green "Code" button on their repository's main page, select the "Local"
-tab, and select "SSH". Then copy the listed URL to your clipboard. It will look
-something like this:
+Both you and your partner need to accept the invitations before proceeding.
+
+
+(sec-pushing-commits)=
+### Pushing Commits
+
+It's time to answer the question your partner put in their repository's README.
+Go back to the terminal, and navigate to cloned copy of *your partner's
+repository*. Open `README.md` with a text editor and add add a short reply to
+the question, like this:
+
+```markdown
+# README
+
+Hi, I'm Tyler. I research language technology, focusing on how methods in
+natural language processing crosscut the interpretive and theoretic frameworks
+of literary and media studies.
+
+What kinds of tools do you use to edit code?
+
+## Reply
+
+Hi Tyler! I mostly use Jupyter, RStudio, and Vim to edit code.
+```
+
+Save the changes and exit the text editor. Use Git to add and commit the
+changes:
 
 ```none
-git@github.com:tshoemaker/tshoemaker_first_shared_repo.git
+git add README.md
+git commit
 ```
 
-The URL will have your partner's GitHub username rather than `tshoemaker`.
+Go back to {numref}`sec-adding-committing-changes` if you need to refresh your
+memory of these commands.
 
-Next, open a terminal and navigate to your home directory:
+You can send the commit to your partner by pushing it to their repository on
+GitHub. To do this, run:
 
-```sh
-cd
-```
-
-Then use the `git clone` command to clone a copy of your partner's repository.
-You'll need to paste the URL you copied to the end of the command:
-
-```sh
-git clone git@github.com:tshoemaker/tshoemaker_first_shared_repo.git
+```none
+git push
 ```
 
 ```none
-Cloning into 'tshoemaker_first_shared_repo'...
-remote: Enumerating objects: 3, done.
-remote: Counting objects: 100% (3/3), done.
-remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0 (from 0)
-Receiving objects: 100% (3/3), done.
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 1.46 KiB | 1.46 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:PARTNER/PARTNER_first_shared_repo.git
+   dcad700..be2054a  main -> main
 ```
 
-Git will display some details about what it cloned from the remote repository.
+After pushing the commit, check in with your partner. Confirm that they can see
+the commit you made on their repository's GitHub page, and check that you can
+see the commit they made on your repository's GitHub page. If anything doesn't
+seem right, try working through the steps again.
 
-You should now see a copy of your partner's repository in your home directory.
-In the repository, open `README.md` with a text editor, add a short message for
-your partner, and save the changes. Then add, commit, and push your changes.
 
-Pause here to check in with your partner. Confirm that they can see the commit
-you made on their repository's GitHub page, and check that you can see the
-commit they made on your repository's GitHub page. If anything doesn't seem
-right, try working through the steps again.
+### Pulling Commits 
 
-Finally, it's time to pull the commit your partner made to your repository on
-GitHub down to your local repository. Open a terminal again and navigate to
-*your repository*. Then run `git pull`:
+{numref}`sec-pushing-commits` explained how to push commits from a local
+repository to a remote repository. The counterpart is **pulling** commits from
+a remote repository to a local one. When you're working collaboratively, you
+can get commits your collaborators have pushed to GitHub (or any other remote)
+by pulling them to your local repository.
 
-```sh
+It's time to pull the commit your partner made in
+{numref}`sec-pushing-commits`. Open a terminal again and navigate to *your
+repository*. Then run `git pull`:
+
+```none
 git pull
 ```
 
@@ -392,22 +505,23 @@ someone.
 
 ![](/images/git_workflow_bg.png)
 
-As shown in the figure above, a typical Git workflow is:
+A typical Git workflow---as illustrated in the figure above---is:
 
-1. Make some changes to the local repository.
-2. Stage your changes with `git add`.
-3. Commit your changes with `git commit`.
-4. Push the changes up to the remote with `git push`.
-5. Repeat steps 1-4 until the project is finished.
+1. Pull recent changes from the remote with `git pull`.
+2. Make some changes locally.
+3. Stage your changes with `git add`.
+4. Commit your changes with `git commit`.
+5. Push the changes to the remote with `git push`.
+6. Repeat steps 1-5 until the project is finished.
 
 There are lots of steps in this process, so there are lots of places where it
 can go wrong. _Pay attention to error messages_ and search online if you get
-stuck. Lots of people use Git, and your question has probably been asked and
-answered :)
+stuck. Lots of people use Git, so your question has probably been asked and
+answered. 😃 
 
 :::{seealso}
 _[Pro Git][pg]_ is the definitive Git resource and an excellent reference to
-keep at hand as you begin to work with Git after finishing this reader.
+keep at hand as you begin to work with Git.
 :::
 
 [pg]: https://git-scm.com/book/en/v2

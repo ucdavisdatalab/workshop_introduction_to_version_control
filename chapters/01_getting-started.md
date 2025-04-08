@@ -20,12 +20,10 @@ After this lesson, you should be able to:
 
 ## What is Version Control?
 
-<!-- TODO -->
 **Version control** is the process of storing and organizing multiple versions
 (or copies) of files on your computer. Approaches to version control range from
 simple to complex and they can involve the use of both manual and automatic
-workflows. Ultimately, the overall goal of version control is to store and
-manage multiple versions of the same file(s).
+workflows.
 
 Chances are good that you're already doing some kind of version control
 yourself. You might have a directory somewhere on your computer that looks
@@ -66,17 +64,21 @@ release in 1972 of the Source Code Control System (SCCS) package marked the
 first fully-fledged system designed specifically for software version control.
 :::
 
-It's common for projects to have multiple associated files, so most version
-control systems keep track of changes to a **repository**: a collection of
-files. Generally, a repository (or repo) is just a directory where you've set
-up a version control system to keep track of changes to the contents. A
-repository can contain any number of files and subdirectories.
+Most version control systems keep track of changes to a collection of files
+called a **repository**. Generally, a repository (or repo) is just a directory
+where you've set up a version control system to keep track of changes to the
+contents. A repository can contain any number of files and subdirectories.
 
-<!-- TODO -->
-It's also common for people to collaborate on projects, so most version control
-systems provide a way to create multiple copies of a repository and share
-changes between them. Version control systems can be divided into two
-categories based on how they do this:
+:::{tip}
+How many repositories to create is up to you, and depends on how you like to
+work, but we recommend that you create a separate repository for each distinct
+project.
+:::
+
+In order to make it easy to collaborate, most version control systems also
+provide a way to create multiple copies of a repository and share changes
+between them. Version control systems can be divided into two categories based
+on how they do this:
 
 1. **Centralized** version control systems store the repository and its history
    on a single computer. This computer is usually a **server**, a computer
@@ -162,7 +164,7 @@ need Git Bash to follow along with this workshop.
 On macOS, there are many ways to install Git. The easiest is generally to
 install Xcode by opening a terminal and entering:
 
-```
+```none
 git --version
 ```
 
@@ -290,13 +292,13 @@ configured Git, it's time to create a repository.
 
 Open a terminal and navigate to your home directory:
 
-```sh
+```none
 cd
 ```
 
 To **initialize** a repository called `my_first_repository`, enter:
 
-```sh
+```none
 git init my_first_repository
 ```
 
@@ -311,7 +313,7 @@ directory (`my_first_repository/`) exists, and creates it if it doesn't. Then
 Git makes the directory a repository by creating a hidden `.git/` subdirectory.
 This subdirectory is where Git will store the history of the repository.
 
-:::{warning}
+:::{caution}
 The `.git/` subdirectory is hidden for a reason. Let Git manage its contents.
 Avoid creating or modifying files and directories inside `.git/`, as this might
 break your repository. If you delete `.git/`, your repository will no longer be
@@ -321,14 +323,14 @@ a repository---it will just be an ordinary directory.
 Now let's check that Git actually recognizes `my_first_repository/` as a
 repository. First, navigate to the directory:
 
-```sh
+```none
 cd my_first_repository/
 ```
 
 You can use `git status` to check the status of a repository. Try running it
 for the new repository:
 
-```sh
+```none
 git status
 ```
 
@@ -362,18 +364,15 @@ If you see this message, your working directory is not a Git repository. Most
 likely you meant to run the command in a different directory.
 :::
 
-:::{tip}
-How many repositories to create is up to you, and depends on how you like to
-work, but we recommend that you create a separate repository for each distinct
-project.
-:::
-
 
 (sec-adding-committing-changes)=
 ## Adding & Committing Changes
 
-Let's create a new file in the repository called `hello.txt`. Start by opening
-a text editor.
+Once you've created a repository, you'll want to copy some files into it, or
+create new files, so that you can use Git to track their versions.
+
+In `my_first_repository/`, let's create a file with a short self-introduction.
+Start by opening a text editor.
 
 :::{admonition} Choosing a Text Editor
 :class: note, dropdown
@@ -411,16 +410,17 @@ and [Neovim][].
 :::
 
 
-In the text editor, enter the following text:
+In the text editor, enter a friendly greeting, like this one:
 
+```none
+Hi, I'm Nick, and this is my repository!
 ```
-Hello world!
-```
 
-Save this as `hello.txt` in the repository directory. Then check the status of
-the repository again:
+Your greeting doesn't need to be identical, and you can change the name to your
+name. Save this as `hello.txt` in the `my_first_repository/` directory. Then
+check the status of the repository again:
 
-```sh
+```none
 git status
 ```
 
@@ -449,13 +449,13 @@ store or to send to a friend.
 The `git add` command adds changes to the staging area. Go ahead and add the
 changes to `hello.txt`:
 
-```sh
+```none
 git add hello.txt
 ```
 
 Now check the status of the repository again:
 
-```sh
+```none
 git status
 ```
 
@@ -479,7 +479,8 @@ Putting distinct work in distinct commits makes it easier to inspect (and
 occasionally undo) the work.
 :::
 
-:::{tip}
+:::{admonition} Tip: Unstaging Changes
+:class: tip, dropdown
 In a new repository without any commits, the command to unstage changes is `git
 rm --cached`.
 
@@ -505,7 +506,7 @@ learn more about what the `git config` command above does in
 
 You can make a commit with the `git commit` command. Enter the command:
 
-```
+```none
 git commit
 ```
 
@@ -528,28 +529,47 @@ text:
 
 Git will then wait for you to write a **commit message**, a description of what
 the commit changes, at the beginning of the text. The first line of the commit
-message must be a summary of the commit in 72 characters or less. You can also
-optionally follow this with a blank second line and then a longer description
+message must be a summary of the commit in 72 characters or less. You can
+optionally follow this with a blank second line and then a detailed description
 of the commit beginning on the third line.
 
-:::{tip}
-Conventionally, the first line of a commit message should be 50 characters or
-less, a complete sentence, and written in the imperative mood. For example:
+:::{important}
+Strive for clear and meaningful commit messages. If you feel like the changes
+in a commit are too numerous or complicated to summarize in one line, use the
+optional detailed description.
+
+Commit messages are the history of your project. Neglecting them might save
+time in the short run, but in the long run it will make understanding the
+project's evolution much more difficult and time-consuming for future you and
+your collaborators.
+:::
+
+:::{admonition} Tip: The 50/72 Rule
+:class: tip, dropdown
+Many programmers follow [the 50/72 rule][50-72], which says that the first line
+of a commit message should be 50 characters or less and written in the
+imperative mood. For example:
 
 ```none
 Fix typos in the main text.
 ```
 
-Following conventions makes it easier for others to understand your work, but
-there are occasionally situations where doing something else is justified. The
-best approach is to talk to your collaborators about specific conventions they
-want to follow, and check in with them about exceptions to the conventions.
+Subsequent lines should be 72 characters or less. The rule makes commit
+messages easier to read and understand, especially in the terminal and on
+narrow screens.
+
+We recommend following the 50/72 rule, but there are situations where doing
+something else is justified. The best approach is to talk to your collaborators
+about specific conventions they want to follow, and check in with them about
+exceptions to the conventions.
+
+[50-72]: https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 :::
 
 Edit the commit message to look like this:
 
 ```none
-Add first file.
+Add a friendly greeting.
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
 #
@@ -587,7 +607,7 @@ type `:q!` (the command to quit without saving), and press `Enter`.
 Git will print some output to confirm that the commit was created:
 
 ```none
-[main (root-commit) 0f5c79d] Add first file.
+[main (root-commit) 0f5c79d] Add a friendly greeting.
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
 ```
@@ -603,7 +623,7 @@ Important details in the output include:
 Run `git status` to see how the output has changed now that you've made a
 commit:
 
-```sh
+```none
 git status
 ```
 
@@ -617,18 +637,32 @@ clean. The **working tree** consists of the files and directories you actually
 have in your repository. The working tree is **clean** if it's identical to the
 most recent commit, meaning you haven't changed anything since that commit.
 
+:::{important}
+Remember, saving your work in Git is a two step process:
+
+1. `git add` (for each file or directory with changes you want to save)
+2. `git commit`
+
+It's a good idea, but not required, to run `git status` after the first step,
+to check that you've added all of the changes you meant to add to the staging
+area.
+:::
+
+
+### Moving a File
+
 To get more practice making commits, suppose we want to move the file
 `hello.txt` to `README.md`, since `README.md` is conventionally the first file
 people read when they start working with an unfamiliar repository. Use the `mv`
 shell command to move the file:
 
-```sh
+```none
 mv hello.txt README.md
 ```
 
 Now check the status of the repository:
 
-```sh
+```none
 git status
 ```
 
@@ -651,13 +685,13 @@ Git notices that `hello.txt` is gone, and also that there's a new file
 the same file as the old `hello.txt`. Go ahead and add the changes to
 `README.md` to the staging area:
 
-```sh
+```none
 git add README.md
 ```
 
 Add the changes to `hello.txt` as well:
 
-```sh
+```none
 git add hello.txt
 ```
 
@@ -679,7 +713,7 @@ them later.
 
 Now check the status:
 
-```sh
+```none
 git status
 ```
 
@@ -694,7 +728,7 @@ After adding the changes to both files, Git correctly recognizes that the file
 was moved/renamed. Go ahead and commit the change with the commit message
 `Move hello.txt to README.md.`:
 
-```sh
+```none
 git commit
 ```
 
@@ -707,21 +741,10 @@ git commit
 If you check the status now, you'll see that the working tree is once again
 clean.
 
-:::{important}
-Remember, saving your work in Git is a two step process:
-
-1. `git add` (for each file with changes you want to save)
-2. `git commit`
-
-It's also usually a good idea to run `git status` (and `git diff`, which we'll
-see later) before `git commit` to check that you've added the changes you meant
-to add to the staging area.
-:::
-
 :::{tip}
 You can also make commits without opening a text editor. Use this command:
 
-```sh
+```none
 git commit -m "COMMIT_MESSAGE"
 ```
 
@@ -734,6 +757,13 @@ simple commits.
 (sec-exploring-history)=
 ## Exploring History
 
+<!-- TODO: incorporate this?
+Git can keep track of different versions of any kind of file, but text files
+(such as Markdown files) and code (such as R and Python scripts) are where it
+excels. For these files, Git can provide rich feedback about differences
+between versions.
+-->
+
 <!--
 FIXME: better to introduce diff at the same time as add (and possibly split
 adding and committing into two different sections).
@@ -742,7 +772,7 @@ adding and committing into two different sections).
 Now that you've made some commits, let's take a look at the repository's
 history. To view the log of commits to a repository, enter the command:
 
-```sh
+```none
 git log
 ```
 
@@ -757,7 +787,7 @@ commit 0f5c79d0494763a31ade6a2514dd389f3f1eb1b4
 Author: YOUR_EMAIL <YOUR_EMAIL>
 Date:   Wed Jan 8 13:59:08 2025 -0800
 
-    Add first file.
+    Add a friendly greeting.
 
 ```
 
@@ -776,13 +806,13 @@ file with a text editor and add a title, so that it looks like this:
 ```md
 # My README
 
-Hello world!
+Hi, I'm Nick, and this is my repository!
 ```
 
 When you're finished, save the file. As usual, Git notices that something in
 the repository has changed:
 
-```sh
+```none
 git status
 ```
 
@@ -799,7 +829,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 You can view the difference, or **diff** between the working tree and the most
 recent commit with `git diff`:
 
-```sh
+```none
 git diff
 ```
 
@@ -884,33 +914,38 @@ commit 0f5c79d0494763a31ade6a2514dd389f3f1eb1b4
 Author: YOUR_NAME <YOUR_EMAIL>
 Date:   Wed Jan 8 13:59:08 2025 -0800
 
-    Add first file.
+    Add a friendly greeting.
 
 ```
 
 In this example, the hash begins `4f5702`, but it will be different for your
-commit.
-
-:::{tip}
-As you can see from `git log`, the full hash for each commit is quite long. For
-most Git commands that require a hash, you can just use the first few digits.
-Git will let you know if it needs more digits to disambiguate which commit you
-mean.
-:::
+commit. As you can see from `git log`, the full hash for each commit is quite
+long. For most Git commands that require a hash, you can just use the first few
+digits. Git will let you know if it needs more digits to disambiguate which
+commit you mean.
 
 To restore `README.md` to how it was in commit `4f5702`, run:
 
-```
+```none
 git restore --source 4f5702 README.md
 ```
 
 Make sure to replace `4f5702` with the actual hash for your commit.
 
+:::{danger}
+Be careful with `git restore`: when you restore a file, any *uncommitted*
+changes you've made to the file will be erased, and there's no undo.
+
+If you just want to see what a file looked like in a previous commit, use `git
+show HASH:FILE` instead, where `HASH` is the commit's hash and `FILE` is the
+path to the file.
+:::
+
 After running the command, take a look at `README.md` with your text editor.
 You should see that it no longer has the title. And if you look at the status
 of the repository, you'll see that Git noticed the change:
 
-```sh
+```none
 git status
 ```
 
@@ -927,28 +962,12 @@ no changes added to commit (use "git add" and/or "git commit -a")
 As with any other change, you can add and commit this change if you want to
 save it in the repository's history.
 
-:::{danger}
-Be careful with `git restore`: when you restore a file, any *uncommitted*
-changes you've made to the file will be erased, and there's no undo.
-
-If you just want to see what a file looked like in a previous commit, use `git
-show HASH:FILE` instead, where `HASH` is the commit's hash and `FILE` is the
-path to the file.
-:::
-
-<!--
-:::{note}
-There are many other ways to use `git restore`. For instance, you can use `git
-restore --staged FILE` to remove a file from the staging area. To learn more,
-check the documentation (`git restore --help`).
-:::
--->
-
-:::{tip}
-If you want to revert/undo an entire commit, use `git revert` rather than `git
+:::{admonition} Tip: Undoing Commits
+:class: tip, dropdown
+If you want to undo an entire commit, use `git revert` rather than `git
 restore`. Specifically, run:
 
-```sh
+```none
 git revert HASH
 ```
 
@@ -960,42 +979,3 @@ and lines that were removed get added. Because of this, Git will prompt you for
 a commit message when you run `git revert`; it's fine to use the default
 message.
 :::
-
-<!--- TODO
-The command to revert a commit is `git revert`. Generally, you should also
-provide the command with the hash of the commit you want to revert.
-
-To revert the commit that added the title, run:
-
-```sh
-git revert e15d8c
-```
-
-Don't forget to replace `e15d8c` with the hash for the commit you made (you can
-find this in `git log`). Git reverts a commit by creating a new commit, called
-a **revert commit**, with changes exactly the opposite of the original: lines
-that were added get removed and lines that were removed get added. When you run
-`git revert`, Git creates the revert commit and then opens a text editor for a
-commit message as usual. In this case, however, Git also automatically fills in
-the commit message:
-
-```
-Revert "Add title."
-
-This reverts commit e15d8c1355f16c26fe00354855c24bff3626fc1b.
-
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-#
-# On branch main
-# Changes to be committed:
-#	modified:   README.md
-#
-```
-
-You can edit the commit message if you want, but it's also perfectly fine to
-accept the default message. As usual, save and quit when you're finished. If
-you inspect `README.md` with a text editor, you'll see that the title is gone,
-and if you examine `git log`, you'll see that there are now four commits in the
-repository's history.
--->
