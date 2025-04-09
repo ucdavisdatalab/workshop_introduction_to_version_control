@@ -14,11 +14,6 @@ parts:
     - file: chapters/assessment
     - file: chapters/references
   - caption: Retired
-    numbered: true
     chapters:
-    - file: chapters/retired/01_overview
-    - file: chapters/retired/02_what-is-version-control
-    - file: chapters/retired/03_installing-git
-    - file: chapters/retired/04_working-with-git
-    - file: chapters/retired/05_branching
-    - file: chapters/retired/06_troubleshooting
+    - file: chapters/retired/installing-git
+    - file: chapters/retired/git-branching
