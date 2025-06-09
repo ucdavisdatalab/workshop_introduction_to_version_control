@@ -1,3 +1,10 @@
+> [!IMPORTANT]  
+> This reader is archived and may be outdated. [Click here][new] for a newer
+> version.
+
+[new]: https://github.com/ucdavisdatalab/workshop_reproducible_research
+
+
 # Workshop: Introduction to Version Control with Git
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)

@@ -31,6 +31,7 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  announcement: "⚠️ This reader is archived and may be outdated. <a href='https://ucdavisdatalab.github.io/workshop_reproducible_research/'>Click here</a> for a newer version. ⚠️"
   use_issues_button: true
   use_repository_button: true
   extra_footer: |
