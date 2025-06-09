@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Installing Git &#8212; Introduction to Version Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=dddfd265"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/retired/installing-git';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Git Branching" href="git-branching.html" />
+    <link rel="prev" title="References" href="../references.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-us"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">⚠️ This reader is archived and may be outdated. <a href='https://ucdavisdatalab.github.io/workshop_reproducible_research/'>Click here</a> for a newer version. ⚠️</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/datalab-logo-full-color-rgb.png" class="logo__image only-light" alt="Introduction to Version Control - Home"/>
+    <script>document.write(`<img src="../../_static/datalab-logo-full-color-rgb.png" class="logo__image only-dark" alt="Introduction to Version Control - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Version Control</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_getting-started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_remote-repositories.html">2. Remote Repositories</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Back Matter</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assessment.html">Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Retired</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installing Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git-branching.html">Git Branching</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/issues/new?title=Issue%20on%20page%20%2Fchapters/retired/installing-git.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/retired/installing-git.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Installing Git</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-on-windows">Git on Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-on-mac">Git on Mac</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-your-install">Verifying Your Install</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-on-the-command-line">Git on the Command Line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-git-version">Checking the Git Version</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-troubleshooting">Installation Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-git">Configuring Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-set-go">Ready, Set, Go…</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="installing-git">
+<h1>Installing Git<a class="headerlink" href="#installing-git" title="Link to this heading">#</a></h1>
+<p>In order to run Git version control and be ready for the interactive session of
+this workshop, <strong>you need to install it on your local machine.</strong> This is
+required preparation and we will not have time during the interactive session
+to help you troubleshoot installation issues. If you don’t have Git installed,
+you won’t be able to follow along with the activities. Git installation is
+typically an easy, point and click process, but there are some configuration
+steps along the way to which you’ll need to pay attention and thus we recommend
+that you try this well in advance of the workshop so you have time to
+troubleshoot your install if necessary.</p>
+<section id="git-on-windows">
+<h2>Git on Windows<a class="headerlink" href="#git-on-windows" title="Link to this heading">#</a></h2>
+<p>Follow these step-by-step instructions if you’re installing Git on a Windows
+machine:</p>
+<p>First, launch a web browser, the image below shows the Microsoft Edge browser:</p>
+<p><img alt="Microsoft Edge browser" src="../../_images/win_git_install_1_browser.png" /></p>
+<p>Next, navigate to the following Git download URL in your browser <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>:</p>
+<p>![The git website](/images/retired/win_git_install_2_git\ page.png)</p>
+<p>Select “Windows” from the Downloads portion of the Git web page. Git will
+display the following page and automatically being downloading the correct
+version of the Git software. If the download doesn’t start automatically, click
+on the “Click here to download manually link”:</p>
+<p><img alt="Download page for git" src="../../_images/win_git_install_3_downloading.png" /></p>
+<p>When the download is complete, open/Run the downloaded file (will look
+different in different browsers, but everyone shoudl know how to do this):</p>
+<p><img alt="Showing the .exe download in a browser" src="../../_images/win_git_install_4_run_open.png" /></p>
+<p>A screen will appear asking for permissions for the Git application to make
+changes to your device. Click on the <strong>Yes</strong> button:</p>
+<p><img alt="Clicking yes on the permissions query" src="../../_images/win_git_install_5_allow_changes.png" /></p>
+<p>Click <strong>Next</strong> to accept the user license:</p>
+<p><img alt="Accepting the GNU public license" src="../../_images/win_git_install_6_license.png" /></p>
+<p>Leave the default “Destination Location” unchanged (usually C:\Program
+Files\Git) and hit <strong>Next</strong></p>
+<p><img alt="Specifying where to install git" src="../../_images/win_git_install_7_install_location.png" /></p>
+<p>You will see a screen like the one below asking you to “Select Components”:</p>
+<p><img alt="Optional components for git" src="../../_images/win_git_install_8_default_components.png" /></p>
+<p>Leave all of the default components selected and also check the boxes next to
+“Additional Icons” and its sub-item, “On the Desktop”. Your completed
+configurations window should have the following components selected:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Additional Icons 
+	-&gt; On the Desktop
+Windows Explorer integration
+	-&gt; Git Bash Here
+	-&gt; Git GUI Here
+Git LFS (Large File Support)
+Associate .git* configuration files with default text editor
+Associate .sh files to be run with Bash
+</pre></div>
+</div>
+<p>And should look like this:</p>
+<p><img alt="The selected components outlined above" src="../../_images/win_git_install_9_checked_components.png" /></p>
+<p>After verifying that you have the necessary components selected as per above,
+hit <strong>Next</strong>.</p>
+<p>The next screen will ask you to “Select a Start Menu Folder.” Keep the default
+value of Git and hit <strong>Next</strong>:</p>
+<p><img alt="Selecting a start location for the app" src="../../_images/win_git_install_10_start_menu.png" /></p>
+<p>Leave the default “Use Vim (the ubiquitous text editor) as Git’s default
+editor” selected on the “Choosing the default editor used by Git” screen and
+hit <strong>Next</strong>:</p>
+<p><img alt="Using Vim as the default text editor for git" src="../../_images/win_git_install_11_editor.png" /></p>
+<p>On the next screen, leave the default “let Git decide” option selected and hit
+<strong>Next</strong>:</p>
+<p><img alt="Letting git decide branch and repository details" src="../../_images/win_git_install_12_initial_branch.png" /></p>
+<p>Leave the default “Git from the command line and also from 3rd-party software”
+selected and hit <strong>Next</strong>:</p>
+<p><img alt="Path options for git" src="../../_images/win_git_install_13_path.png" /></p>
+<p>On the next “Choosing HTTPS transport backend” page leave the default “Use the
+OpenSSL library” option selected and hit <strong>Next</strong>:</p>
+<p><img alt="Using the OpenSSL library for git" src="../../_images/win_git_install_14_HTTPS_openssl.png" /></p>
+<p>Leave the default “Checkout Windows-style, commit Unix-style line endings”
+selected on the next page and hit <strong>Next</strong>:</p>
+<p><img alt="Using Unix-style lind endings" src="../../_images/win_git_install_15_line_ending.png" /></p>
+<p>Keep the default “Use MinTTY (the default terminal of MSYS2)” selected on the
+“Configuring the terminal emulator to use with Git Bash” window and hit
+<strong>Next</strong>:</p>
+<p><img alt="Default Git Bash view" src="../../_images/win_git_install_16_terminal_emulator.png" /></p>
+<p>Keep the default value of “Default (fast-forward or merge)” on the “Choose the
+default behavior of ‘git pull’” page and hit <strong>Next</strong>:</p>
+<p><img alt="Default merge behavior" src="../../_images/win_git_install_17_git_pull.png" /></p>
+<p>Keep the default value of “Git Credential Manager Core” on the “Choose a
+credential helper” page and hit <strong>Next</strong>:</p>
+<p><img alt="Default credential manager" src="../../_images/win_git_install_18_credential_helper.png" /></p>
+<p>Keep the default values on the “Configuration extra options” page by keeping
+“Enable file system caching” checked and “Enable symbolic links” unchecked and
+then hit <strong>Next</strong>:</p>
+<p><img alt="Default configuration options" src="../../_images/win_git_install_19_extra_options.png" /></p>
+<p>Make sure that no options are checked in the “Configuring experimental options”
+page and hit <strong>Install</strong>:</p>
+<p><img alt="No experimental options for configuration" src="../../_images/win_git_install_20_experimental_options.png" /></p>
+<p>After you hit this <strong>Install</strong> button as per above, you will see an install
+progress screen like the one below:</p>
+<p><img alt="A progress bar for installing git" src="../../_images/win_git_install_21_install_progress.png" /></p>
+<p>When the install is complete, a new, “Completing the Git Setup Wizard” window
+like the one below will appear:</p>
+<p><img alt="A successfully installation message" src="../../_images/win_git_install_22_install_complete.png" /></p>
+<p>Make sure that all of the options on this window are unchecked as in the image
+below and then hit the <strong>Finish</strong> button:</p>
+<p><img alt="Unchecking the two boxes of the installation message" src="../../_images/win_git_install_23_deslect_and_finish.png" /></p>
+<p>This will complete your installation process.</p>
+<p><em>Windows users should verify that downloading Git has also installed Git Bash,
+which is necessary for working with Git on the command line</em>.</p>
+</section>
+<section id="git-on-mac">
+<h2>Git on Mac<a class="headerlink" href="#git-on-mac" title="Link to this heading">#</a></h2>
+<p>If you are installing Git on a Mac, there is no extra configuration. First, go
+to the Git download page at
+<a class="reference external" href="https://git-scm.com/download/mac">https://git-scm.com/download/mac</a>.  Once
+you’re there, you have two options for getting the software on your machine.</p>
+<ol class="arabic simple">
+<li><p>Install through Xcode (will take a while, but this also installs a whole
+suite of software development tools, which may be useful to you later on)</p></li>
+<li><p>Install the binary package</p></li>
+</ol>
+<p>The first option will take you to Apple’s download page for Xcode. The second
+will take you to SourceForge. Click “Download” and then run the installer
+package once it’s finished downloading. If you get an “unknown developer”
+warning during the install process, follow the instructions at the beginning of
+the video at
+<a class="reference external" href="https://www.youtube.com/watch?v=__kr-Ew5kbE">https://www.youtube.com/watch?v=__kr-Ew5kbE</a>
+to help you work through this problem.</p>
+</section>
+<section id="verifying-your-install">
+<h2>Verifying Your Install<a class="headerlink" href="#verifying-your-install" title="Link to this heading">#</a></h2>
+<p>Whether you’re installing Git on a Windows or a Mac, you’ll find that, unlike
+other applications, Git does not appear in your programs or applications
+directory. While there are other applications that you can download to
+interface with Git, Git is at heart a program that runs via the <strong>command line
+interface</strong>.</p>
+<section id="git-on-the-command-line">
+<h3>Git on the Command Line<a class="headerlink" href="#git-on-the-command-line" title="Link to this heading">#</a></h3>
+<p><strong>Mac users</strong> will access Git through an application called “Terminal,” which
+ships by default with the Mac operating system. To launch the Terminal
+application, go to:</p>
+<blockquote>
+<div><p>Applications -&gt; Utilities -&gt; Terminal</p>
+</div></blockquote>
+<p>When you launch the application, you will see something like this:</p>
+<p><img alt="A Mac Terminal window" src="../../_images/mac_terminal.png" /></p>
+<p>Windows users will use an application called Git Bash, which was installed on
+your system when you installed Git. To launch Git Bash, go to:</p>
+<blockquote>
+<div><p>Click on the Windows Start Menu and search for “Git Bash”</p>
+</div></blockquote>
+<p>Alternatively,</p>
+<blockquote>
+<div><p>Click on the Windows Start Menu, select Programs, and browse to Git Bash</p>
+</div></blockquote>
+<p>When you launch the application, you will see something like this:</p>
+<p><img alt="A Git Bash terminal window" src="../../_images/bash.png" /></p>
+</section>
+<section id="checking-the-git-version">
+<h3>Checking the Git Version<a class="headerlink" href="#checking-the-git-version" title="Link to this heading">#</a></h3>
+<p>To verify that your install has worked, check the version of Git via the
+command line. Regardless of whether you do this in Terminal or Git Bash, the
+command will look the same:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git --version
+git version 2.3....
+</pre></div>
+</div>
+<p>After pressing enter, you should see a response that delivers information about
+which version of Git is installed. The particular version does not matter. As
+long as you do not get an error message saying that “command not found,” you
+can assume your installation was successful.</p>
+</section>
+</section>
+<section id="installation-troubleshooting">
+<h2>Installation Troubleshooting<a class="headerlink" href="#installation-troubleshooting" title="Link to this heading">#</a></h2>
+<p>If you are not able to successfully install Git on your own, please attend
+DataLab’s Virtual Office Hours to get help with your installation. Click <a class="reference external" href="https://datalab.ucdavis.edu/office-hours/">here</a>
+for more information and to receive a Zoom link.</p>
+</section>
+<section id="configuring-git">
+<h2>Configuring Git<a class="headerlink" href="#configuring-git" title="Link to this heading">#</a></h2>
+<p>We ask that you also set a few configurations with Git prior to the workshop.
+If you’re using Git for the first time, you’ll need to set a username and
+email. Again, you do this one the command line.</p>
+<p>To set your username, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global user.name &quot;YOUR NAME&quot;
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&quot;YOUR</span> <span class="pre">NAME&quot;</span></code> with your name, making sure to use double quotes around
+the string. Note that your username can be your full name, a name you use with
+a GitHub account, or anything else. It’s also easy to change this information
+with Git: simply rerun the above command with a new name at <code class="docutils literal notranslate"><span class="pre">&quot;YOUR</span> <span class="pre">NAME&quot;</span></code>.</p>
+<p>To set your email, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global user.email &quot;YOUR EMAIL&quot;
+</pre></div>
+</div>
+<p>Just as with the first command, replace <code class="docutils literal notranslate"><span class="pre">&quot;YOUR</span> <span class="pre">EMAIL&quot;</span></code> with your email address.</p>
+<p>Finally, we suggest that you change the default branch name from <code class="docutils literal notranslate"><span class="pre">master</span></code> to
+<code class="docutils literal notranslate"><span class="pre">main</span></code>. You’ll learn more about what branches are in the session. But we advise
+making this change now. For too long the computing industry has relied on
+offensive terms like “master” and “slave” to describe technology, and changing
+such terms is part of a <a class="reference external" href="https://sfconservancy.org/news/2020/jun/23/gitbranchname/">wider
+push</a> to move away
+from the framework they imply. This is a small change, but we at the DataLab
+believe that, in all instances, language matters.</p>
+<p>To make this change, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global init.defaultBranch main
+</pre></div>
+</div>
+</section>
+<section id="ready-set-go">
+<h2>Ready, Set, Go…<a class="headerlink" href="#ready-set-go" title="Link to this heading">#</a></h2>
+<p>If you’ve read and understood the information in this online tutorial and
+successfully installed Git on your local machine, you’re ready for the interactive
+session! The sections that follow present exhibits to which we will refer during
+the live session.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/retired"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../references.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">References</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="git-branching.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Git Branching</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-on-windows">Git on Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-on-mac">Git on Mac</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-your-install">Verifying Your Install</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-on-the-command-line">Git on the Command Line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-git-version">Checking the Git Version</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-troubleshooting">Installation Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-git">Configuring Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-set-go">Ready, Set, Go…</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+  <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"> 
+</a>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

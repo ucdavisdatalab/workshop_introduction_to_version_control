@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Git Branching &#8212; Introduction to Version Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=dddfd265"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/retired/git-branching';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Installing Git" href="installing-git.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-us"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">⚠️ This reader is archived and may be outdated. <a href='https://ucdavisdatalab.github.io/workshop_reproducible_research/'>Click here</a> for a newer version. ⚠️</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/datalab-logo-full-color-rgb.png" class="logo__image only-light" alt="Introduction to Version Control - Home"/>
+    <script>document.write(`<img src="../../_static/datalab-logo-full-color-rgb.png" class="logo__image only-dark" alt="Introduction to Version Control - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Version Control</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_getting-started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_remote-repositories.html">2. Remote Repositories</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Back Matter</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assessment.html">Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Retired</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installing-git.html">Installing Git</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Git Branching</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/issues/new?title=Issue%20on%20page%20%2Fchapters/retired/git-branching.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/retired/git-branching.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Git Branching</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-branch">Making a Branch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-changes-to-a-branch">Making Changes to a Branch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-out-branches">Checking Out Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-branches">Merging Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-view-an-earlier-commit">To View an Earlier Commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-merge-conflicts">Fixing Merge Conflicts</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="git-branching">
+<h1>Git Branching<a class="headerlink" href="#git-branching" title="Link to this heading">#</a></h1>
+<p>One of the most powerful parts of Git is its ability to create multiple,
+side-by-side versions of the files in a repository. We call these <strong>branches</strong>.
+Conceptually, branching a repository creates a copy of the codebase in its
+current state, which you can work on without affecting the primary version from
+which it was copied. This allows you (or a team) to work down multiple paths
+without affecting the main (or another person’s) codebase.</p>
+<p><img alt="A stream of branched files in a git repository" src="../../_images/branching_workflows.png" /></p>
+<p>Why branch?</p>
+<p>Well, imagine you have a website, which you track with Git. You’ve published
+this website, but you’re now receiving feature requests from users. While you’d
+like to implement these features, you want to work on them separately before
+deploying them to your website. Here, you’d branch your site, develop your
+features, and, when you’re ready, <strong>merge</strong> that branch back into the main site
+codebase. Voilà! Website 2.0 is launched!</p>
+<section id="making-a-branch">
+<h2>Making a Branch<a class="headerlink" href="#making-a-branch" title="Link to this heading">#</a></h2>
+<p>To see a list of branches in your repository, run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git branch
+* main
+</pre></div>
+</div>
+<p>The asterisk tells you which branch you’re on. To create a new branch and
+switch to it, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout -b second_branch
+Switched to a new branch &#39;second_branch&#39;
+</pre></div>
+</div>
+<p>Now,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git branch
+  main
+* second_branch
+</pre></div>
+</div>
+<p>…has the two branches.</p>
+</section>
+<section id="making-changes-to-a-branch">
+<h2>Making Changes to a Branch<a class="headerlink" href="#making-changes-to-a-branch" title="Link to this heading">#</a></h2>
+<p>Let’s add a second file to our branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout second_branch
+Switched to branch &#39;second_branch&#39;
+$ echo &quot;This is a second file&quot; &gt; new.txt
+</pre></div>
+</div>
+<p>Stage and commit it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add new.txt
+$ git commit -m &#39;Adding a second file&#39;
+[second_branch a41096f] Adding a second file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 new.txt
+</pre></div>
+</div>
+<p>See the two files?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+hello.txt new.txt
+</pre></div>
+</div>
+</section>
+<section id="checking-out-branches">
+<h2>Checking Out Branches<a class="headerlink" href="#checking-out-branches" title="Link to this heading">#</a></h2>
+<p>With our second branch made,we can switch back to, or <strong>checkout</strong>, the first
+one</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
+Switched to branch &#39;main&#39;
+</pre></div>
+</div>
+<p>But look, <code class="docutils literal notranslate"><span class="pre">new.txt</span></code> isn’t there:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+hello.txt
+</pre></div>
+</div>
+<p>This is because one branch has different information on it than the other. If
+you want to bring <code class="docutils literal notranslate"><span class="pre">new.txt</span></code> over to the first branch, you’ll need to <strong>merge</strong>
+your two branches.</p>
+<p><strong>Note:</strong> Be sure to commit any changes you make on a branch before checking
+another one out. If you don’t, those changes will follow you to the new branch,
+and it can be a mess to sort out. If you’re not quite ready to commit changes
+but need to switch branches, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span></code> to temporarily store them
+and safely switch branches. Once you’re back on the branch with the
+un-committed changes, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></code> to retrieve them from the
+stash.</p>
+</section>
+<section id="merging-branches">
+<h2>Merging Branches<a class="headerlink" href="#merging-branches" title="Link to this heading">#</a></h2>
+<p>When you merge a branch, Git folds any changes that you made to files in an
+identified branch into the current working branch. It also adds any new files.
+When you perform a merge, a new commit will be automatically created to track
+the merge. To merge branches, commit any changes to the branch you want to
+merge (which we’ve already done), then <em>checkout the branch into which you want
+to merge</em> (here, <code class="docutils literal notranslate"><span class="pre">main</span></code>). Then, execute a merge command.</p>
+<p>The whole sequence looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
+$ git merge second_branch
+Updating 2591435..a41096f
+Fast-forward
+ new.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 new.txt
+</pre></div>
+</div>
+<p>The “fast-forward” here means that we’ve been able to merge our branches
+without any conflicts (more on unsuccessful merges in a minute). Now,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+hello.txt new.txt
+</pre></div>
+</div>
+<p>…shows both files.</p>
+<p>Note too that the log on <code class="docutils literal notranslate"><span class="pre">main</span></code> has been updated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --oneline
+a41096f (HEAD -&gt; main, second_branch) Adding a second file
+2591435 Explaining why I made this file
+be5fd7e Adding my first file to the repository
+</pre></div>
+</div>
+<div class="{.exercise docutils">
+<p>Inspect the differences between the file <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> on your two branches.
+(hint: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>).</p>
+</div>
+</section>
+<section id="to-view-an-earlier-commit">
+<h2>To View an Earlier Commit<a class="headerlink" href="#to-view-an-earlier-commit" title="Link to this heading">#</a></h2>
+<p>The logic of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> also applies to looking at older commits on a
+single branch. If you wanted to go back to the very first commit on <code class="docutils literal notranslate"><span class="pre">main</span></code>,
+you could use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout be5fd7e
+</pre></div>
+</div>
+<p>You’ll likely get a long message from Git:</p>
+<blockquote>
+<div><p>You are in ‘detached HEAD’ state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.</p>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> of your repository is the most recent commit on the branch. As the
+message above indicates, any changes you make in this <em>detached</em> state will not
+directly affect other commits. If you’re just looking around and don’t want to
+make any changes, you can reset to the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
+</pre></div>
+</div>
+<p>…which will bring you back to the most recent commit.</p>
+<p>But say, for example, you preserve some of the information in that earlier
+commit. You can do so by putting it on a new branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout -b first_commit
+$ git branch
+* first_commit
+  main
+  second_branch
+</pre></div>
+</div>
+<p>If you look inside:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+hello.txt
+</pre></div>
+</div>
+<p>…there’s a single file, the contents of which:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat hello.txt
+Hello world!
+</pre></div>
+</div>
+<p>…pertain only to that very first commit we made.</p>
+</section>
+<section id="fixing-merge-conflicts">
+<h2>Fixing Merge Conflicts<a class="headerlink" href="#fixing-merge-conflicts" title="Link to this heading">#</a></h2>
+<p>Let’s open <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> and, on a new line, add the following: “This is an old
+version of this file.” The whole file should look like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello world!
+
+This is an old version of this file.
+</pre></div>
+</div>
+<p>Save it, stage it, and commit with a message.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add hello.txt
+$ git commit -m &#39;Explaining which version this is.&#39;
+</pre></div>
+</div>
+<p>All’s well so far. But say you want to merge this file into <code class="docutils literal notranslate"><span class="pre">main</span></code>. Remember
+that, on <code class="docutils literal notranslate"><span class="pre">main</span></code>, this file reads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello world!
+
+This is my first Git repo.
+</pre></div>
+</div>
+<p>There are two different versions of this file, so if you run a merge from
+<code class="docutils literal notranslate"><span class="pre">first_commit</span></code> to <code class="docutils literal notranslate"><span class="pre">main</span></code>…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
+$ git merge first_commit
+Auto-merging hello.txt
+CONFLICT (content): Merge conflict in hello.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</pre></div>
+</div>
+<p>…you’ll get a <strong>merge conflict</strong>. This means that Git is unable to merge the
+two branches because they have different data in the same area of the file (Git
+is usually quite good at merging file versions when their differences are in
+separate areas). We need to resolve these differences manually before Git can
+merge.</p>
+<p>To do so, open <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>. When you do, you’ll see this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello world!
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+This is my first Git repo.
+=======
+This is an old version of this file.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; first_commit
+</pre></div>
+</div>
+<p>Git has injected new text into this file, showing you where exactly the
+conflict lies. It also marks which branch has what information (<code class="docutils literal notranslate"><span class="pre">HEAD</span></code> for
+<code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">first_commit</span></code> for <code class="docutils literal notranslate"><span class="pre">first_commit</span></code>).</p>
+<p>Fixing the merge conflict involves deleting the entire section marked off by
+<code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></code> and replacing it with the information you’d like the
+final, merged file to retain. For us, we’ll use the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> information.</p>
+<p>Once you’ve made those changes, your file should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello world!
+
+This is my first Git repo.
+</pre></div>
+</div>
+<p>Save the changes and run a status check. It should show</p>
+<pre style="font-size: small;">
+$ git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	<span style="color: red;">both modified:   hello.txt</span>
+
+no changes added to commit (use "git add" and/or "git commit -a")
+</pre>
+<p>If you add <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> and check the repository status again</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add hello.txt
+$ git status
+On branch main
+All conflicts fixed but you are still merging.
+  (use &quot;git commit&quot; to conclude merge)
+</pre></div>
+</div>
+<p>You’ll see that your conflicts are resolved. With that done, you can complete
+the merge with a final commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &#39;Fixing conflict between main and first_commit&#39;
+[main b3af7fd] Fixing conflict between main and first_commit
+</pre></div>
+</div>
+<p>Looking once more at the contents of <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> will show which changes you
+implemented</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello world!
+
+This is my first Git repo.
+</pre></div>
+</div>
+<p>And the Git log will have separate entries for the merge conflict and for the
+file from any other branches into which you merged <code class="docutils literal notranslate"><span class="pre">main</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --oneline
+b3af7fd (HEAD -&gt; main) Fixing conflict between main and first_commit
+f91603a (first_commit) Explaining which version this is.
+a41096f (second_branch) Adding a second file
+2591435 Explaining why I made this file
+be5fd7e Adding my first file to the repository
+</pre></div>
+</div>
+<p>We can also inspect these changes visually, using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--graph</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --all --oneline --graph
+*   40a6e83 (HEAD -&gt; main) Fixing conflict between main and first_commit
+|\  
+| * 9953726 (first_commit) Explaining which version this is.
+* | c6113ab (second_branch) Adding a second file
+* | 879bfbd Explaining why I made this file
+|/  
+* a23db84 Adding my first file to the repository
+</pre></div>
+</div>
+<p>You can now keep working!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/retired"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="installing-git.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installing Git</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-branch">Making a Branch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-changes-to-a-branch">Making Changes to a Branch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-out-branches">Checking Out Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-branches">Merging Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-view-an-earlier-commit">To View an Earlier Commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-merge-conflicts">Fixing Merge Conflicts</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+  <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"> 
+</a>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

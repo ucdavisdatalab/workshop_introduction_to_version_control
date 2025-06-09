@@ -1,0 +1,1345 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Getting Started &#8212; Introduction to Version Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=dddfd265"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01_getting-started';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Remote Repositories" href="02_remote-repositories.html" />
+    <link rel="prev" title="Overview" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-us"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">⚠️ This reader is archived and may be outdated. <a href='https://ucdavisdatalab.github.io/workshop_reproducible_research/'>Click here</a> for a newer version. ⚠️</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-light" alt="Introduction to Version Control - Home"/>
+    <script>document.write(`<img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-dark" alt="Introduction to Version Control - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Version Control</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_remote-repositories.html">2. Remote Repositories</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Back Matter</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assessment.html">Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Retired</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="retired/installing-git.html">Installing Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retired/git-branching.html">Git Branching</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/issues/new?title=Issue%20on%20page%20%2Fchapters/01_getting-started.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/01_getting-started.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Getting Started</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-version-control">1.1. What is Version Control?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-control-systems">1.1.1. Version Control Systems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-git">1.2. Configuring Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-repository">1.3. Creating a Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-committing-changes">1.4. Adding &amp; Committing Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-a-file">1.4.1. Moving a File</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-history">1.5. Exploring History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restoring-old-versions-of-files">1.6. Restoring Old Versions of Files</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Learning Goals</p>
+<p>After this lesson, you should be able to:</p>
+<ul class="simple">
+<li><p>Explain the purpose of using a version control system (VCS)</p></li>
+<li><p>Explain the difference between centralized and distributed version control</p></li>
+<li><p>Explain what a repository is</p></li>
+<li><p>Explain what Git is</p></li>
+<li><p>Initialize a Git repository</p></li>
+<li><p>Check the status of a Git repository</p></li>
+<li><p>Explain what the Git working tree and staging area are</p></li>
+<li><p>Inspect and stage changes to a Git repository</p></li>
+<li><p>Commit changes to a Git repository</p></li>
+<li><p>View the history of commits in a Git repository</p></li>
+<li><p>Restore an old version of a file from a commit</p></li>
+</ul>
+</div>
+<section id="what-is-version-control">
+<h2><span class="section-number">1.1. </span>What is Version Control?<a class="headerlink" href="#what-is-version-control" title="Link to this heading">#</a></h2>
+<p><strong>Version control</strong> is the process of storing and organizing multiple versions
+(or copies) of files on your computer. Approaches to version control range from
+simple to complex and they can involve the use of both manual and automatic
+workflows.</p>
+<p>Chances are good that you’re already doing some kind of version control
+yourself. You might have a directory somewhere on your computer that looks
+something like this:</p>
+<p><img alt="" src="../_images/mac_finder_1.png" /></p>
+<p>Or perhaps this:</p>
+<p><img alt="" src="../_images/mac_window_2.png" /></p>
+<p>This is a rudimentary form of version control where it’s completely up to you
+to name, save, and keep track of multiple versions of a file. This <strong>filesystem
+approach</strong> works minimally well, in that it does provide you with a history of
+file versions theoretically organized by their time sequence. But this system
+provides no information about how the file has changed from version to version,
+why you might have saved a particular version, or specifically how the various
+versions are related. This approach is also subject to human error. It’s easy
+to make a mistake when naming a file version, or to go back and edit a file
+without saving a new copy.</p>
+<section id="version-control-systems">
+<span id="sec-version-control-systems"></span><h3><span class="section-number">1.1.1. </span>Version Control Systems<a class="headerlink" href="#version-control-systems" title="Link to this heading">#</a></h3>
+<p>A <strong>version control system</strong> (VCS) is software designed to automate version
+control. Version control systems originated in the software development
+community, where it’s common for many people to work on the same file,
+sometimes synchronously, amplifying the need to track and understand revisions.
+But nearly all types of computer files, not just code, can be tracked using
+modern version control systems.</p>
+<div class="note admonition">
+<p class="admonition-title">Historical Note</p>
+<p>IBM’s OS/360 IEBUPDTE software update tool is widely regarded as the earliest
+and most widely adopted precursor to modern version control systems. Its
+release in 1972 of the Source Code Control System (SCCS) package marked the
+first fully-fledged system designed specifically for software version control.</p>
+</div>
+<p>Most version control systems keep track of changes to a collection of files
+called a <strong>repository</strong>. Generally, a repository (or repo) is just a directory
+where you’ve set up a version control system to keep track of changes to the
+contents. A repository can contain any number of files and subdirectories.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>How many repositories to create is up to you, and depends on how you like to
+work, but we recommend that you create a separate repository for each distinct
+project.</p>
+</div>
+<p>In order to make it easy to collaborate, most version control systems also
+provide a way to create multiple copies of a repository and share changes
+between them. Version control systems can be divided into two categories based
+on how they do this:</p>
+<ol class="arabic simple">
+<li><p><strong>Centralized</strong> version control systems store the repository and its history
+on a single computer. This computer is usually a <strong>server</strong>, a computer
+connected to the Internet or some other network. Users can check out a copy
+of the repository from the server, make changes, and then check in their
+changes with the server. The server is the sole authority on the
+repository’s history. You can think of this as a “hub and spoke” model,
+where the server is the hub and users are the spokes. This is the oldest
+kind of version control system.</p></li>
+<li><p><strong>Distributed</strong> version control systems treat each copy of the repository as
+an authority on the repository’s history, and provide ways to sync changes
+and resolve conflicts between copies. As two different users make changes to
+their copies of the repository, the copies will diverge if both users edit
+the same file. The divergence will remain in place until the two copies are
+synced, at which time the VCS merges the two different versions of the file
+into a single version that reflects the changes made by both users. You can
+think of this as a “network” model (like a social network).</p></li>
+</ol>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id1">
+<img alt="../_images/centralized_network.svg" src="../_images/centralized_network.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Centralized (hub and spoke) model</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id2">
+<img alt="../_images/distributed_network.svg" src="../_images/distributed_network.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Distributed (network) model</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Centralized VCS provide a very ordered and controlled universe. They ensure
+users have access to the most recent version of every file in the repository,
+which reduces the potential for conflicting changes to files.</p>
+<div class="note admonition">
+<p class="admonition-title">Historical Note</p>
+<p>Early centralized version control systems typically required users to check out
+individual files or directories rather than entire repositories, and only
+allowed one user to check out a given file at time. This prevented conflicting
+edits, but made it difficult to work concurrently.</p>
+</div>
+<p>On the other hand, distributed VCS offer greater flexibility. They allow users
+to work alone or in small groups, work offline, or work on experimental changes
+over an extended period without losing the benefits of version control. These
+characteristics facilitate collaborative work. Moreover, a distributed VCS can
+be used in a centralized way, where one copy of the repository is treated as
+the final authority on the repository’s history. This gives users the best of
+both worlds, by allowing some to sync directly with each other while others
+sync with this authoritative copy.</p>
+<p>The most popular VCS today is <a class="reference external" href="https://git-scm.com/">Git</a>, a distributed VCS. Some polls estimate
+that more than 90% of all developers use Git. A few other version control
+systems in use today include Mercurial, Subversion, Perforce, and Plastic SCM.
+Many document editors, such as Google Docs and Microsoft Word, also have
+built-in version control systems. Each of these systems offers a twist on
+version control, differing sometimes in the area of user functionality,
+sometimes in how they handle things on the back-end, and sometimes both. In
+this reader, we’ll focus on Git.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Git is available for Windows, macOS, and Linux.</p>
+<p>Install Git by following the instructions for your computer’s operating system:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Windows</label><div class="sd-tab-content docutils">
+<p>On Windows, download Git from <a class="reference external" href="https://git-scm.com/downloads/win">the Git downloads page</a>. We
+recommend the default installation options, which also install Git Bash. You’ll
+need Git Bash to follow along with this workshop.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+macOS</label><div class="sd-tab-content docutils">
+<!-- FIXME: do we want them to install with Pixi instead? Xcode is ~30GB -->
+<p>On macOS, there are many ways to install Git. The easiest is generally to
+install Xcode by opening a terminal and entering:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git --version
+</pre></div>
+</div>
+<p>Then follow the prompts to install Xcode. If you prefer not to install Xcode
+(it is quite large), installing Git with a package manager such as Homebrew,
+MacPorts, or <a class="reference external" href="https://ucdavisdatalab.github.io/workshop_installing_software/">Pixi</a> is also okay.</p>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Linux</label><div class="sd-tab-content docutils">
+<p>On Linux, we recommend installing Git with your distribution’s package manager
+(many distributions install Git by default). Installing Git with a user-level
+package manager such as <a class="reference external" href="https://ucdavisdatalab.github.io/workshop_installing_software/">Pixi</a> is also okay.</p>
+</div>
+</div>
+<p>You can also find more information about how to install Git in the section
+<a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Installing Git</a> of the book <em><a class="reference external" href="https://git-scm.com/book/en/v2">Pro Git</a></em> by Chacon and Straub.
+<em>Pro Git</em> is an excellent reference for all things Git, so much so that a
+digital version is available for free on the Git website.</p>
+</div>
+</section>
+</section>
+<section id="configuring-git">
+<h2><span class="section-number">1.2. </span>Configuring Git<a class="headerlink" href="#configuring-git" title="Link to this heading">#</a></h2>
+<!-- TODO: better intro? -->
+<p>When you save changes to a repository, Git will automatically sign the changes
+with your name and email. In collaborative projects, these signatures are
+important for determining who made which changes. Thus the first time you use
+Git, you need to set your name and email.</p>
+<p>We recommend that you configure Git with your real name (given name and
+surname) and a valid email address. These serve the same purpose in Git as they
+would on a publication: they ensure you receive credit for your work and give
+people a way to contact you about it. Git is open-source, community-developed
+software, so it won’t share your name and email address with spammers, but the
+information <em>will</em> be visible on any changes you make to public repositories.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you’re not comfortable attaching your real name to work you do with Git, a
+reasonable alternative is to use an alias you control, such as your GitHub
+username. <a class="reference internal" href="02_remote-repositories.html#sec-github"><span class="std std-numref">Section 2.1</span></a> explains more about GitHub.</p>
+<p>Likewise, if you don’t want to attach your primary email address to work you do
+with Git, set up a new email address and use that. Don’t make up a fake email
+address—someone else could take credit for your work or even impersonate you.</p>
+</div>
+<p>To set your name in Git, open a terminal and type:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git config set --global user.name &quot;YOUR_NAME&quot;
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">YOUR_NAME</span></code> with your name, keeping the quotes. Then press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. If
+you make a mistake, don’t worry: you can run this command to change your name
+as many times as you need.</p>
+<p>Let’s break down what the command means. All Git commands begin with <code class="docutils literal notranslate"><span class="pre">git</span></code>
+followed by the name of a subcommand. The command to set Git’s configuration
+options is <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">set</span></code>. The <code class="docutils literal notranslate"><span class="pre">--global</span></code> argument makes the command set
+options globally (that is, for all of your repositories). Git stores your name
+under the <code class="docutils literal notranslate"><span class="pre">user.name</span></code> configuration option. The final argument is the new value
+for <code class="docutils literal notranslate"><span class="pre">user.name</span></code>. So the command sets <code class="docutils literal notranslate"><span class="pre">user.name</span></code> for all repositories to the
+name you put inside the quotes.</p>
+<p>The related command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">get</span></code> gets the value of an option. You can use
+this to check how Git is configured. For instance, to check what Git thinks
+your name is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git config get user.name
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can view the documentation for any subcommand by adding <code class="docutils literal notranslate"><span class="pre">--help</span></code> to the
+end. For instance, to get help with the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code> subcommand, run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--help</span></code>.</p>
+</div>
+<p>Git stores your email address under the <code class="docutils literal notranslate"><span class="pre">user.email</span></code> configuration option. So
+to set your email, type:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git config set --global user.email &quot;YOUR_EMAIL&quot;
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">YOUR_EMAIL</span></code> with your preferred public email address.</p>
+<p>Finally, we suggest that you change the default branch name from <code class="docutils literal notranslate"><span class="pre">master</span></code> to
+<code class="docutils literal notranslate"><span class="pre">main</span></code>. You’ll learn more about what branches are later, but we advise making
+this change now. For too long the computing industry has relied on offensive
+terms like “master” and “slave” to describe technology, and changing such terms
+is part of a <a class="reference external" href="https://sfconservancy.org/news/2020/jun/23/gitbranchname/">wider push</a> to move away from the framework they
+imply. This is a small change, but we at the DataLab believe that, in all
+instances, language matters.</p>
+<p>To change the default branch name to <code class="docutils literal notranslate"><span class="pre">main</span></code>, run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git config set --global init.defaultBranch main
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This section is based on the section <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">First-Time Git Setup</a> of the
+book <em>Pro Git</em>.</p>
+</div>
+</section>
+<section id="creating-a-repository">
+<span id="sec-creating-a-repository"></span><h2><span class="section-number">1.3. </span>Creating a Repository<a class="headerlink" href="#creating-a-repository" title="Link to this heading">#</a></h2>
+<p>Now that we’ve established what version control systems are, and you’ve
+configured Git, it’s time to create a repository.</p>
+<p>Open a terminal and navigate to your home directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd
+</pre></div>
+</div>
+<p>To <strong>initialize</strong> a repository called <code class="docutils literal notranslate"><span class="pre">my_first_repository</span></code>, enter:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git init my_first_repository
+</pre></div>
+</div>
+<p>Git will reply with a message like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Initialized empty Git repository in /home/USERNAME/my_first_repository/.git/
+</pre></div>
+</div>
+<p>When you run the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> command, Git first checks whether the specified
+directory (<code class="docutils literal notranslate"><span class="pre">my_first_repository/</span></code>) exists, and creates it if it doesn’t. Then
+Git makes the directory a repository by creating a hidden <code class="docutils literal notranslate"><span class="pre">.git/</span></code> subdirectory.
+This subdirectory is where Git will store the history of the repository.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.git/</span></code> subdirectory is hidden for a reason. Let Git manage its contents.
+Avoid creating or modifying files and directories inside <code class="docutils literal notranslate"><span class="pre">.git/</span></code>, as this might
+break your repository. If you delete <code class="docutils literal notranslate"><span class="pre">.git/</span></code>, your repository will no longer be
+a repository—it will just be an ordinary directory.</p>
+</div>
+<p>Now let’s check that Git actually recognizes <code class="docutils literal notranslate"><span class="pre">my_first_repository/</span></code> as a
+repository. First, navigate to the directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd my_first_repository/
+</pre></div>
+</div>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to check the status of a repository. Try running it
+for the new repository:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<p>Since the directory is a repository, Git will respond with output like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>We’ll save branches for a different lesson. Skipping to the second part of the
+message, Git says that there are no “commits” yet. A <strong>commit</strong> is a saved
+snapshot (or version) of the repository. You’ll learn how to make a commit
+soon, but right now, it makes sense that there are no commits yet, since you
+just created the repository. Finally, in the third part of the message, Git
+says that there is nothing to commit. This also makes sense, since we haven’t
+created any files in the repository yet.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When Git doesn’t recognize a directory as a repository, the output from <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> (and most other <code class="docutils literal notranslate"><span class="pre">git</span></code> subcommands) instead looks like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fatal: not a git repository
+</pre></div>
+</div>
+<p>If you see this message, your working directory is not a Git repository. Most
+likely you meant to run the command in a different directory.</p>
+</div>
+</section>
+<section id="adding-committing-changes">
+<span id="sec-adding-committing-changes"></span><h2><span class="section-number">1.4. </span>Adding &amp; Committing Changes<a class="headerlink" href="#adding-committing-changes" title="Link to this heading">#</a></h2>
+<p>Once you’ve created a repository, you’ll want to copy some files into it, or
+create new files, so that you can use Git to track their versions.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">my_first_repository/</span></code>, let’s create a file with a short self-introduction.
+Start by opening a text editor.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Choosing a Text Editor</p>
+<p>Even if you primarily use software with graphical user interfaces, it’s good to
+be familiar with a command-line text editor. You can use the editor for quick
+edits while at the command-line and on computers that don’t provide a graphical
+environment (as is often the case for cloud and high-performance computing
+resources).</p>
+<p>The <a class="reference external" href="https://nano-editor.org/">GNU nano</a> text editor is a simple and easy-to-learn. It’s typically
+pre-installed on Linux and bundled with Git Bash on Windows. On macOS, Pico,
+nano’s almost-identical predecessor, is pre-installed. You can run nano with
+the <code class="docutils literal notranslate"><span class="pre">nano</span></code> command (or run Pico with the <code class="docutils literal notranslate"><span class="pre">pico</span></code> command).</p>
+<p>If you like the simplicity of nano but want features like modern keyboard
+shortcuts and syntax highlighting by default, install the <a class="reference external" href="https://micro-editor.github.io/">micro</a> editor.
+It’s available for all major operating systems; see the website for details.</p>
+<p><a class="reference external" href="https://www.vim.org/">Vim</a> is a powerful, customizable text editor, but takes some time to learn.
+Vim (or its predecessor vi) is typically pre-installed on macOS and Linux, and
+is bundled with Git Bash on Windows. You can run Vim with the <code class="docutils literal notranslate"><span class="pre">vim</span></code> command (or
+run vi with the <code class="docutils literal notranslate"><span class="pre">vi</span></code> command).</p>
+<p>Popular alternatives to Vim with similar features include <a class="reference external" href="https://www.gnu.org/software/emacs/">GNU Emacs</a>
+and <a class="reference external" href="https://neovim.io/">Neovim</a>.</p>
+</div>
+<p>In the text editor, enter a friendly greeting, like this one:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Hi, I&#39;m Nick, and this is my repository!
+</pre></div>
+</div>
+<p>Your greeting doesn’t need to be identical, and you can change the name to your
+name. Save this as <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> in the <code class="docutils literal notranslate"><span class="pre">my_first_repository/</span></code> directory. Then
+check the status of the repository again:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>Git notices the new file, <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>, and says it’s <strong>untracked</strong>, which means
+Git doesn’t have any history for it. You just created the file and haven’t
+committed it yet, so it makes sense that there’s no history.</p>
+<p>Let’s commit <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> now. The first step is to add the file to Git’s
+<strong>staging area</strong> (or <strong>index</strong>). The staging area is a virtual space for
+preparing commits, where you can select which changes to include in the commit.
+It might help to imagine the staging area as a box 📦 that you’re packing up to
+store or to send to a friend.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> command adds changes to the staging area. Go ahead and add the
+changes to <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git add hello.txt
+</pre></div>
+</div>
+<p>Now check the status of the repository again:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+        new file:   hello.txt
+</pre></div>
+</div>
+<p>Git reports that the changes to <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> are in the staging area and ready
+to be committed. It also lists the command to remove the changes from the
+staging area.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Take advantage of the staging area to curate the contents of your commits.
+Putting distinct work in distinct commits makes it easier to inspect (and
+occasionally undo) the work.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Tip: Unstaging Changes</p>
+<p>In a new repository without any commits, the command to unstage changes is <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">--cached</span></code>.</p>
+<p>In a repository that has commits, the command to unstage changes is <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span> <span class="pre">--staged</span></code>. This is the command to remember, since most repositories
+have commits.</p>
+<p>The distinction can trip up even experienced Git users. If you want a single
+unstage command you can use under any circumstances, run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git config set --global alias.unstage &quot;reset --&quot;
+</pre></div>
+</div>
+<p>Then you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">unstage</span></code> whenever you want to unstage changes.</p>
+<!-- FIXME: uncomment this when the section is added
+You can
+learn more about what the `git config` command above does in
+{numref}`sec-aliases`.
+-->
+</div>
+<p>You can make a commit with the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> command. Enter the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git commit
+</pre></div>
+</div>
+<p>In response, Git will open a text editor (Vim by default) with the following
+text:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+# Please enter the commit message for your changes. Lines starting
+# with &#39;#&#39; will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+#
+# Initial commit
+#
+# Changes to be committed:
+#   new file:   hello.txt
+#
+</pre></div>
+</div>
+<p>Git will then wait for you to write a <strong>commit message</strong>, a description of what
+the commit changes, at the beginning of the text. The first line of the commit
+message must be a summary of the commit in 72 characters or less. You can
+optionally follow this with a blank second line and then a detailed description
+of the commit beginning on the third line.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Strive for clear and meaningful commit messages. If you feel like the changes
+in a commit are too numerous or complicated to summarize in one line, use the
+optional detailed description.</p>
+<p>Commit messages are the history of your project. Neglecting them might save
+time in the short run, but in the long run it will make understanding the
+project’s evolution much more difficult and time-consuming for future you and
+your collaborators.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Tip: The 50/72 Rule</p>
+<p>Many programmers follow <a class="reference external" href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">the 50/72 rule</a>, which says that the first line
+of a commit message should be 50 characters or less and written in the
+imperative mood. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Fix typos in the main text.
+</pre></div>
+</div>
+<p>Subsequent lines should be 72 characters or less. The rule makes commit
+messages easier to read and understand, especially in the terminal and on
+narrow screens.</p>
+<p>We recommend following the 50/72 rule, but there are situations where doing
+something else is justified. The best approach is to talk to your collaborators
+about specific conventions they want to follow, and check in with them about
+exceptions to the conventions.</p>
+</div>
+<p>Edit the commit message to look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Add a friendly greeting.
+# Please enter the commit message for your changes. Lines starting
+# with &#39;#&#39; will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+#
+# Initial commit
+#
+# Changes to be committed:
+#   new file:   hello.txt
+#
+</pre></div>
+</div>
+<p>Finally, to let Git know that you’re done, save the commit message and exit the
+text editor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you exit the text editor without saving, Git will cancel the commit. This is
+helpful if you change your mind about making a commit or forget to add
+something to the staging area.</p>
+</div>
+<!--
+:::{admonition} Using Vim
+:class: note, dropdown
+In Vim, press `i` to enter insert mode and type the commit message.
+
+When you're finished, press `Esc` to return to normal mode, type `:wq` (the
+command to write and quit), and press `Enter`.
+
+If you want to cancel the commit instead, press `Esc` to return to normal mode,
+type `:q!` (the command to quit without saving), and press `Enter`.
+:::
+-->
+<p>Git will print some output to confirm that the commit was created:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[main (root-commit) 0f5c79d] Add a friendly greeting.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.txt
+</pre></div>
+</div>
+<p>Important details in the output include:</p>
+<ul class="simple">
+<li><p>A <strong>hash</strong> that uniquely identifies the commit (<code class="docutils literal notranslate"><span class="pre">0f5c79d</span></code> above, but yours
+will be different)</p></li>
+<li><p>The commit message</p></li>
+<li><p>The number of files changed</p></li>
+<li><p>A list of which files were changed (<code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> in this case)</p></li>
+</ul>
+<p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to see how the output has changed now that you’ve made a
+commit:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+nothing to commit, working tree clean
+</pre></div>
+</div>
+<p>Git reports that there’s nothing to commit, and that the “working tree” is
+clean. The <strong>working tree</strong> consists of the files and directories you actually
+have in your repository. The working tree is <strong>clean</strong> if it’s identical to the
+most recent commit, meaning you haven’t changed anything since that commit.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember, saving your work in Git is a two step process:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> (for each file or directory with changes you want to save)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code></p></li>
+</ol>
+<p>It’s a good idea, but not required, to run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> after the first step,
+to check that you’ve added all of the changes you meant to add to the staging
+area.</p>
+</div>
+<section id="moving-a-file">
+<h3><span class="section-number">1.4.1. </span>Moving a File<a class="headerlink" href="#moving-a-file" title="Link to this heading">#</a></h3>
+<p>To get more practice making commits, suppose we want to move the file
+<code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> to <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, since <code class="docutils literal notranslate"><span class="pre">README.md</span></code> is conventionally the first file
+people read when they start working with an unfamiliar repository. Use the <code class="docutils literal notranslate"><span class="pre">mv</span></code>
+shell command to move the file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mv hello.txt README.md
+</pre></div>
+</div>
+<p>Now check the status of the repository:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        deleted:    hello.txt
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        README.md
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</pre></div>
+</div>
+<p>Git notices that <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> is gone, and also that there’s a new file
+<code class="docutils literal notranslate"><span class="pre">README.md</span></code>. Since <code class="docutils literal notranslate"><span class="pre">README.md</span></code> is untracked, Git doesn’t recognize that it’s
+the same file as the old <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>. Go ahead and add the changes to
+<code class="docutils literal notranslate"><span class="pre">README.md</span></code> to the staging area:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git add README.md
+</pre></div>
+</div>
+<p>Add the changes to <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code> as well:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git add hello.txt
+</pre></div>
+</div>
+<p>It might seem counterintuitive to add <code class="docutils literal notranslate"><span class="pre">hello.txt</span></code>, since it no longer exists.
+What you should keep in mind is that <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> adds <em>changes</em> to the staging
+area, <em>not files,</em> and moving (or removing) a file is a change to that file.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Removing/deleting a file is a change to that file, just like creating, editing,
+or moving the file.</p>
+<p>If you want to delete a file called <code class="docutils literal notranslate"><span class="pre">FILE</span></code> from a repository, first delete the
+file, then run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">FILE</span></code> to add the change to the staging area, and
+finally run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> to make a commit.</p>
+<p>Deleted files remain in the repository’s history, so it’s possible to restore
+them later.</p>
+</div>
+<p>Now check the status:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+        renamed:    hello.txt -&gt; README.md
+</pre></div>
+</div>
+<p>After adding the changes to both files, Git correctly recognizes that the file
+was moved/renamed. Go ahead and commit the change with the commit message
+<code class="docutils literal notranslate"><span class="pre">Move</span> <span class="pre">hello.txt</span> <span class="pre">to</span> <span class="pre">README.md.</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git commit
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[main 4f57023] Move hello.txt to README.md.
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename hello.txt =&gt; README.md (100%)
+</pre></div>
+</div>
+<p>If you check the status now, you’ll see that the working tree is once again
+clean.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also make commits without opening a text editor. Use this command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git commit -m &quot;COMMIT_MESSAGE&quot;
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">COMMIT_MESSAGE</span></code> with your commit message. You can’t provide a detailed
+description when you commit this way, so it’s only appropriate for small,
+simple commits.</p>
+</div>
+</section>
+</section>
+<section id="exploring-history">
+<span id="sec-exploring-history"></span><h2><span class="section-number">1.5. </span>Exploring History<a class="headerlink" href="#exploring-history" title="Link to this heading">#</a></h2>
+<!-- TODO: incorporate this?
+Git can keep track of different versions of any kind of file, but text files
+(such as Markdown files) and code (such as R and Python scripts) are where it
+excels. For these files, Git can provide rich feedback about differences
+between versions.
+-->
+<!--
+FIXME: better to introduce diff at the same time as add (and possibly split
+adding and committing into two different sections).
+-->
+<p>Now that you’ve made some commits, let’s take a look at the repository’s
+history. To view the log of commits to a repository, enter the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git log
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>commit 4f5702364c155faa260080671b63177550347ea0 (HEAD -&gt; main)
+Author: YOUR_NAME &lt;YOUR_EMAIL&gt;
+Date:   Wed Jan 8 14:32:21 2025 -0800
+
+    Move hello.txt to README.md.
+
+commit 0f5c79d0494763a31ade6a2514dd389f3f1eb1b4
+Author: YOUR_EMAIL &lt;YOUR_EMAIL&gt;
+Date:   Wed Jan 8 13:59:08 2025 -0800
+
+    Add a friendly greeting.
+
+</pre></div>
+</div>
+<p>For each commit, the log lists the hash, name and email of the author,
+timestamp, and commit message.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a repository has a long history, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> will display the commits in a
+scrolling window. You can use the up and down arrow keys to scroll, and type
+<code class="docutils literal notranslate"><span class="pre">q</span></code> (for quit) to return to the terminal.</p>
+</div>
+<p>Let’s make one more commit: we’ll add a title to the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file. Open the
+file with a text editor and add a title, so that it looks like this:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gh"># My README</span>
+
+Hi, I&#39;m Nick, and this is my repository!
+</pre></div>
+</div>
+<p>When you’re finished, save the file. As usual, Git notices that something in
+the repository has changed:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</pre></div>
+</div>
+<p>You can view the difference, or <strong>diff</strong> between the working tree and the most
+recent commit with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git diff
+</pre></div>
+</div>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gh">diff --git a/README.md b/README.md</span>
+<span class="gh">index cd08755..4e3eb18 100644</span>
+<span class="gd">--- a/README.md</span>
+<span class="gi">+++ b/README.md</span>
+<span class="gu">@@ -1 +1,3 @@</span>
+<span class="gi">+# My README</span>
+<span class="gi">+</span>
+<span class="w"> </span>Hello world!
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> command prints a diff for each file that’s been changed. In each
+diff, lines added since the last commit are prefixed with <code class="docutils literal notranslate"><span class="pre">+</span></code>, while lines
+removed since the last commit are prefixed with <code class="docutils literal notranslate"><span class="pre">-</span></code>. For context, each diff
+usually also includes a few lines that didn’t change (no prefix). It’s a good
+idea to check <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> before adding files to the staging area, so that you
+know what you’re adding.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you’ve changed a lot of files, the output from <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> can be
+overwhelming. You can use the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">PATH</span></code> to view only the changes
+to the file or directory at <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">--staged</span></code> to see the difference between files in the
+staging area and the last commit.</p>
+<p>There are many other ways to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>; check the documentation (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">--help</span></code>) to learn more.</p>
+</div>
+<p>Add and commit the changes. After you finish, you should have a third commit in
+the repository history (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>) that looks something like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>commit e15d8c1355f16c26fe00354855c24bff3626fc1b (HEAD -&gt; main)
+Author: YOUR_NAME &lt;YOUR_EMAIL&gt;
+Date:   Wed Jan 8 15:35:02 2025 -0800
+
+    Add title.
+
+</pre></div>
+</div>
+</section>
+<section id="restoring-old-versions-of-files">
+<h2><span class="section-number">1.6. </span>Restoring Old Versions of Files<a class="headerlink" href="#restoring-old-versions-of-files" title="Link to this heading">#</a></h2>
+<!--
+FIXME: this example would be better if we went back several commits, and if
+there were multiple files in the repo (to show that only the restored file
+changes).
+-->
+<p>Suppose you decide you don’t like the title you added to <code class="docutils literal notranslate"><span class="pre">README.md</span></code> in
+<a class="reference internal" href="#sec-exploring-history"><span class="std std-numref">Section 1.5</span></a>. If you want to change the title to something
+different, the best approach is to edit the file and make a new commit. On the
+other hand, if you want to restore an older version of the file, manual editing
+is tedious and error-prone.</p>
+<p>Instead, use the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span> <span class="pre">--source</span></code> command to restore a file to how it was
+in a particular commit.</p>
+<p>To demonstrate this, let’s restore <code class="docutils literal notranslate"><span class="pre">README.md</span></code> to how it was in the commit
+before we added a title. First check <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> to get the commit’s hash:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>commit e15d8c1355f16c26fe00354855c24bff3626fc1b (HEAD -&gt; main)
+Author: YOUR_NAME &lt;YOUR_EMAIL&gt;
+Date:   Wed Jan 8 15:35:02 2025 -0800
+
+    Add title.
+
+commit 4f5702364c155faa260080671b63177550347ea0
+Author: YOUR_NAME &lt;YOUR_EMAIL&gt;
+Date:   Wed Jan 8 14:32:21 2025 -0800
+
+    Move hello.txt to README.md.
+
+commit 0f5c79d0494763a31ade6a2514dd389f3f1eb1b4
+Author: YOUR_NAME &lt;YOUR_EMAIL&gt;
+Date:   Wed Jan 8 13:59:08 2025 -0800
+
+    Add a friendly greeting.
+
+</pre></div>
+</div>
+<p>In this example, the hash begins <code class="docutils literal notranslate"><span class="pre">4f5702</span></code>, but it will be different for your
+commit. As you can see from <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>, the full hash for each commit is quite
+long. For most Git commands that require a hash, you can just use the first few
+digits. Git will let you know if it needs more digits to disambiguate which
+commit you mean.</p>
+<p>To restore <code class="docutils literal notranslate"><span class="pre">README.md</span></code> to how it was in commit <code class="docutils literal notranslate"><span class="pre">4f5702</span></code>, run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git restore --source 4f5702 README.md
+</pre></div>
+</div>
+<p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">4f5702</span></code> with the actual hash for your commit.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Be careful with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span></code>: when you restore a file, any <em>uncommitted</em>
+changes you’ve made to the file will be erased, and there’s no undo.</p>
+<p>If you just want to see what a file looked like in a previous commit, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">show</span> <span class="pre">HASH:FILE</span></code> instead, where <code class="docutils literal notranslate"><span class="pre">HASH</span></code> is the commit’s hash and <code class="docutils literal notranslate"><span class="pre">FILE</span></code> is the
+path to the file.</p>
+</div>
+<p>After running the command, take a look at <code class="docutils literal notranslate"><span class="pre">README.md</span></code> with your text editor.
+You should see that it no longer has the title. And if you look at the status
+of the repository, you’ll see that Git noticed the change:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>On branch main
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</pre></div>
+</div>
+<p>As with any other change, you can add and commit this change if you want to
+save it in the repository’s history.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Tip: Undoing Commits</p>
+<p>If you want to undo an entire commit, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code> rather than <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span></code>. Specifically, run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git revert HASH
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">HASH</span></code> with the hash of the commit you want to revert.</p>
+<p>Git reverts a commit by creating a new commit, called a <strong>revert commit</strong>, with
+changes exactly the opposite of the original: lines that were added get removed
+and lines that were removed get added. Because of this, Git will prompt you for
+a commit message when you run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code>; it’s fine to use the default
+message.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_remote-repositories.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Remote Repositories</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-version-control">1.1. What is Version Control?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-control-systems">1.1.1. Version Control Systems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-git">1.2. Configuring Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-repository">1.3. Creating a Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-committing-changes">1.4. Adding &amp; Committing Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-a-file">1.4.1. Moving a File</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-history">1.5. Exploring History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restoring-old-versions-of-files">1.6. Restoring Old Versions of Files</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+  <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"> 
+</a>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

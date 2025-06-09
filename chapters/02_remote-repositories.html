@@ -1,0 +1,979 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Remote Repositories &#8212; Introduction to Version Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=dddfd265"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02_remote-repositories';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assessment" href="assessment.html" />
+    <link rel="prev" title="1. Getting Started" href="01_getting-started.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-us"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">⚠️ This reader is archived and may be outdated. <a href='https://ucdavisdatalab.github.io/workshop_reproducible_research/'>Click here</a> for a newer version. ⚠️</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-light" alt="Introduction to Version Control - Home"/>
+    <script>document.write(`<img src="../_static/datalab-logo-full-color-rgb.png" class="logo__image only-dark" alt="Introduction to Version Control - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Version Control</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_getting-started.html">1. Getting Started</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Remote Repositories</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Back Matter</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assessment.html">Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Retired</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="retired/installing-git.html">Installing Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retired/git-branching.html">Git Branching</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ucdavisdatalab/workshop_introduction_to_version_control/issues/new?title=Issue%20on%20page%20%2Fchapters/02_remote-repositories.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/02_remote-repositories.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Remote Repositories</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github">2.1. GitHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-account">2.1.1. Making an Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-with-ssh">2.1.2. Connecting with SSH</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharing-a-repository">2.2. Sharing a Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborating">2.3. Collaborating</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloning-a-repository">2.3.1. Cloning a Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-collaborator">2.3.2. Adding a Collaborator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-commits">2.3.3. Pushing Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pulling-commits">2.3.4. Pulling Commits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-git-workflow">2.4. The Git Workflow</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="remote-repositories">
+<h1><span class="section-number">2. </span>Remote Repositories<a class="headerlink" href="#remote-repositories" title="Link to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Learning Goals</p>
+<p>After this lesson, you should be able to:</p>
+<ul class="simple">
+<li><p>Explain what <a class="reference external" href="https://github.com/">GitHub</a> is and how it relates to Git</p></li>
+<li><p>Create an SSH key in order to authenticate with GitHub</p></li>
+<li><p>Explain the difference between a local and remote repository</p></li>
+<li><p>Clone a remote repository (on GitHub) to your computer</p></li>
+<li><p>Push changes to a remote repository</p></li>
+<li><p>Pull changes from a remote repository</p></li>
+</ul>
+</div>
+<p>As a distributed version control system
+(<a class="reference internal" href="01_getting-started.html#sec-version-control-systems"><span class="std std-numref">Section 1.1.1</span></a>), one of Git’s major features is that
+you can share commits between repositories. From the perspective of a
+repository, the repository is <strong>local</strong> and all other repositories are
+<strong>remote</strong>. Remote repositories, or remotes, are typically stored on some other
+computer connected to yours by a network (such as the Internet). In this
+chapter, you’ll learn how to use Git to send and receive commits from remote
+repositories.</p>
+<section id="github">
+<span id="sec-github"></span><h2><span class="section-number">2.1. </span>GitHub<a class="headerlink" href="#github" title="Link to this heading">#</a></h2>
+<!--
+TODO: this section could provide more details about popular hosting services
+and explain why we focus on GitHub.
+-->
+<p><a class="reference external" href="https://github.com/">GitHub</a> is a hosting service for Git repositories, much like Google Drive
+and Dropbox are hosting services for files. You don’t have to use GitHub or
+competing services (such as <a class="reference external" href="https://about.gitlab.com/">GitLab</a> and <a class="reference external" href="https://bitbucket.org/">BitBucket</a>) in order to use Git,
+but doing so provides a convenient way to share, collaborate on, and back up
+repositories.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Keep in mind that Git and GitHub are different things. Git is a version control
+system, while GitHub is a hosting service built to support Git.</p>
+<p>We’ll use a remote repository hosted on GitHub to demonstrate how to share
+commits, but all of the Git commands described will work with any remote
+repository.</p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Note: GitHub Desktop</p>
+<p>GitHub also offers an application called <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a>, which
+allows users to manage their local repositories with a point-and-click
+graphical user interface (GUI).</p>
+<p>Ultimately, it’s a matter of preference whether you use the GUI or stick with
+the command line for your own projects, but it’s a good idea to first become
+proficient at interacting with Git via the command line. The primary reason
+for this is that not every computer you use will have GitHub Desktop
+installed—or even have graphics! Many computing servers offer command
+line-only access, and if you ever want to use Git repositories on these
+machines, you’ll need to do so without GitHub Desktop.</p>
+</div>
+<section id="making-an-account">
+<h3><span class="section-number">2.1.1. </span>Making an Account<a class="headerlink" href="#making-an-account" title="Link to this heading">#</a></h3>
+<p>To use GitHub, you need to make a (free) account. Go to <a class="reference external" href="https://github.com/">GitHub</a> and click
+“Sign Up” in the top-right corner of the page. This should take you to a form,
+which asks you to enter a username, email address, and password. After you’ve
+entered in this information (and completed a quick CAPTCHA), GitHub will make
+you an account. Then, the site will prompt you to complete an optional survey.
+Fill it out, or scroll to the bottom to skip it.</p>
+<p>Either way, you’ll need to then verify your email address. Go to your inbox and
+look for an email from GitHub. Click the “Verify email address” button. Doing
+so will take you to your profile, where, if you’d like, you can add a few
+details about yourself.</p>
+<p><img alt="" src="../_images/github_new_homepage.png" /></p>
+<p>You now have a GitHub account!</p>
+</section>
+<section id="connecting-with-ssh">
+<h3><span class="section-number">2.1.2. </span>Connecting with SSH<a class="headerlink" href="#connecting-with-ssh" title="Link to this heading">#</a></h3>
+<p>To connect to GitHub from the command line, you must have a GitHub account and
+a way to <strong>authenticate</strong>, or establish your identity (prove that you are who
+you say you are). GitHub requires authentication as a security measure, so that
+individuals and teams can control who has access to their repositories.</p>
+<p>You can establish your identity with an <strong>SSH key</strong>, a kind of cryptographic
+key. An SSH key consists of two separate key files:</p>
+<ul class="simple">
+<li><p>A <strong>public key</strong> file which can be used to encrypt data. The public key is
+meant to be freely shared, so that people (or servers) can encrypt data they
+want to securely send to you.</p></li>
+<li><p>A <strong>private key</strong> file which can be used to decrypt data that was encrypted
+with the associated public key. The private key is meant for you alone, so
+that only you can decrypt and use data that people send to you. <em>Never</em> share
+your private key with <em>anyone</em> else.</p></li>
+</ul>
+<p>SSH keys are much more secure than passwords, which is one reason why GitHub
+uses them for authentication. GitHub provides <a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">detailed documentation</a>
+about how to create an SSH key and add the public key to your GitHub account.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Work through the following sections of the documentation to set up SSH key
+authentication with GitHub:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys">Checking for existing SSH keys</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">Generating a new SSH key and adding it to the ssh-agent</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">Adding a new SSH key to your GitHub account</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection">Testing your SSH connection</a></p></li>
+</ul>
+<p>Don’t skip this part—it’s necessary if you want to use GitHub and follow
+along with the subsequent examples.</p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Note: What is SSH?</p>
+<p>SSH stands for <strong>secure shell protocol</strong>, a protocol for communication between
+two computers. The “secure” in secure shell means that all messages sent
+between the computers are encrypted. This makes it practically impossible for a
+third party to see what’s being sent.</p>
+<p>Git uses SSH to connect GitHub. Git can also use SSH to connect to other
+servers hosting repositories.</p>
+</div>
+</section>
+</section>
+<section id="sharing-a-repository">
+<span id="sec-sharing-a-repository"></span><h2><span class="section-number">2.2. </span>Sharing a Repository<a class="headerlink" href="#sharing-a-repository" title="Link to this heading">#</a></h2>
+<p>With a GitHub account and SSH key set up, you’re ready to upload your first
+repository to GitHub. Some reasons to put a repository on GitHub include:</p>
+<ul class="simple">
+<li><p>To back up your work</p></li>
+<li><p>To collaborate on a project with colleagues</p></li>
+<li><p>To make your work available for other people to use and evaluate</p></li>
+</ul>
+<p>Let’s go through the steps to upload a repository, which we’ll share with other
+people in <a class="reference internal" href="#sec-collaborating"><span class="std std-numref">Section 2.3</span></a>. To get started, open a terminal and
+navigate to your projects directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd ~/projects/
+</pre></div>
+</div>
+<p>We’ll initialize a new repository to share, but you could also skip this step
+and follow the rest to share an existing repository. Name the new repository
+<code class="docutils literal notranslate"><span class="pre">USERNAME_first_shared_repo</span></code>, where <code class="docutils literal notranslate"><span class="pre">USERNAME</span></code> is your GitHub username:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git init USERNAME_first_shared_repo
+</pre></div>
+</div>
+<p>Open a text editor and type out a short self-introduction and a question for
+people who access your repository. Pick something friendly and not too
+intrusive, like this:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># README</span>
+
+Hi there, I&#39;m Nick. My research interests include computer vision, programming
+languages, and data science pedagogy.
+
+What do you like about one of your hobbies?
+</pre></div>
+</div>
+<p>Save this in the repository as as <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, then add and commit the changes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git add README.md
+git commit
+</pre></div>
+</div>
+<p>Make sure to write a descriptive commit message like <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">a</span> <span class="pre">README.</span></code></p>
+<p>So far so good! These steps should be familiar from
+<a class="reference internal" href="01_getting-started.html#sec-creating-a-repository"><span class="std std-numref">Section 1.3</span></a> and
+<a class="reference internal" href="01_getting-started.html#sec-adding-committing-changes"><span class="std std-numref">Section 1.4</span></a>. But now it’s time to do something new:
+we need to set up a repository on GitHub where we can <strong>push</strong>, or send,
+commits from the local repository.</p>
+<p>Open a web browser and go to <a class="reference external" href="https://github.com/">GitHub</a>. Make sure you’re logged in, then click
+the “+” button in the upper-right corner and select the “New repository”
+option. You’ll be taken to a page like this:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/gh_new_repository.png"><img alt="../_images/gh_new_repository.png" src="../_images/gh_new_repository.png" style="height: 40em;" />
+</a>
+</figure>
+<p>The page asks for several details about the new repository:</p>
+<ul class="simple">
+<li><p>A name for the repository</p></li>
+<li><p>A short (1-2 sentence) description of what’s in the repository</p></li>
+<li><p>Whether the repository should be <strong>public</strong> (viewable by anyone) or
+<strong>private</strong> (viewable only by you and those you grant access)</p></li>
+<li><p>Whether the repository should be initalized with:</p>
+<ul>
+<li><p>A README file, to describe your project to others.</p></li>
+<li><p>A .gitignore file, to tell Git to ignore specific files or directories.</p></li>
+<li><p>A license, to governs the use or redistribution of your files</p></li>
+</ul>
+</li>
+</ul>
+<p>For this example, give the repository the same name as the one you just created
+on your computer (<code class="docutils literal notranslate"><span class="pre">USERNAME_first_shared_repo</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">USERNAME</span></code> with your
+GitHub username). Leave the description blank and make sure the repository is
+public. Because you already initialized the repository locally, leave all of
+the initialization options unchecked. It should look something like this:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/gh_new_repository_filled.png"><img alt="../_images/gh_new_repository_filled.png" src="../_images/gh_new_repository_filled.png" style="height: 40em;" />
+</a>
+</figure>
+<p>Once you’ve filled in the details, click the green “Create repository” button
+at the bottom of the page.</p>
+<p>GitHub will take you to a new page with “Quick setup” and instructions to
+“create a new repository on the command line” or “push an existing repository
+from the command line.” The page should look something like this:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/gh_new_repository_created.png"><img alt="../_images/gh_new_repository_created.png" src="../_images/gh_new_repository_created.png" style="height: 40em;" />
+</a>
+</figure>
+<p>Under “Quick setup,” click on the “SSH” button, so that the instructions show
+how to connect to GitHub with SSH. Since we already created a repository
+locally, we need to use the “push an existing repository from the command line”
+instructions.</p>
+<p>Open a terminal, navigate to the repository you created earlier, and then run
+the commands listed on the page. In the screenshot above, these are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git remote add origin git@github.com:nick-ulle/nick-ulle_first_shared_repo.git
+git branch -M main
+git push -u origin main
+</pre></div>
+</div>
+<p>The first command, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span></code>, will look slightly different for you,
+since your GitHub username is probably not <code class="docutils literal notranslate"><span class="pre">nick-ulle</span></code>. This command tells Git
+where to find the repository on GitHub, and to call it <code class="docutils literal notranslate"><span class="pre">origin</span></code>.</p>
+<p>The second command, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code>, ensures that the default branch is called
+<code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<p>Finally, the third command, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>, pushes the contents of the local
+repository to the repository on GitHub (<code class="docutils literal notranslate"><span class="pre">origin</span></code>).</p>
+<p>You should see some output like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.39 KiB | 1.39 MiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:nick-ulle/nick-ulle_first_shared_repo.git
+ * [new branch]      main -&gt; main
+branch &#39;main&#39; set up to track &#39;origin/main&#39;.
+</pre></div>
+</div>
+<p>You only need to run these three commands the first time you upload a
+particular repository to GitHub. From now on, when you want to push commits
+from this repository to GitHub, you can simply run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> (without any
+arguments).</p>
+<p>Now go back to your web browser and refresh the repository’s page on GitHub.
+You should see the message in your <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file:</p>
+<!-- FIXME: update this image -->
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/gh_new_repository_pushed.png"><img alt="../_images/gh_new_repository_pushed.png" src="../_images/gh_new_repository_pushed.png" style="height: 40em;" />
+</a>
+</figure>
+<p>Congratulations, your repository is online! 🎉 GitHub automatically checks for
+a README file in your repository and if it finds one, displays it on the
+repository’s main page. If the README file is written in <a class="reference external" href="https://guides.github.com/features/mastering-markdown/">Markdown</a>, GitHub
+will even render the formatting.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can find information about how to write effective README files in DataLab’s
+<a class="reference external" href="https://ucdavisdatalab.github.io/workshop_how-to-data-documentation/">README, Write Me! workshop reader</a>.</p>
+</div>
+<!-- TODO: another example of pushing a commit -->
+</section>
+<section id="collaborating">
+<span id="sec-collaborating"></span><h2><span class="section-number">2.3. </span>Collaborating<a class="headerlink" href="#collaborating" title="Link to this heading">#</a></h2>
+<p>Uploading a repository to GitHub so that it’s available to others, as in
+<a class="reference internal" href="#sec-sharing-a-repository"><span class="std std-numref">Section 2.2</span></a>, is the first step towards collaboration. In
+this section, you’ll learn the next steps: how to download someone else’s
+repository, how to add someone as a collaborator to your repository, and how to
+send commits to and receive commits from a collaborator.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For this part, you’ll need to work with a partner. Take a moment to find a
+partner and exchange GitHub usernames. Pay careful attention to their
+username’s spelling and capitalization.</p>
+<p>Throughout this section, we’ll refer to your partner’s username as <code class="docutils literal notranslate"><span class="pre">PARTNER</span></code>.
+Anywhere you see <code class="docutils literal notranslate"><span class="pre">PARTNER</span></code>, replace it with their actual username.</p>
+</div>
+<p>In your web browser, navigate to the main page for <em>your partner’s</em> GitHub
+repository, which will be at:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>https://github.com/PARTNER/PARTNER_first_shared_repo
+</pre></div>
+</div>
+<p>Make sure you can get to the page before proceeding. If you get a 404 error,
+ask your partner to check that you’ve spelled and capitalized their username
+correctly.</p>
+<section id="cloning-a-repository">
+<h3><span class="section-number">2.3.1. </span>Cloning a Repository<a class="headerlink" href="#cloning-a-repository" title="Link to this heading">#</a></h3>
+<p>In order to use or contribute to a remote repository, you first need to
+<strong>clone</strong>—download a copy of—the repository to your computer. Let’s try it
+out with your partner’s repository. On their repository’s main page, click on
+the green “Code” button, select the “Local” tab, and select “SSH”. Then copy
+the listed URL to your clipboard. It will look something like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git@github.com:PARTNER/PARTNER_first_shared_repo.git
+</pre></div>
+</div>
+<p>The URL will have your partner’s GitHub username rather than <code class="docutils literal notranslate"><span class="pre">PARTNER</span></code>.</p>
+<p>Next, open a terminal and navigate to your projects directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd ~/projects/
+</pre></div>
+</div>
+<p>Then use the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> command to clone a copy of your partner’s repository.
+You’ll need to paste the URL you copied to the end of the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:PARTNER/PARTNER_first_shared_repo.git
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;PARTNER_first_shared_repo&#39;...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+</pre></div>
+</div>
+<p>Git will display some details about what it cloned from the remote repository.
+You now have a copy of your partner’s repository as
+<code class="docutils literal notranslate"><span class="pre">PARTNER_first_shared_repo/</span></code> in your projects directory. Use a text editor to
+take a look at their repo’s README.</p>
+</section>
+<section id="adding-a-collaborator">
+<h3><span class="section-number">2.3.2. </span>Adding a Collaborator<a class="headerlink" href="#adding-a-collaborator" title="Link to this heading">#</a></h3>
+<p>Anyone can clone a public repository, but only the owner of the repository and
+their approved collaborators can push commits. In this part, you’ll make your
+partner an approved collaborator on your shared repository, so that they can
+add a reply to the question in the README.</p>
+<p>Open a web browser to <em>your repository’s</em> main page on GitHub. Click on the
+“Settings” button. You’ll be taken to a page that looks like this:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/gh_repository_settings.png"><img alt="../_images/gh_repository_settings.png" src="../_images/gh_repository_settings.png" style="height: 40em;" />
+</a>
+</figure>
+<p>On the left side, click on “Collaborators”. GitHub might ask you to enter your
+password or complete two-factor authentication. Once you’ve done that, you’ll
+end up at a page like this:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/gh_repository_collaborators.png"><img alt="../_images/gh_repository_collaborators.png" src="../_images/gh_repository_collaborators.png" style="height: 40em;" />
+</a>
+</figure>
+<p>Click on the green “Add people” button near the bottom of the page, then enter
+your partner’s GitHub username in the popup that appears. Then tell your
+partner to check their email (the one they used to register with GitHub) for an
+invitation to collaborate on your repository.</p>
+<p>Both you and your partner need to accept the invitations before proceeding.</p>
+</section>
+<section id="pushing-commits">
+<span id="sec-pushing-commits"></span><h3><span class="section-number">2.3.3. </span>Pushing Commits<a class="headerlink" href="#pushing-commits" title="Link to this heading">#</a></h3>
+<p>It’s time to answer the question your partner put in their repository’s README.
+Go back to the terminal, and navigate to cloned copy of <em>your partner’s
+repository</em>. Open <code class="docutils literal notranslate"><span class="pre">README.md</span></code> with a text editor and add add a short reply to
+the question, like this:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># README</span>
+
+Hi, I&#39;m Tyler. I research language technology, focusing on how methods in
+natural language processing crosscut the interpretive and theoretic frameworks
+of literary and media studies.
+
+What kinds of tools do you use to edit code?
+
+<span class="gu">## Reply</span>
+
+Hi Tyler! I mostly use Jupyter, RStudio, and Vim to edit code.
+</pre></div>
+</div>
+<p>Save the changes and exit the text editor. Use Git to add and commit the
+changes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git add README.md
+git commit
+</pre></div>
+</div>
+<p>Go back to <a class="reference internal" href="01_getting-started.html#sec-adding-committing-changes"><span class="std std-numref">Section 1.4</span></a> if you need to refresh your
+memory of these commands.</p>
+<p>You can send the commit to your partner by pushing it to their repository on
+GitHub. To do this, run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git push
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 1.46 KiB | 1.46 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:PARTNER/PARTNER_first_shared_repo.git
+   dcad700..be2054a  main -&gt; main
+</pre></div>
+</div>
+<p>After pushing the commit, check in with your partner. Confirm that they can see
+the commit you made on their repository’s GitHub page, and check that you can
+see the commit they made on your repository’s GitHub page. If anything doesn’t
+seem right, try working through the steps again.</p>
+</section>
+<section id="pulling-commits">
+<h3><span class="section-number">2.3.4. </span>Pulling Commits<a class="headerlink" href="#pulling-commits" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="#sec-pushing-commits"><span class="std std-numref">Section 2.3.3</span></a> explained how to push commits from a local
+repository to a remote repository. The counterpart is <strong>pulling</strong> commits from
+a remote repository to a local one. When you’re working collaboratively, you
+can get commits your collaborators have pushed to GitHub (or any other remote)
+by pulling them to your local repository.</p>
+<p>It’s time to pull the commit your partner made in
+<a class="reference internal" href="#sec-pushing-commits"><span class="std std-numref">Section 2.3.3</span></a>. Open a terminal again and navigate to <em>your
+repository</em>. Then run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git pull
+</pre></div>
+</div>
+<p>Git should print output that looks something like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 918 bytes | 918.00 KiB/s, done.
+From github.com:nick-ulle/nick-ulle_first_shared_repo
+   c4bae61..260a2b4  main       -&gt; origin/main
+Updating c4bae61..260a2b4
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+</pre></div>
+</div>
+<p>After pulling the commit, inspect the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file with a text editor to
+confirm that it now contains the message from your partner. If it does,
+congratulations! You’ve successfully used Git and GitHub to collaborate with
+someone.</p>
+</section>
+</section>
+<section id="the-git-workflow">
+<h2><span class="section-number">2.4. </span>The Git Workflow<a class="headerlink" href="#the-git-workflow" title="Link to this heading">#</a></h2>
+<p><img alt="" src="../_images/git_workflow.svg" /></p>
+<p>A typical Git workflow—as illustrated in the figure above—is:</p>
+<ol class="arabic simple">
+<li><p>Pull recent changes from the remote with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>.</p></li>
+<li><p>Make some changes locally.</p></li>
+<li><p>Stage your changes with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>.</p></li>
+<li><p>Commit your changes with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p></li>
+<li><p>Push the changes to the remote with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p></li>
+<li><p>Repeat steps 1-5 until the project is finished.</p></li>
+</ol>
+<p>There are lots of steps in this process, so there are lots of places where it
+can go wrong. <em>Pay attention to error messages</em> and search online if you get
+stuck. Lots of people use Git, so your question has probably been asked and
+answered. 😃</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><em><a class="reference external" href="https://git-scm.com/book/en/v2">Pro Git</a></em> is the definitive Git resource and an excellent reference to
+keep at hand as you begin to work with Git.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_getting-started.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Getting Started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="assessment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assessment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github">2.1. GitHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-account">2.1.1. Making an Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-with-ssh">2.1.2. Connecting with SSH</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharing-a-repository">2.2. Sharing a Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborating">2.3. Collaborating</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloning-a-repository">2.3.1. Cloning a Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-collaborator">2.3.2. Adding a Collaborator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-commits">2.3.3. Pushing Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pulling-commits">2.3.4. Pulling Commits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-git-workflow">2.4. The Git Workflow</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carl Stahmer, Tyler Shoemaker, Wesley Brooks, and Nick Ulle
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+  <img alt="CC BY-SA 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"> 
+</a>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
